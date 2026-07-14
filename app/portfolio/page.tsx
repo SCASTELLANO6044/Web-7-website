@@ -1,3 +1,23 @@
 import { PortfolioGrid } from "./portfolio-grid";
-export const metadata = { title:"Selected work" };
-export default function Portfolio(){ return <section className="px-5 pb-28 pt-36 md:px-8 md:pt-48"><div className="mx-auto max-w-[1540px]"><p className="eyebrow">Selected work / 01—06</p><h1 className="display mt-4 max-w-5xl text-6xl leading-[.8] md:text-9xl">Big thinking,<br/><span className="outline-text">made tangible.</span></h1><p className="ml-auto mt-10 max-w-sm text-sm leading-7 text-white/60">A mix of live work and imagined futures. Every project is built around one thing: making a business more compelling online.</p><div className="mt-20"><PortfolioGrid/></div></div></section>; }
+export const metadata = { title: "Selected work" };
+export default function Portfolio() {
+    return (
+        <section className="px-5 pb-28 pt-36 md:px-8 md:pt-48">
+            <div className="mx-auto max-w-[1540px]">
+                <p className="eyebrow">Selected work / 01—06</p>
+                <h1 className="display mt-4 max-w-5xl text-6xl leading-[.8] md:text-9xl">
+                    Big thinking,
+                    <br />
+                    <span className="outline-text">made tangible.</span>
+                </h1>
+                <p className="ml-auto mt-10 max-w-sm text-sm leading-7 text-white/60">
+                    A mix of live work and imagined futures. Every project is built around
+                    one thing: making a business more compelling online.
+                </p>
+                <div className="mt-20">
+                    <PortfolioGrid />
+                </div>
+            </div>
+        </section>
+    );
+}
