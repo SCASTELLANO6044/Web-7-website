@@ -1,4 +1,70 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-export function Footer() { return <footer className="bg-[#f3efe8] px-5 pb-6 pt-20 text-[#090909] md:px-8 md:pt-28"><div className="mx-auto max-w-[1540px]"><p className="eyebrow text-[#090909]">Have a good idea?</p><Link href="/contact" className="group mt-4 flex items-end justify-between border-b border-black/30 pb-8"><span className="display max-w-5xl text-[15vw] leading-[.78] md:text-[10.7vw]">Let&apos;s make it real.</span><ArrowUpRight className="mb-2 size-10 transition-transform group-hover:-translate-y-2 group-hover:translate-x-2 md:size-16"/></Link><div className="grid gap-10 py-14 text-xs uppercase tracking-[.1em] md:grid-cols-4"><div><p className="mb-3 text-black/45">A studio for the islands<br/>and beyond.</p><p>Canary Islands, Spain</p></div><div><p className="mb-3 text-black/45">Contact</p><a className="block hover:underline" href="mailto:web7canarias@gmail.com">web7canarias@gmail.com</a><a className="block hover:underline" href="tel:+34620463759">Jose +34 620 463 759</a><a className="block hover:underline" href="tel:+34627187274">Sergio +34 627 187 274</a></div><div><p className="mb-3 text-black/45">Explore</p><Link className="block hover:underline" href="/portfolio">Selected work</Link><Link className="block hover:underline" href="/services">Capabilities</Link><Link className="block hover:underline" href="/about">The studio</Link></div><div className="md:text-right"><p className="mb-3 text-black/45">Web7</p><p>Driven by quality.<br/>Chosen by those who know the difference.</p></div></div><div className="flex justify-between border-t border-black/15 pt-4 text-[10px] uppercase tracking-[.1em]"><span>© {new Date().getFullYear()} Web7 Studio</span><span>Built with care in Canarias</span></div></div></footer>; }
+export function Footer() {
+return (
+    <footer className="bg-[#f3efe8] px-5 pb-6 pt-20 text-[#090909] md:px-8 md:pt-28">
+    <div className="mx-auto max-w-[1540px]">
+        <p className="eyebrow text-[#090909]">Have a good idea?</p>
+        <Link
+            href="/contact"
+            className="group mt-4 flex items-end justify-between border-b border-black/30 pb-8"
+        >
+        <span className="display max-w-5xl text-[15vw] leading-[.78] md:text-[10.7vw]">
+            Let&apos;s make it real.
+        </span>
+        <ArrowUpRight className="mb-2 size-10 transition-transform group-hover:-translate-y-2 group-hover:translate-x-2 md:size-16" />
+        </Link>
+        <div className="grid gap-10 py-14 text-xs uppercase tracking-[.1em] md:grid-cols-4">
+        <div>
+            <p className="mb-3 text-black/45">
+                A studio for the islands
+                <br />
+                and beyond.
+            </p>
+            <p>Canary Islands, Spain</p>
+        </div>
+        <div>
+            <p className="mb-3 text-black/45">Contact</p>
+            <a
+                className="block hover:underline"
+                href="mailto:web7canarias@gmail.com"
+            >
+                web7canarias@gmail.com
+            </a>
+            <a className="block hover:underline" href="tel:+34620463759">
+                Jose +34 620 463 759
+            </a>
+            <a className="block hover:underline" href="tel:+34627187274">
+                Sergio +34 627 187 274
+            </a>
+        </div>
+        <div>
+            <p className="mb-3 text-black/45">Explore</p>
+            <Link className="block hover:underline" href="/portfolio">
+                Selected work
+            </Link>
+            <Link className="block hover:underline" href="/services">
+                Capabilities
+            </Link>
+            <Link className="block hover:underline" href="/about">
+                The studio
+            </Link>
+        </div>
+        <div className="md:text-right">
+            <p className="mb-3 text-black/45">Web7</p>
+            <p>
+                Driven by quality.
+                <br />
+                Chosen by those who know the difference.
+            </p>
+        </div>
+        </div>
+        <div className="flex justify-between border-t border-black/15 pt-4 text-[10px] uppercase tracking-[.1em]">
+            <span>© {new Date().getFullYear()} Web7 Studio</span>
+            <span>Built with care in Canarias</span>
+        </div>
+    </div>
+    </footer>
+);
+}
