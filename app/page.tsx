@@ -38,17 +38,17 @@ export default function Home() {
               </p>
               <Link
                 href="/contact"
-                className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-xs uppercase tracking-[.11em] transition-colors hover:border-[#ffb8b3] hover:bg-[#ffb8b3] hover:text-[#090909]"
+                className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-xs uppercase tracking-[.11em] transition-colors hover:border-[#ff0000] hover:bg-[#ff0000] hover:text-[#090909]"
               >
                 Start your project <ArrowUpRight size={15} />
               </Link>
             </Reveal>
           </div>
           <div className="flex items-end justify-between">
-            <p className="scribble max-w-[190px] text-xl leading-tight text-[#ffb8b3]">
+            <p className="scribble max-w-[190px] text-xl leading-tight text-[#ff0000]">
               Built in the seven islands. Made for everywhere.
             </p>
-            <ArrowDownRight className="size-8 text-[#ffb8b3]" />
+            <ArrowDownRight className="size-8 text-[#ff0000]" />
           </div>
         </div>
       </section>
@@ -98,7 +98,7 @@ export default function Home() {
             </div>
             <Link
               href="/portfolio"
-              className="hidden text-xs uppercase tracking-[.13em] text-[#ffb8b3] md:block"
+              className="hidden text-xs uppercase tracking-[.13em] text-[#ff0000] md:block"
             >
               View all work ↗
             </Link>
@@ -136,7 +136,7 @@ export default function Home() {
                         {project.description}
                       </p>
                     </div>
-                    <MoveUpRight className="mt-1 size-5 text-[#ffb8b3] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                    <MoveUpRight className="mt-1 size-5 text-[#ff0000] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                   </div>
                 </Link>
               </Reveal>
@@ -144,7 +144,7 @@ export default function Home() {
           </div>
           <Link
             href="/portfolio"
-            className="mt-12 inline-flex items-center gap-2 text-xs uppercase tracking-[.13em] text-[#ffb8b3] md:hidden"
+            className="mt-12 inline-flex items-center gap-2 text-xs uppercase tracking-[.13em] text-[#ff0000] md:hidden"
           >
             View all work <ArrowUpRight size={15} />
           </Link>
@@ -153,11 +153,11 @@ export default function Home() {
       <section className="border-y border-white/15 py-4 overflow-hidden">
         <div className="marquee flex w-max gap-8 whitespace-nowrap text-[14vw] leading-none text-white/15">
           <span>DESIGN WITH INTENT</span>
-          <span className="text-[#ffb8b3]">•</span>
+          <span className="text-[#ff0000]">•</span>
           <span>BUILD WITH PURPOSE</span>
-          <span className="text-[#ffb8b3]">•</span>
+          <span className="text-[#ff0000]">•</span>
           <span>DESIGN WITH INTENT</span>
-          <span className="text-[#ffb8b3]">•</span>
+          <span className="text-[#ff0000]">•</span>
           <span>BUILD WITH PURPOSE</span>
         </div>
       </section>
@@ -177,9 +177,9 @@ export default function Home() {
                 className="border-b border-white/20 py-7 md:px-7 md:odd:border-r"
               >
                 <div className="flex gap-6">
-                  <span className="text-xs text-[#ffb8b3]">{number}</span>
+                  <span className="text-xs text-[#ff0000]">{number}</span>
                   <div>
-                    <p className="scribble text-lg text-[#ffb8b3]">{lead}</p>
+                    <p className="scribble text-lg text-[#ff0000]">{lead}</p>
                     <h3 className="mt-2 text-xl">{title}</h3>
                     <p className="mt-3 max-w-md text-xs leading-6 text-white/60">
                       {body}
@@ -191,7 +191,7 @@ export default function Home() {
           </div>
           <Link
             href="/services"
-            className="mt-9 inline-flex items-center gap-2 text-xs uppercase tracking-[.13em] text-[#ffb8b3]"
+            className="mt-9 inline-flex items-center gap-2 text-xs uppercase tracking-[.13em] text-[#ff0000]"
           >
             Explore capabilities <ArrowUpRight size={15} />
           </Link>
@@ -222,7 +222,7 @@ export default function Home() {
                   delay={i * 0.06}
                   className="flex items-center gap-3 border-b border-white/15 py-5 text-sm"
                 >
-                  <Check size={16} className="text-[#ffb8b3]" />
+                  <Check size={16} className="text-[#ff0000]" />
                   {reason}
                 </Reveal>
               ))}
@@ -242,13 +242,13 @@ export default function Home() {
             </blockquote>
           </Reveal>
           <Reveal className="mt-8 flex items-center gap-3 text-xs uppercase tracking-[.12em] text-white/55">
-            <span className="size-2 rounded-full bg-[#ffb8b3]" /> Good Meals /
+            <span className="size-2 rounded-full bg-[#ff0000]" /> Good Meals /
             Website project
           </Reveal>
         </div>
       </section>
       <section className="px-5 pb-24 md:px-8 md:pb-36">
-        <div className="mx-auto max-w-[1540px] overflow-hidden bg-[#ffb8b3] px-6 py-16 text-[#090909] md:px-14 md:py-24">
+        <div className="mx-auto max-w-[1540px] overflow-hidden bg-[#ff0000] px-6 py-16 text-[#090909] md:px-14 md:py-24">
           <Reveal>
             <p className="eyebrow text-[#090909]">
               Your next chapter starts here

@@ -20,7 +20,7 @@ export function PortfolioGrid() {
                     <button
                         key={category}
                         onClick={() => setActive(category)}
-                        className={`rounded-full border px-4 py-2 text-[10px] uppercase tracking-[.1em] transition-colors ${active === category ? "border-[#ffb8b3] bg-[#ffb8b3] text-[#090909]" : "border-white/20 hover:border-white/60"}`}
+                        className={`rounded-full border px-4 py-2 text-[10px] uppercase tracking-[.1em] transition-colors ${active === category ? "border-[#ff0000] bg-[#ff0000] text-[#090909]" : "border-white/20 hover:border-white/60"}`}
                     >
                         {category}
                     </button>
@@ -54,7 +54,7 @@ export function PortfolioGrid() {
                                     {project.description}
                                 </p>
                             </div>
-                            <ArrowUpRight className="size-5 text-[#ffb8b3] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                            <ArrowUpRight className="size-5 text-[#ff0000] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                         </div>
                     </Link>
                 ))}
