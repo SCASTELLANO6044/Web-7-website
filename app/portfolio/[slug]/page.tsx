@@ -60,7 +60,7 @@ export default async function ProjectPage({
                     </div>
                     <div className="grid gap-12 md:col-span-8 md:grid-cols-2">
                         <div>
-                            <p className="text-xs uppercase tracking-[.12em] text-[#ffb8b3]">
+                            <p className="text-xs uppercase tracking-[.12em] text-[#ff0000]">
                                 Services
                             </p>
                             <ul className="mt-4 space-y-2 text-sm text-white/70">
@@ -70,7 +70,7 @@ export default async function ProjectPage({
                             </ul>
                         </div>
                         <div>
-                            <p className="text-xs uppercase tracking-[.12em] text-[#ffb8b3]">
+                            <p className="text-xs uppercase tracking-[.12em] text-[#ff0000]">
                                 Technology
                             </p>
                             <ul className="mt-4 space-y-2 text-sm text-white/70">
@@ -105,7 +105,7 @@ export default async function ProjectPage({
                 </div>
                 <Link
                     href="/contact"
-                    className="mt-20 inline-flex items-center gap-2 text-xs uppercase tracking-[.12em] text-[#ffb8b3]"
+                    className="mt-20 inline-flex items-center gap-2 text-xs uppercase tracking-[.12em] text-[#ff0000]"
                 >
                     Build something considered <ArrowUpRight size={15} />
                 </Link>

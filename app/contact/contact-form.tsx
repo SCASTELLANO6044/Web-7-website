@@ -44,14 +44,14 @@ if (state === "sent")
     return (
     <div className="grid min-h-[480px] place-items-center border border-white/20 p-8 text-center">
         <div>
-        <CheckCircle2 className="mx-auto size-10 text-[#ffb8b3]" />
+        <CheckCircle2 className="mx-auto size-10 text-[#ff0000]" />
         <h2 className="display mt-5 text-5xl">Thank you.</h2>
         <p className="mt-4 max-w-xs text-sm leading-6 text-white/60">
             Your message is on its way. We&apos;ll be in touch soon.
         </p>
         <button
             onClick={() => setState("idle")}
-            className="mt-7 text-xs uppercase tracking-wider text-[#ffb8b3]"
+            className="mt-7 text-xs uppercase tracking-wider text-[#ff0000]"
         >
             Send another message
         </button>
@@ -118,13 +118,13 @@ return (
         />
     </div>
     {state === "error" && (
-        <p role="alert" className="mb-5 text-sm text-[#ffb8b3]">
+        <p role="alert" className="mb-5 text-sm text-[#ff0000]">
         {error}
         </p>
     )}
     <button
         disabled={state === "sending"}
-        className="inline-flex items-center gap-3 rounded-full bg-[#ffb8b3] px-6 py-4 text-xs uppercase tracking-[.12em] text-[#090909] transition-transform hover:scale-95 disabled:opacity-60"
+        className="inline-flex items-center gap-3 rounded-full bg-[#ff0000] px-6 py-4 text-xs uppercase tracking-[.12em] text-[#090909] transition-transform hover:scale-95 disabled:opacity-60"
     >
         {state === "sending" ? "Sending…" : "Send inquiry"}
         <ArrowUpRight size={16} />
@@ -144,7 +144,7 @@ children: React.ReactNode;
 return (
     <label className="mb-7 block text-xs uppercase tracking-[.1em] text-white/50">
     {label}
-      {required && <span className="text-[#ffb8b3]"> *</span>}
+      {required && <span className="text-[#ff0000]"> *</span>}
     <span className="mt-3 block border-b border-white/25 pb-3 text-sm normal-case tracking-normal text-white [&_input]:w-full [&_input]:bg-transparent [&_input]:outline-none [&_select]:w-full [&_select]:bg-[#090909] [&_select]:outline-none [&_textarea]:w-full [&_textarea]:resize-none [&_textarea]:bg-transparent [&_textarea]:outline-none">
         {children}
     </span>

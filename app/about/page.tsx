@@ -76,7 +76,7 @@ return (
                 "Accessibility-led",
             ].map((x, i) => (
                 <div key={x} className="border-b border-white/15 py-5">
-                <span className="mr-3 text-[#ffb8b3]">0{i + 1}</span>
+                <span className="mr-3 text-[#ff0000]">0{i + 1}</span>
                 {x}
                 </div>
             ))}
@@ -85,7 +85,7 @@ return (
         </section>
         <section className="px-5 pb-28 md:px-8">
         <div className="mx-auto max-w-[1540px] border border-white/20 p-7 md:p-12">
-            <p className="scribble text-xl text-[#ffb8b3]">
+            <p className="scribble text-xl text-[#ff0000]">
             A better web is possible.
             </p>
             <h2 className="display mt-5 max-w-4xl text-5xl leading-[.85] md:text-7xl">
@@ -93,7 +93,7 @@ return (
             </h2>
             <Link
             href="/contact"
-            className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-wider text-[#ffb8b3]"
+            className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-wider text-[#ff0000]"
         >
             Let&apos;s build it <ArrowUpRight size={15} />
             </Link>

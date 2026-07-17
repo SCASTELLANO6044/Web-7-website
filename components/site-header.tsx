@@ -27,7 +27,7 @@ export function Header() {
             <Link
               key={href}
               href={href}
-              className="transition-colors hover:text-[#ffb8b3]"
+              className="transition-colors hover:text-[#ff0000]"
             >
               {name}
             </Link>

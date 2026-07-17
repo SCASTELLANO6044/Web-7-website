@@ -23,7 +23,7 @@ export default function Contact() {
                                     Email
                                 </p>
                                 <a
-                                    className="hover:text-[#ffb8b3]"
+                                    className="hover:text-[#ff0000]"
                                     href="mailto:web7canarias@gmail.com"
                                 >
                                     web7canarias@gmail.com
@@ -34,13 +34,13 @@ export default function Contact() {
                                     Call us
                                 </p>
                                 <a
-                                    className="block hover:text-[#ffb8b3]"
+                                    className="block hover:text-[#ff0000]"
                                     href="tel:+34620463759"
                                 >
                                     Jose / +34 620 463 759
                                 </a>
                                 <a
-                                    className="block hover:text-[#ffb8b3]"
+                                    className="block hover:text-[#ff0000]"
                                     href="tel:+34627187274"
                                 >
                                     Sergio / +34 627 187 274

@@ -25,11 +25,11 @@ export default function Services() {
                             key={number}
                             className="grid gap-6 border-b border-white/15 py-9 md:grid-cols-12 md:py-12"
                         >
-                            <span className="text-xs text-[#ffb8b3] md:col-span-1">
+                            <span className="text-xs text-[#ff0000] md:col-span-1">
                                 {number}
                             </span>
                             <div className="md:col-span-4">
-                                <p className="scribble text-xl text-[#ffb8b3]">{lead}</p>
+                                <p className="scribble text-xl text-[#ff0000]">{lead}</p>
                                 <h2 className="mt-3 text-2xl">{title}</h2>
                             </div>
                             <p className="max-w-md text-sm leading-7 text-white/60 md:col-span-5">
@@ -41,7 +41,7 @@ export default function Services() {
                         </article>
                     ))}
                 </div>
-                <div className="mt-20 bg-[#ffb8b3] p-8 text-[#090909] md:p-12">
+                <div className="mt-20 bg-[#ff0000] p-8 text-[#090909] md:p-12">
                     <p className="eyebrow text-[#090909]">Not sure what you need?</p>
                     <h2 className="display mt-3 max-w-3xl text-5xl leading-[.85] md:text-7xl">
                         Start with a conversation.

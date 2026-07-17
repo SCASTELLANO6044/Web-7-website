@@ -38,7 +38,7 @@ export default function Home() {
               </p>
               <Link
                 href="/contact"
-                className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-xs uppercase tracking-[.11em] transition-colors hover:border-[#ffb8b3] hover:bg-[#ffb8b3] hover:text-[#090909]"
+                className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-xs uppercase tracking-[.11em] transition-colors hover:border-[#ff0000] hover:bg-[#ff0000] hover:text-[#090909]"
               >
                 Start your project <ArrowUpRight size={15} />
               </Link>
