@@ -49,6 +49,7 @@ export default function Services() {
                     <Link
                         href="/contact"
                         className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#090909] px-5 py-3 text-xs uppercase tracking-wider text-[#f3efe8]"
+                        style={{ color: "#ffffff" }}
                     >
                         Get a free consultation <ArrowUpRight size={15} />
                     </Link>

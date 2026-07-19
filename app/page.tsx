@@ -259,6 +259,7 @@ export default function Home() {
             <Link
               href="/contact"
               className="mt-10 inline-flex items-center gap-3 rounded-full bg-[#090909] px-6 py-4 text-xs uppercase tracking-[.13em] text-[#f3efe8] transition-transform hover:scale-95"
+              style={{ color: "#ffffff" }}
             >
               Book a discovery call <ArrowUpRight size={16} />
             </Link>
