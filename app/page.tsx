@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Check, MoveUpRight } from "lucide-react";
 import { Reveal } from "@/components/motion";
 import { projects, services } from "@/lib/projects";
+import { HorizontalTextLoop } from "@/components/horizontal-text-loop";
 
 const reasons = [
   "Strategy before decoration",
@@ -150,17 +151,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <section className="border-y border-white/15 py-4 overflow-hidden">
-        <div className="marquee flex w-max gap-8 whitespace-nowrap text-[14vw] leading-none text-white/15">
-          <span>DESIGN WITH INTENT</span>
-          <span className="text-[#ff0000]">•</span>
-          <span>BUILD WITH PURPOSE</span>
-          <span className="text-[#ff0000]">•</span>
-          <span>DESIGN WITH INTENT</span>
-          <span className="text-[#ff0000]">•</span>
-          <span>BUILD WITH PURPOSE</span>
-        </div>
-      </section>
+      <HorizontalTextLoop text1="DESIGN WITH INTENT" text2="BUILD WITH PURPOSE" />
       <section className="px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-[1540px]">
           <Reveal>
