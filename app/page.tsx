@@ -4,6 +4,7 @@ import { ArrowDownRight, ArrowUpRight, Check, MoveUpRight } from "lucide-react";
 import { Reveal } from "@/components/motion";
 import { projects, services } from "@/lib/projects";
 import { HorizontalTextLoop } from "@/components/horizontal-text-loop";
+import { MidSection } from "@/components/mid-section";
 
 const reasons = [
   "Strategy before decoration",
@@ -53,39 +54,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-[#f3efe8] px-5 py-24 text-[#090909] md:px-8 md:py-36">
-        <div className="mx-auto grid max-w-[1540px] gap-16 md:grid-cols-12">
-          <Reveal className="md:col-span-3">
-            <p className="eyebrow text-[#090909]">What we make</p>
-          </Reveal>
-          <Reveal className="md:col-span-8">
-            <h2 className="display text-5xl leading-[.9] sm:text-6xl md:text-8xl">
-              Websites with the clarity to convert—and the character to stay
-              with people.
-            </h2>
-            <div className="mt-12 grid gap-4 border-t border-black/20 pt-5 sm:grid-cols-3">
-              <p className="text-xs leading-5">
-                From first thought to technical launch, we bring design and
-                development into one intentional process.
-              </p>
-              <p className="text-xs leading-5">
-                For local leaders, fast-moving startups and established teams
-                with standards.
-              </p>
-              <Link
-                href="/about"
-                className="group flex items-start justify-between text-xs uppercase tracking-wider"
-              >
-                Meet Web7{" "}
-                <ArrowUpRight
-                  size={16}
-                  className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      
+      < MidSection 
+        text1="What we make" 
+        text2="Websites with the clarity to convert—and the character to stay with people." 
+        text3="From first thought to technical launch, we bring design and development into one intentional process." 
+        text4="For local leaders, fast-moving startups and established teams with standards." 
+      />
+
       <section className="px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-[1540px]">
           <Reveal className="mb-12 flex items-end justify-between">
