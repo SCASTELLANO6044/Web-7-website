@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { projects } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -39,6 +39,18 @@ export default async function ProjectPage({
                     <p className="mt-10 max-w-md text-sm leading-7 text-white/65">
                         {project.description}
                     </p>
+                    {project.websiteUrl && (
+                        <a
+                            href={project.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-8 inline-flex min-h-11 items-center gap-2 border border-[#ff0000] px-4 py-3 text-xs uppercase tracking-[.12em] text-[#ff0000] transition-colors hover:bg-[#ff0000] hover:text-[#090909] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff0000]"
+                        >
+                            Visit live website
+                            <ExternalLink aria-hidden="true" size={15} />
+                            <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                    )}
                 </div>
             </section>
             <section className="px-5 md:px-8">

@@ -10,6 +10,8 @@ export type Project = {
   challenge: string;
   solution: string;
   results: string[];
+  /** Public URL for completed work. Omit this for concept projects. */
+  websiteUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -31,6 +33,7 @@ export const projects: Project[] = [
       "Mobile-first journey",
       "Clearer conversion path",
     ],
+    websiteUrl: "https://goodmeals.es",
   },
   {
     slug: "altamar-residences",
