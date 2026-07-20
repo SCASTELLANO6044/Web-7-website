@@ -1,9 +1,12 @@
+import type { StaticImageData } from "next/image";
+import goodMealsHero from "@/assets/portfolio/goodmeals/goodmeals-hero.png";
+
 export type Project = {
   slug: string;
   title: string;
   category: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
   year: string;
   services: string[];
   technologies: string[];
@@ -20,7 +23,7 @@ export const projects: Project[] = [
     title: "Good Meals",
     category: "Food & hospitality",
     description: "A memorable home for a fresh way to eat well.",
-    image: "/reference/portfolio-1.jpg",
+    image: goodMealsHero,
     year: "2025",
     services: ["Web design", "Development", "Brand integration"],
     technologies: ["Next.js", "TypeScript", "Responsive UI"],
