@@ -59,6 +59,13 @@ select {
     text-transform: uppercase;
 }
 
+.eyebrowblack{
+    color: #090909;
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
 .grain::before {
     content: "";
     pointer-events: none;
