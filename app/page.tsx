@@ -7,6 +7,7 @@ import { ProjectsOverview } from "@/components/projects-overview";
 import { HeroSection } from "@/components/hero";
 import { MidSectionGrid } from "@/components/mid-section-grid";
 import { MidSectionGridAlternative } from "@/components/mid-section-grid-alternative";
+import { MidSectionReviewFromClient } from "@/components/mid-section-review-from-client";
 
 const reasons = [
   "Strategy before decoration",
@@ -34,23 +35,12 @@ export default function Home() {
 
       <MidSectionGridAlternative reasons={reasons} />
 
-      <section className="px-5 py-24 md:px-8 md:py-36">
-        <div className="mx-auto max-w-[1540px]">
-          <Reveal>
-            <p className="eyebrow">From clients / small words, real weight</p>
-          </Reveal>
-          <Reveal className="mt-9">
-            <blockquote className="display max-w-6xl text-4xl leading-[.95] md:text-7xl">
-              “They understood the feeling we wanted to create, then gave it a
-              structure that works.”
-            </blockquote>
-          </Reveal>
-          <Reveal className="mt-8 flex items-center gap-3 text-xs uppercase tracking-[.12em] text-white/55">
-            <span className="size-2 rounded-full bg-[#ff0000]" /> Good Meals /
-            Website project
-          </Reveal>
-        </div>
-      </section>
+      <MidSectionReviewFromClient 
+        review="“They understood the feeling we wanted to create, then gave it a structure that works.”"
+        client="Good Meals"
+        project="Website project"
+      />
+
       <section className="px-5 pb-24 md:px-8 md:pb-36">
         <div className="mx-auto max-w-[1540px] overflow-hidden bg-[#ff0000] px-6 py-16 text-[#090909] md:px-14 md:py-24">
           <Reveal>
