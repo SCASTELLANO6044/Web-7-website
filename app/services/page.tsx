@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { services } from "@/lib/projects";
+import { MidSectionSlogan } from "@/components/mid-section-slogan";
+
 export const metadata = { title: "Capabilities" };
 export default function Services() {
     return (
@@ -41,18 +41,13 @@ export default function Services() {
                         </article>
                     ))}
                 </div>
-                <div className="mt-20 bg-[#ff0000] p-8 text-[#090909] md:p-12">
-                    <p className="eyebrow text-[#090909]">Not sure what you need?</p>
-                    <h2 className="display mt-3 max-w-3xl text-5xl leading-[.85] md:text-7xl">
-                        Start with a conversation.
-                    </h2>
-                    <Link
-                        href="/contact"
-                        className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#090909] px-5 py-3 text-xs uppercase tracking-wider text-[#f3efe8]"
-                        style={{ color: "#ffffff" }}
-                    >
-                        Get a free consultation <ArrowUpRight size={15} />
-                    </Link>
+
+                <div className="pt-20 md:pt-32">
+                    <MidSectionSlogan 
+                        text1="Not sure what you need?"
+                        text2="Start with a conversation."
+                        text3="Get a free consultation"
+                    />
                 </div>
             </div>
         </section>
