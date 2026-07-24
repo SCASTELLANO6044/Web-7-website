@@ -1,24 +1,22 @@
 import { services } from "@/lib/projects";
 import { MidSectionSlogan } from "@/components/mid-section-slogan";
+import { HeroAlternative } from "@/components/hero-alternative";
 
 export const metadata = { title: "Capabilities" };
 export default function Services() {
     return (
         <section className="px-5 pb-28 pt-36 md:px-8 md:pt-48">
             <div className="mx-auto max-w-[1540px]">
-                <p className="eyebrow">
-                    Capabilities / Your online presence, properly considered
-                </p>
-                <h1 className="display mt-4 max-w-6xl text-6xl leading-[.8] md:text-9xl">
-                    Designed to work.
-                    <br />
-                    <span className="outline-text">Built to last.</span>
-                </h1>
-                <div className="ml-auto mt-12 max-w-lg text-sm leading-7 text-white/60">
-                    We bring the strategic, creative and technical pieces together, so
+
+                <HeroAlternative 
+                    text1="Capabilities / Your online presence, properly considered" 
+                    text2="Designed to work." 
+                    text3="Built to last." 
+                    text4="We bring the strategic, creative and technical pieces together, so
                     your website has a single standard from its first idea to its next
-                    iteration.
-                </div>
+                    iteration." 
+                />
+                
                 <div className="mt-20 border-t border-white/15">
                     {services.map(([number, lead, title, body]) => (
                         <article

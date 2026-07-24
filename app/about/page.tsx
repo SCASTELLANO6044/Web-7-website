@@ -1,23 +1,24 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { HeroAlternative } from "@/components/hero-alternative";
+
 export const metadata = { title: "The studio" };
 export default function About() {
 return (
     <>
         <section className="px-5 pb-20 pt-36 md:px-8 md:pt-48">
         <div className="mx-auto max-w-[1540px]">
-            <p className="eyebrow">Web7 / A studio from the Canary Islands</p>
-            <h1 className="display mt-4 max-w-6xl text-6xl leading-[.8] md:text-9xl">
-            The internet could use
-            <br />
-            <span className="outline-text">more soul.</span>
-            </h1>
-            <p className="ml-auto mt-12 max-w-lg text-sm leading-7 text-white/65">
-            Web7 is a creative development studio for teams who care about the
-            details. We combine a sharp eye for design with the technical
-            resolve to make the finished experience feel as good as the original
-            idea.
-            </p>
+
+            <HeroAlternative
+                text1="Web7 / A studio from the Canary Islands"
+                text2="The internet could use"
+                text3="more soul."
+                text4="Web7 is a creative development studio for teams who care about the
+                        details. We combine a sharp eye for design with the technical
+                        resolve to make the finished experience feel as good as the original
+                        idea."
+            />
+            
         </div>
         </section>
         <section className="bg-[#f3efe8] px-5 py-24 text-[#090909] md:px-8 md:py-36">
