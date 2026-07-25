@@ -9,12 +9,11 @@ export default function Services() {
             <div className="mx-auto max-w-[1540px]">
 
                 <HeroAlternative 
-                    text1="Capabilities / Your online presence, properly considered" 
-                    text2="Designed to work." 
-                    text3="Built to last." 
-                    text4="We bring the strategic, creative and technical pieces together, so
-                    your website has a single standard from its first idea to its next
-                    iteration." 
+                    text1="Nuestras hablidades / Tu presencia online, tratada de la manera correcta"
+                    text2="Diseñado para funcionar." 
+                    text3="Construido para durar."
+                    text4="Nosotros ponemos la estrategia, la creatividad, y los conocimientos técnicos para que 
+                    tu sitio web cumpla con un estándar único desde su primera idea hasta su próxima iteración." 
                 />
                 
                 <div className="mt-20 border-t border-white/15">
@@ -42,9 +41,9 @@ export default function Services() {
 
                 <div className="pt-20 md:pt-32">
                     <MidSectionSlogan 
-                        text1="Not sure what you need?"
-                        text2="Start with a conversation."
-                        text3="Get a free consultation"
+                        text1="¿No sabes lo qué necestitas?"
+                        text2="Empieza con una conversación."
+                        text3="Obtén una consulta gratuita"
                     />
                 </div>
             </div>

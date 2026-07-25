@@ -15,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const project = projects.find((p) => p.slug === slug);
-    return { title: project?.title ?? "Project" };
+    return { title: project?.title ?? "Proyecto" };
 }
 export default async function ProjectPage({
     params,
@@ -46,9 +46,9 @@ export default async function ProjectPage({
                             rel="noopener noreferrer"
                             className="mt-8 inline-flex min-h-11 items-center gap-2 border border-[#ff0000] px-4 py-3 text-xs uppercase tracking-[.12em] text-[#ff0000] transition-colors hover:bg-[#ff0000] hover:text-[#090909] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff0000]"
                         >
-                            Visit live website
+                            Visitar sitio web
                             <ExternalLink aria-hidden="true" size={15} />
-                            <span className="sr-only"> (opens in a new tab)</span>
+                            <span className="sr-only"> (se abre en una pestaña nueva)</span>
                         </a>
                     )}
                 </div>
@@ -68,12 +68,12 @@ export default async function ProjectPage({
             <section className="px-5 py-24 md:px-8 md:py-36">
                 <div className="mx-auto grid max-w-[1540px] gap-12 md:grid-cols-12">
                     <div className="md:col-span-3">
-                        <p className="eyebrow">Project details</p>
+                        <p className="eyebrow">Detalles del proyecto</p>
                     </div>
                     <div className="grid gap-12 md:col-span-8 md:grid-cols-2">
                         <div>
                             <p className="text-xs uppercase tracking-[.12em] text-[#ff0000]">
-                                Services
+                                Servicios
                             </p>
                             <ul className="mt-4 space-y-2 text-sm text-white/70">
                                 {project.services.map((x) => (
@@ -83,7 +83,7 @@ export default async function ProjectPage({
                         </div>
                         <div>
                             <p className="text-xs uppercase tracking-[.12em] text-[#ff0000]">
-                                Technology
+                                Tecnologías
                             </p>
                             <ul className="mt-4 space-y-2 text-sm text-white/70">
                                 {project.technologies.map((x) => (
@@ -95,19 +95,19 @@ export default async function ProjectPage({
                 </div>
                 <div className="mx-auto mt-24 grid max-w-[1540px] gap-12 border-t border-white/15 pt-10 md:grid-cols-3">
                     <div>
-                        <p className="eyebrow">The challenge</p>
+                        <p className="eyebrow">El reto</p>
                         <p className="mt-5 text-sm leading-7 text-white/70">
                             {project.challenge}
                         </p>
                     </div>
                     <div>
-                        <p className="eyebrow">The response</p>
+                        <p className="eyebrow">La solución</p>
                         <p className="mt-5 text-sm leading-7 text-white/70">
                             {project.solution}
                         </p>
                     </div>
                     <div>
-                        <p className="eyebrow">The result</p>
+                        <p className="eyebrow">El resultado</p>
                         <ul className="mt-5 space-y-3 text-sm text-white/70">
                             {project.results.map((x) => (
                                 <li key={x}>— {x}</li>
@@ -119,7 +119,7 @@ export default async function ProjectPage({
                     href="/contact"
                     className="mt-20 inline-flex items-center gap-2 text-xs uppercase tracking-[.12em] text-[#ff0000]"
                 >
-                    Build something considered <ArrowUpRight size={15} />
+                    Hablemos de tu proyecto <ArrowUpRight size={15} />
                 </Link>
             </section>
         </>

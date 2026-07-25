@@ -1,4 +1,3 @@
-
 interface HeroAlternativeProps {
     text1?: string;
     text2?: string;
@@ -6,11 +5,11 @@ interface HeroAlternativeProps {
     text4?: string;
 }
 
-export function HeroAlternative({ 
-    text1, 
-    text2, 
-    text3,
-    text4,
+export function HeroAlternative({
+    text1 = "Estudio de desarrollo web / Mirando al futuro",
+    text2 = "Experiencias digitales",
+    text3 = "que dejan huella.",
+    text4 = "En Web7 diseñamos y desarrollamos sitios web únicos para empresas que quieren destacar, generar confianza y convertirse en la primera opción de sus clientes.",
 }: HeroAlternativeProps){
     return (
         <>

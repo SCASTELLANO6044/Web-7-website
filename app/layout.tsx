@@ -7,7 +7,7 @@ import { LoadingScreen } from "@/components/motion";
 export const metadata: Metadata = {
   title: { default: "Web7 — Website Dev Studio", template: "%s — Web7" },
   description:
-    "Web7 designs and develops premium websites for ambitious businesses in the Canary Islands and beyond.",
+    "Web7 diseña y desarrolla sitios web de alta calidad para empresas ambiciosas.",
   keywords: [
     "web design Canary Islands",
     "website development",

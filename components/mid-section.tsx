@@ -11,10 +11,10 @@ interface MidSectionProps {
 }
 
 export function MidSection({
-    text1 = "What we make",
-    text2 = "Websites with the clarity to convert—and the character to stay with people.",
-    text3 = "From first thought to technical launch, we bring design and development into one intentional process.",
-    text4 = "For local leaders, fast-moving startups and established teams with standards."
+    text1 = "Qué hacemos",
+    text2 = "Creamos sitios web con la claridad necesaria para convertir y la personalidad suficiente para dejar huella.",
+    text3 = "Desde la idea inicial hasta el lanzamiento, unimos diseño y desarrollo en un único proceso pensado al detalle.",
+    text4 = "Para negocios locales, startups en crecimiento y equipos consolidados que buscan un trabajo de calidad."
 }: MidSectionProps) {
     return (
         <section className="bg-[#f3efe8] px-5 py-24 text-[#090909] md:px-8 md:py-36">
@@ -37,7 +37,7 @@ export function MidSection({
                 href="/about"
                 className="group flex items-start justify-between text-xs uppercase tracking-wider"
               >
-                Meet Web7{" "}
+                Conoce Web7{" "}
                 <ArrowUpRight
                   size={16}
                   className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"

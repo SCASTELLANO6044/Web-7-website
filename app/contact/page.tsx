@@ -1,21 +1,20 @@
 import { ContactForm } from "./contact-form";
-export const metadata = { title: "Start a project" };
+export const metadata = { title: "Empieza tu proyecto" };
 export default function Contact() {
     return (
         <section className="px-5 pb-28 pt-36 md:px-8 md:pt-48">
             <div className="mx-auto max-w-[1540px]">
-                <p className="eyebrow">Start a project / the good kind of first step</p>
+                <p className="eyebrow">Empieza tu proyecto / el primer paso hacia algo grande</p>
                 <h1 className="display mt-4 max-w-5xl text-6xl leading-[.8] md:text-9xl">
-                    Tell us what&apos;s
+                    Cuéntanos
                     <br />
-                    <span className="outline-text">next.</span>
+                    <span className="outline-text">
+                    tu idea.</span>
                 </h1>
                 <div className="mt-20 grid gap-16 md:grid-cols-12">
                     <div className="md:col-span-4">
                         <p className="max-w-xs text-sm leading-7 text-white/65">
-                            Whether you&apos;re starting fresh, improving what&apos;s there,
-                            or solving something technically difficult, we&apos;d love to hear
-                            about it.
+                            Tanto si vas a empezar desde cero, como si quieres mejorar tu web   actual o afrontar un reto técnico, estaremos encantados de conocer tu proyecto.
                         </p>
                         <div className="mt-12 space-y-6 text-xs leading-6">
                             <div>
@@ -31,7 +30,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <p className="mb-1 uppercase tracking-[.12em] text-white/40">
-                                    Call us
+                                    Llámanos
                                 </p>
                                 <a
                                     className="block hover:text-[#ff0000]"
@@ -48,7 +47,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <p className="mb-1 uppercase tracking-[.12em] text-white/40">
-                                    Based in
+                                    Ubicación
                                 </p>
                                 <p>Canary Islands, Spain</p>
                             </div>

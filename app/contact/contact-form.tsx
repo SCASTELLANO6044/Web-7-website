@@ -35,7 +35,7 @@ async function submit(e: FormEvent) {
     setError(
         err instanceof Error
         ? err.message
-        : "Something went wrong. Please email us directly.",
+        : "Ha ocurrido un error. Por favor, escríbenos directamente por correo electrónico.",
     );
     setState("error");
     }
@@ -45,15 +45,15 @@ if (state === "sent")
     <div className="grid min-h-[480px] place-items-center border border-white/20 p-8 text-center">
         <div>
         <CheckCircle2 className="mx-auto size-10 text-[#ff0000]" />
-        <h2 className="display mt-5 text-5xl">Thank you.</h2>
+        <h2 className="display mt-5 text-5xl">¡Gracias!</h2>
         <p className="mt-4 max-w-xs text-sm leading-6 text-white/60">
-            Your message is on its way. We&apos;ll be in touch soon.
+            Tu mensaje está en camino. Nos pondremos en contacto pronto.
         </p>
         <button
             onClick={() => setState("idle")}
             className="mt-7 text-xs uppercase tracking-wider text-[#ff0000]"
         >
-            Send another message
+            Enviar otro mensaje
         </button>
         </div>
     </div>
@@ -61,7 +61,7 @@ if (state === "sent")
 return (
     <form onSubmit={submit} className="border-t border-white/20 pt-6">
     <div className="grid gap-x-6 md:grid-cols-2">
-        <Field label="Your name" required>
+        <Field label="Nombre" required>
         <input
             value={data.name}
             onChange={(e) => update("name", e.target.value)}
@@ -69,7 +69,7 @@ return (
             autoComplete="name"
         />
         </Field>
-        <Field label="Email address" required>
+        <Field label="Email" required>
         <input
             type="email"
             value={data.email}
@@ -78,19 +78,19 @@ return (
             autoComplete="email"
         />
         </Field>
-        <Field label="Company">
+        <Field label="Empresa / Organization">
         <input
             value={data.company}
             onChange={(e) => update("company", e.target.value)}
             autoComplete="organization"
         />
         </Field>
-        <Field label="Investment range">
+        <Field label="Presupuesto">
         <select
             value={data.budget}
             onChange={(e) => update("budget", e.target.value)}
         >
-            <option value="">Select one</option>
+            <option value="">Selecciona uno</option>
             <option>€2k – €5k</option>
             <option>€5k – €10k</option>
             <option>€10k – €25k</option>
@@ -99,7 +99,7 @@ return (
         </select>
         </Field>
     </div>
-    <Field label="Tell us what you're making" required>
+    <Field label="Cuéntanos tu idea" required>
         <textarea
         value={data.message}
         onChange={(e) => update("message", e.target.value)}
@@ -108,7 +108,7 @@ return (
         />
     </Field>
     <div className="absolute -left-[10000px]" aria-hidden="true">
-        <label htmlFor="website">Website</label>
+        <label htmlFor="website">Sitio web</label>
         <input
         id="website"
         tabIndex={-1}
@@ -126,7 +126,7 @@ return (
         disabled={state === "sending"}
         className="inline-flex items-center gap-3 rounded-full bg-[#ff0000] px-6 py-4 text-xs uppercase tracking-[.12em] text-[#090909] transition-transform hover:scale-95 disabled:opacity-60"
     >
-        {state === "sending" ? "Sending…" : "Send inquiry"}
+        {state === "sending" ? "Enviando..." : "Enviar consulta"}
         <ArrowUpRight size={16} />
     </button>
     </form>

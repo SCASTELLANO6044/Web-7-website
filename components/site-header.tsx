@@ -37,7 +37,7 @@ export function Header() {
             className="rounded-full bg-[#f3efe8] px-4 py-2 text-[#090909] transition-transform hover:scale-95"
             style={{ color: "#090909" }}
           >
-            Start a project
+            Empieza tu proyecto
           </Link>
         </div>
         <button

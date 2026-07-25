@@ -10,18 +10,18 @@ export function ProjectsOverview() {
         <div className="mx-auto max-w-[1540px]">
           <Reveal className="mb-12 flex items-end justify-between">
             <div>
-              <p className="eyebrow">Selected work / 01—06</p>
+              <p className="eyebrow">Nuestros trabajos</p>
               <h2 className="display mt-3 text-5xl md:text-7xl">
-                Made to mean
+                Creado para dar vida a tus ideas y
                 <br />
-                something.
+                hacer que tu negocio crezca.
               </h2>
             </div>
             <Link
               href="/portfolio"
               className="hidden text-xs uppercase tracking-[.13em] text-[#ff0000] md:block"
             >
-              View all work ↗
+              Todo nuestro trabajo ↗
             </Link>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-12">
@@ -67,7 +67,7 @@ export function ProjectsOverview() {
             href="/portfolio"
             className="mt-12 inline-flex items-center gap-2 text-xs uppercase tracking-[.13em] text-[#ff0000] md:hidden"
           >
-            View all work <ArrowUpRight size={15} />
+            Todo nuestro trabajo <ArrowUpRight size={15} />
           </Link>
         </div>
       </section>
