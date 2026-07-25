@@ -25,9 +25,9 @@ export default function Home() {
         text4="For local leaders, fast-moving startups and established teams with standards." 
       />
 
-      <ProjectsOverview />
-      
       <HorizontalTextLoop text1="DESIGN WITH INTENT" text2="BUILD WITH PURPOSE" />
+      
+      <ProjectsOverview />
       
       <MidSectionGrid />
 
