@@ -19,13 +19,13 @@ export default function Home() {
       <HeroSection />
       
       < MidSection 
-        text1="What we make" 
-        text2="Websites with the clarity to convert—and the character to stay with people." 
-        text3="From first thought to technical launch, we bring design and development into one intentional process." 
-        text4="For local leaders, fast-moving startups and established teams with standards." 
+        text1="Nuestros proyectos" 
+        text2="Webs con claridad y carácter para permanecer en tu memoria."
+        text3="Desde la idea inicial hasta el lanzamiento, unimos diseño y desarrollo en un único proceso pensado al detalle."
+        text4="Para líderes, startups en crecimiento y equipos consolidados."
       />
 
-      <HorizontalTextLoop text1="DESIGN WITH INTENT" text2="BUILD WITH PURPOSE" />
+      <HorizontalTextLoop text1="DISEÑADO CON INTENCIÓN" text2="CONSTRUIDO CON PROPÓSITO  " />
       
       <ProjectsOverview />
       
@@ -34,7 +34,7 @@ export default function Home() {
       <MidSectionGridAlternative reasons={reasons} />
 
       <MidSectionReviewFromClient 
-        review="“They understood the feeling we wanted to create, then gave it a structure that works.”"
+        review="“Entendieron perfectamente la idea que queríamos crear.”"
         client="Good Meals"
         project="Website project"
       />
