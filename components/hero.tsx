@@ -2,11 +2,27 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
-export function HeroSection(){
-    return(
-        <section className="relative flex min-h-dvh overflow-hidden px-5 pb-8 pt-32 md:px-8">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_88%_18%,rgba(255,184,179,.16),transparent_22%),radial-gradient(circle_at_30%_85%,rgba(255,184,179,.10),transparent_27%)]" />
-            <div className="relative mx-auto flex w-full max-w-[1540px] flex-col justify-between">
+const HERO_VIDEO_SRC = "/visuals/hero-video.mp4";
+const HERO_VIDEO_POSTER_SRC = "/visuals/hero-poster.jpg";
+
+export function HeroSection() {
+  return (
+    <section className="hero relative isolate flex min-h-dvh overflow-hidden bg-[#050404] px-5 pb-8 pt-32 md:px-8">
+      <video
+        className="hero-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster={HERO_VIDEO_POSTER_SRC}
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
+      <div className="hero-video-overlay" aria-hidden="true" />
+      <div className="relative z-10 mx-auto flex w-full max-w-[1540px] flex-col justify-between">
                 <div className="flex justify-between text-[10px] uppercase tracking-[.15em] text-white/55">
                     <span>Digital work / 28.00° N</span>
                     <span>Canary Islands</span>
@@ -29,7 +45,7 @@ export function HeroSection(){
                         </p>
                         <Link
                             href="/contact"
-                            className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-xs uppercase tracking-[.11em] transition-colors hover:border-[#ff0000] hover:bg-[#ff0000] hover:text-[#090909]"
+                            className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/35 bg-black/10 px-5 py-3 text-xs uppercase tracking-[.11em] transition-colors duration-300 hover:border-[#ff0000] hover:bg-[#ff0000] hover:text-[#090909] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f3efe8]"
                         >
                             Start your project <ArrowUpRight size={15} />
                         </Link>
@@ -41,7 +57,7 @@ export function HeroSection(){
                     </p>
                     <ArrowDownRight className="size-8 text-[#ff0000]" />
                 </div>
-            </div>
-        </section>
-    );
+      </div>
+    </section>
+  );
 }
