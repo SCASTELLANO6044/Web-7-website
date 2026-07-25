@@ -5,8 +5,8 @@ interface HorizontalTextLoopProps {
 }
 
 export function HorizontalTextLoop({
-    text1 = "DESIGN WITH INTENT",
-    text2 = "BUILD WITH PURPOSE",
+    text1 = "DISEÑO CON PROPÓSITO",
+    text2 = "DESARROLLO CON IMPACTO",
 }: HorizontalTextLoopProps) {
     return (
         <section className="border-y border-white/15 py-4 overflow-hidden">

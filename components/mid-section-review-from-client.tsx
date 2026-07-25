@@ -14,7 +14,7 @@ export function MidSectionReviewFromClient({
         <section className="px-5 py-24 md:px-8 md:py-36">
           <div className="mx-auto max-w-[1540px]">
             <Reveal>
-              <p className="eyebrow">From clients / small words, real weight</p>
+              <p className="eyebrow">Nuestros clientes hablan por nosotros</p>
             </Reveal>
             <Reveal className="mt-9">
               <blockquote className="display max-w-6xl text-4xl leading-[.95] md:text-7xl">
