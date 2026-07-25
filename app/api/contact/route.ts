@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     if (website) return NextResponse.json({ ok: true });
     if (!name?.trim() || !email?.includes("@") || !message?.trim())
       return NextResponse.json(
-        { error: "Please complete your name, email and message." },
+        { error: "Por favor, completa tu nombre, correo electrónico y mensaje." },
         { status: 400 },
       );
     const apiKey = process.env.RESEND_API_KEY;
@@ -18,11 +18,11 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "The contact form is not configured yet. Please email web7canarias@gmail.com directly.",
+            "El formulario de contacto aún no está configurado. Por favor, escríbenos directamente a web7canarias@gmail.com.",
         },
         { status: 503 },
       );
-    const content = `New Web7 project inquiry\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "—"}\nBudget: ${budget || "—"}\n\nMessage:\n${message}`;
+    const content = `Nueva solicitud de proyecto para Web7\n\nNombre: ${name}\nEmail: ${email}\nEmpresa: ${company || "—"}\nPresupuesto: ${budget || "—"}\n\nMensaje:\n${message}`;
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -30,10 +30,10 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Web7 Website <onboarding@resend.dev>",
+        from: "Sitio web de Web7 <onboarding@resend.dev>",
         to: [process.env.CONTACT_TO_EMAIL || "web7canarias@gmail.com"],
         reply_to: email,
-        subject: `New project inquiry from ${name}`,
+        subject: `Nueva solicitud de proyecto de ${name}`,
         text: content,
       }),
     });
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "We couldn’t send that just now. Please email web7canarias@gmail.com directly.",
+          "No pudimos enviar el mensaje en este momento. Por favor, envíanos un correo electrónico a web7canarias@gmail.com directamente.",
       },
       { status: 500 },
     );

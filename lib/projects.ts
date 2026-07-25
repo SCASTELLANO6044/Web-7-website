@@ -13,7 +13,7 @@ export type Project = {
   challenge: string;
   solution: string;
   results: string[];
-  /** Public URL for completed work. Omit this for concept projects. */
+  /** URL pública para proyectos terminados. Omitir para proyectos conceptuales. */
   websiteUrl?: string;
 };
 
@@ -21,145 +21,164 @@ export const projects: Project[] = [
   {
     slug: "good-meals",
     title: "Good Meals",
-    category: "Food & hospitality",
-    description: "A memorable home for a fresh way to eat well.",
+    category: "Alimentación y hostelería",
+    description: "Un hogar digital para una nueva forma de comer bien.",
     image: goodMealsHero,
     year: "2025",
-    services: ["Web design", "Development", "Brand integration"],
+    services: ["Diseño web", "Desarrollo", "Integración de marca"],
     technologies: ["Next.js", "TypeScript", "Responsive UI"],
     challenge:
-      "Translate a food-first offer into a clear, lively digital experience.",
+      "Transformar una propuesta gastronómica en una experiencia digital clara y atractiva.",
     solution:
-      "We paired expressive visual rhythm with a simple content path that keeps the food—and the call to action—in focus.",
+      "Combinamos un diseño visual con personalidad y una estructura de contenido sencilla que mantiene el producto y la llamada a la acción como protagonistas.",
     results: [
-      "Distinct online presence",
-      "Mobile-first journey",
-      "Clearer conversion path",
+      "Presencia digital diferenciada",
+      "Experiencia optimizada para móvil",
+      "Camino de conversión más claro",
     ],
     websiteUrl: "https://goodmeals.es",
   },
   {
     slug: "altamar-residences",
     title: "Altamar Residences",
-    category: "Real estate",
-    description: "Coastal property, presented with quiet confidence.",
+    category: "Inmobiliaria",
+    description:
+      "Propiedades costeras presentadas con elegancia y confianza.",
     image: "/reference/portfolio-2.jpg",
-    year: "Concept",
-    services: ["Strategy", "UI/UX", "Frontend"],
+    year: "Concepto",
+    services: ["Estrategia", "UI/UX", "Frontend"],
     technologies: ["Next.js", "GSAP", "CMS-ready"],
     challenge:
-      "Make premium property feel tactile without burying the detail buyers need.",
+      "Hacer que una propiedad premium se sienta cercana sin ocultar la información que los compradores necesitan.",
     solution:
-      "An editorial real-estate system that blends calm imagery, considered typography, and practical information layers.",
+      "Un sistema inmobiliario editorial que combina imágenes cuidadas, tipografía elegante y capas de información práctica.",
     results: [
-      "Luxury positioning",
-      "Intuitive exploration",
-      "Lead-ready structure",
+      "Posicionamiento premium",
+      "Exploración intuitiva",
+      "Estructura preparada para captar clientes",
     ],
   },
   {
     slug: "siete-studio",
     title: "Siete Studio",
-    category: "Architecture",
+    category: "Arquitectura",
     description:
-      "An architecture practice with a more dimensional digital presence.",
+      "Un estudio de arquitectura con una presencia digital más profunda.",
     image:
       "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1600&q=85",
-    year: "Concept",
-    services: ["Art direction", "Web design", "Development"],
+    year: "Concepto",
+    services: ["Dirección de arte", "Diseño web", "Desarrollo"],
     technologies: ["Next.js", "Framer Motion", "SEO"],
     challenge:
-      "Show the precision of built work while keeping the site as restrained as the studio's approach.",
+      "Mostrar la precisión del trabajo arquitectónico manteniendo la misma esencia minimalista del estudio.",
     solution:
-      "A sequence-led portfolio that uses scale, space and material to frame every project.",
-    results: ["Editorial clarity", "Faster showcase", "Search-ready pages"],
+      "Un portfolio basado en ritmo visual, escala y espacio para dar protagonismo a cada proyecto.",
+    results: [
+      "Claridad editorial",
+      "Presentación más rápida",
+      "Páginas optimizadas para búsqueda",
+    ],
   },
   {
     slug: "aera-health",
     title: "Aera Health",
-    category: "Healthcare",
-    description: "A human digital care experience built for confidence.",
+    category: "Salud",
+    description:
+      "Una experiencia digital sanitaria cercana diseñada para generar confianza.",
     image:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=85",
-    year: "Concept",
-    services: ["UX research", "Product design", "Development"],
+    year: "Concepto",
+    services: ["Investigación UX", "Diseño de producto", "Desarrollo"],
     technologies: ["React", "Accessibility", "Analytics"],
     challenge:
-      "Make a complex care journey feel clear, reassuring and safely accessible.",
+      "Hacer que un proceso sanitario complejo sea claro, seguro y fácil de seguir.",
     solution:
-      "A calm visual system backed by accessible interactions and direct pathways to support.",
-    results: ["Accessible by design", "Improved clarity", "Trust-led journey"],
+      "Un sistema visual tranquilo con interacciones accesibles y rutas directas hacia la ayuda.",
+    results: [
+      "Diseño accesible",
+      "Mayor claridad",
+      "Experiencia basada en confianza",
+    ],
   },
   {
     slug: "form-athletics",
     title: "Form Athletics",
     category: "Fitness",
-    description: "High-performance energy for a movement-led community.",
+    description:
+      "Energía de alto rendimiento para una comunidad enfocada en el movimiento.",
     image:
       "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=85",
-    year: "Concept",
-    services: ["Brand integration", "Ecommerce UX", "Build"],
+    year: "Concepto",
+    services: ["Integración de marca", "UX para ecommerce", "Desarrollo"],
     technologies: ["Next.js", "Stripe-ready", "Performance"],
     challenge:
-      "Match the energy of a serious training brand without losing clarity at checkout.",
+      "Mantener la energía de una marca deportiva sin perder claridad durante la compra.",
     solution:
-      "A sharp, kinetic storefront with a focused product hierarchy and content that moves at pace.",
-    results: ["Stronger identity", "Conversion-led UX", "Fast mobile load"],
+      "Una tienda dinámica con una jerarquía de producto clara y contenidos que transmiten velocidad.",
+    results: [
+      "Identidad más fuerte",
+      "UX orientada a conversión",
+      "Carga rápida en móvil",
+    ],
   },
   {
     slug: "nido-saas",
     title: "Nido",
     category: "SaaS",
     description:
-      "A finance platform designed to make the complicated feel certain.",
+      "Una plataforma financiera diseñada para hacer sencillo lo complejo.",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
-    year: "Concept",
-    services: ["Product strategy", "UI system", "Frontend"],
+    year: "Concepto",
+    services: ["Estrategia de producto", "Sistema UI", "Frontend"],
     technologies: ["React", "Design tokens", "API-ready"],
     challenge:
-      "Explain a technical platform quickly to founders and finance teams.",
+      "Explicar una plataforma técnica de forma clara para fundadores y equipos financieros.",
     solution:
-      "We distilled the product into a confident story, then built a design system ready to scale with it.",
-    results: ["Clearer proposition", "Scalable system", "Enterprise-ready UX"],
+      "Convertimos el producto en una narrativa clara y creamos un sistema de diseño preparado para crecer.",
+    results: [
+      "Propuesta más clara",
+      "Sistema escalable",
+      "UX preparada para empresas",
+    ],
   },
 ];
 
 export const services = [
   [
     "01",
-    "Websites with a point of view",
-    "Custom website design",
-    "Strategic, high-impact websites that look unmistakably yours and make the next step clear.",
+    "Webs con personalidad",
+    "Diseño web personalizado",
+    "Sitios web estratégicos y de alto impacto que reflejan tu identidad y guían al usuario hacia la acción.",
   ],
   [
     "02",
-    "Built to hold up",
-    "Frontend & backend development",
-    "Robust, maintainable builds from the experience people see to the systems that make it work.",
+    "Construido para durar",
+    "Desarrollo frontend y backend",
+    "Desarrollos sólidos y mantenibles, desde la experiencia visual hasta los sistemas que la hacen posible.",
   ],
   [
     "03",
-    "Every screen, considered",
-    "Responsive UI/UX",
-    "Flexible interfaces that feel intentional across mobile, tablet and desktop—never merely resized.",
+    "Cada pantalla, pensada al detalle",
+    "UI/UX responsive",
+    "Interfaces adaptables que funcionan de forma natural en móvil, tablet y escritorio.",
   ],
   [
     "04",
-    "Made to be found",
-    "SEO & performance",
-    "Technical foundations that give search engines clarity and users a fast, frictionless first impression.",
+    "Diseñado para ser encontrado",
+    "SEO y rendimiento",
+    "Una base técnica optimizada para buscadores y una experiencia rápida para tus usuarios.",
   ],
   [
     "05",
-    "A partner after launch",
-    "Maintenance & consulting",
-    "Ongoing improvements, technical care and straight-talking advice as your digital presence grows.",
+    "Un socio después del lanzamiento",
+    "Mantenimiento y consultoría",
+    "Mejoras continuas, soporte técnico y asesoramiento para hacer crecer tu presencia digital.",
   ],
   [
     "06",
-    "More than a website",
-    "Digital business solutions",
-    "Brand integration, conversion paths and the connective thinking that turns a website into a working asset.",
+    "Más que una web",
+    "Soluciones digitales para negocios",
+    "Integración de marca, estrategias de conversión y una visión global para convertir una web en una herramienta de negocio.",
   ],
 ] as const;

@@ -6,13 +6,13 @@ import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/projects";
 
 const categories = [
-    "All",
+    "Todos",
     ...Array.from(new Set(projects.map((p) => p.category))),
 ];
 export function PortfolioGrid() {
-    const [active, setActive] = useState("All");
+    const [active, setActive] = useState("Todos");
     const shown =
-        active === "All" ? projects : projects.filter((p) => p.category === active);
+        active === "Todos" ? projects : projects.filter((p) => p.category === active);
     return (
         <>
             <div className="mb-12 flex flex-wrap gap-2">
