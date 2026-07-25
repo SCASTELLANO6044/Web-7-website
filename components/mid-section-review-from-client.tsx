@@ -7,9 +7,9 @@ interface MidSectionReviewFromClientProps {
 }
 
 export function MidSectionReviewFromClient({ 
-  review = "“They understood the feeling we wanted to create, then gave it a structure that works.”",
+  review = "“Supieron entender la experiencia que queríamos transmitir y convertirla en una web que realmente funciona.”",
   client = "Good Meals",
-  project = "Website project" }: MidSectionReviewFromClientProps){
+  project = "Proyecto web" }: MidSectionReviewFromClientProps){
     return(
         <section className="px-5 py-24 md:px-8 md:py-36">
           <div className="mx-auto max-w-[1540px]">

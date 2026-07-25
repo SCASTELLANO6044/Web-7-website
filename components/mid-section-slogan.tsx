@@ -9,9 +9,9 @@ interface MidSectionSloganProps {
 }
 
 export function MidSectionSlogan({ 
-    text1 = "Your next chapter starts here", 
-    text2 = "Let's make it remarkable", 
-    text3 = "Book a discovery call"
+    text1 = "Tu próximo proyecto empieza aquí", 
+    text2 = "Hagámoslo inolvidable", 
+    text3 = "Hablemos de tu proyecto"
 }: MidSectionSloganProps){
     return(
         <section className="px-5 pb-24 md:px-8 md:pb-16">
