@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
 const HERO_VIDEO_SRC = "/visuals/hero-video.mp4";
+const HERO_VIDEO_POSTER_SRC = "/visuals/hero-poster.jpg";
 
 export function HeroSection() {
   return (
@@ -13,7 +14,8 @@ export function HeroSection() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster={HERO_VIDEO_POSTER_SRC}
         aria-hidden="true"
         tabIndex={-1}
       >
