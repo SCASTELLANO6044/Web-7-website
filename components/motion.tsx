@@ -57,7 +57,7 @@ export function LoadingScreen() {
   return (
     <div
       ref={element}
-      className="fixed inset-0 z-50 grid place-items-center bg-[#f3efe8] text-[#090909]"
+      className="fixed inset-0 z-[100] grid place-items-center bg-[#f3efe8] text-[#090909]"
     >
       <div className="text-center">
         <p className="eyebrow text-[#090909]">Web7 / Canary Islands</p>
