@@ -14,16 +14,16 @@ type NavigationItem = {
 };
 
 const navigationItems: NavigationItem[] = [
-  { href: "/portfolio", label: "Work", index: "01", detail: "Selected projects" },
-  { href: "/services", label: "Services", index: "02", detail: "Strategy to launch" },
-  { href: "/about", label: "About", index: "03", detail: "The Web7 studio" },
-  { href: "/contact", label: "Contact", index: "04", detail: "Start a project" },
+  { href: "/portfolio", label: "Proyectos", index: "01", detail: "Proyectos seleccionados" },
+  { href: "/services", label: "Servicios", index: "02", detail: "Nuestra Estrategia" },
+  { href: "/about", label: "About", index: "03", detail: "El estudio Web7" },
+  { href: "/contact", label: "Contacto", index: "04", detail: "Inicia un proyecto" },
 ];
 
 const socialLinks = [
-  { href: "mailto:web7canarias@gmail.com", label: "Email us" },
-  { href: "tel:+34620463759", label: "Call Jose" },
-  { href: "tel:+34627187274", label: "Call Sergio" },
+  { href: "mailto:web7canarias@gmail.com", label: "Escríbenos" },
+  { href: "tel:+34620463759", label: "Llama a Jose" },
+  { href: "tel:+34627187274", label: "Llama a Sergio" },
 ];
 
 const focusableSelector =
@@ -166,7 +166,7 @@ export function Header() {
 
           <div className="site-header__controls">
             <Link href="/contact" className="site-header__contact-link">
-              <span>Start a project</span>
+              <span>Empieza ya</span>
               <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.7} />
             </Link>
             <button
@@ -203,7 +203,7 @@ export function Header() {
             <div className="site-menu__grid" aria-hidden="true" />
             <div className="site-menu__content">
               <div className="site-menu__topline">
-                <span>Navigation</span>
+                <span>Navegación</span>
                 <span>Web7 / 28.00° N</span>
               </div>
 
@@ -250,11 +250,11 @@ export function Header() {
                   <div>
                     <p className="site-menu__eyebrow">Web7 Studio</p>
                     <p className="site-menu__statement">
-                      Websites with clarity, character and the technical detail to last.
+                      Creamos sitios web con claridad, personalidad y una base técnica pensada para durar.
                     </p>
                   </div>
                   <div className="site-menu__contact-block">
-                    <p className="site-menu__eyebrow">Contact</p>
+                    <p className="site-menu__eyebrow">Contacto</p>
                     <a href="mailto:web7canarias@gmail.com">web7canarias@gmail.com</a>
                     <p>Canary Islands, Spain</p>
                   </div>
@@ -268,7 +268,7 @@ export function Header() {
                 exit={{ opacity: 0 }}
                 transition={reduceMotion ? { duration: 0.01 } : { duration: 0.36, delay: 0.51 }}
               >
-                <span>Designed & built in Canarias</span>
+                <span>Diseñado y desarrollado en Canarias</span>
                 <div className="site-menu__socials">
                   {socialLinks.map((link) => (
                     <a key={link.href} href={link.href}>
@@ -277,7 +277,7 @@ export function Header() {
                   ))}
                 </div>
                 <Link href="/contact" className="site-menu__enquiry" onClick={() => closeMenu(false)}>
-                  Start your enquiry <ArrowUpRight aria-hidden="true" size={15} />
+                  Cuéntanos tu proyecto <ArrowUpRight aria-hidden="true" size={15} />
                 </Link>
               </motion.div>
             </div>
