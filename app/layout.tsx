@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { LoadingScreen } from "@/components/motion";
+import SmoothScroll from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
   title: { default: "Web7 — Website Dev Studio", template: "%s — Web7" },
@@ -28,10 +29,15 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+
         <LoadingScreen />
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+
+        <SmoothScroll>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </SmoothScroll>
+
       </body>
     </html>
   );
