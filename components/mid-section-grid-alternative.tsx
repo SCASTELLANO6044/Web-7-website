@@ -28,7 +28,7 @@ export function MidSectionGridAlternative({
           <span aria-hidden="true">02</span>
         </div>
 
-        <div className="grid grid-cols-2 overflow-hidden border-l border-t border-white/15 [grid-auto-rows:calc((100vw-2.5rem)/2)] md:grid-cols-12 md:[grid-auto-rows:clamp(4.75rem,8.05vw,8rem)]">
+        <div className="grid grid-cols-2 overflow-hidden border-l border-t border-white/15 [grid-auto-rows:minmax(10.5rem,auto)] md:grid-cols-12 md:[grid-auto-rows:clamp(4.75rem,8.05vw,8rem)]">
           <div
             data-grid-cell
             className="relative col-span-2 row-span-3 flex flex-col justify-between overflow-hidden border-b border-r border-white/15 bg-[#f3efe8] p-5 text-[#090909] md:col-span-5 md:row-span-5 md:p-8"
@@ -36,7 +36,7 @@ export function MidSectionGridAlternative({
             <span data-grid-rule className="absolute left-0 top-0 h-px w-full bg-[#ff0000]" />
             <p className="eyebrow text-[#ff0000]">La ventaja de trabajar juntos</p>
             <div className="overflow-hidden">
-              <h2 data-grid-text className="display mt-8 text-[16vw] leading-[0.76] md:mt-0 md:text-[6.1vw]">
+              <h2 data-grid-text className="display mt-8 text-[clamp(3rem,16vw,8rem)] leading-[0.76] md:mt-0 md:text-[clamp(3.5rem,6.1vw,7.5rem)]">
                 Sin complicaciones.
                 Sin intermediarios.
               </h2>

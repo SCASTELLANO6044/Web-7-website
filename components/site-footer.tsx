@@ -8,9 +8,9 @@ export function Footer() {
                 <p className="eyebrow text-[#090909]">¿Tienes una buena idea?</p>
                 <Link
                     href="/contact"
-                    className="group mt-4 flex items-end justify-between border-b border-black/30 pb-8"
+                    className="group mt-4 flex items-end justify-between gap-4 border-b border-black/30 pb-8"
                 >
-                    <span className="display max-w-5xl text-[15vw] leading-[.95] md:text-[10.5vw]">
+                    <span className="display min-w-0 max-w-5xl text-[clamp(3rem,15vw,9.5rem)] leading-[.95] md:text-[clamp(4.5rem,10.5vw,10rem)]">
                         Hagámosla realidad.
                     </span>
                     <ArrowUpRight className="mb-2 size-10 transition-transform group-hover:-translate-y-2 group-hover:translate-x-2 md:size-16" />
@@ -71,7 +71,7 @@ export function Footer() {
                         </p>
                     </div>
                 </div>
-                <div className="flex justify-between border-t border-black/15 pt-4 text-[10px] uppercase tracking-[.1em]">
+                <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-black/15 pt-4 text-[10px] uppercase tracking-[.1em]">
                     <span>© {new Date().getFullYear()} Web7 Studio</span>
                     <span>Built with care in Canarias</span>
                 </div>

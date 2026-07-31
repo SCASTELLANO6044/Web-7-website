@@ -16,12 +16,12 @@ export function HeroAlternative({
             <p className="eyebrow">
                 {text1}
             </p>
-            <h1 className="display mt-4 max-w-6xl text-6xl leading-[.8] md:text-9xl">
+            <h1 className="display mt-4 max-w-6xl text-[clamp(3rem,14vw,6rem)] leading-[.8] md:text-[clamp(4rem,10vw,8rem)]">
                 {text2}
                 <br />
                 <span className="outline-text">{text3}</span>
             </h1>
-            <div className="ml-auto mt-12 max-w-lg text-sm leading-7 text-white/60">
+            <div className="ml-auto mt-12 max-w-lg text-sm leading-7 text-white/60 sm:text-base">
                 {text4}
             </div>
         </>

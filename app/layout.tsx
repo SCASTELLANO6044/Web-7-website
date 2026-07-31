@@ -32,8 +32,9 @@ export default function RootLayout({
 
         <LoadingScreen />
 
+        <Header />
+
         <SmoothScroll>
-          <Header />
           <main id="main">{children}</main>
           <Footer />
         </SmoothScroll>
