@@ -38,6 +38,7 @@ export function Header() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const scrollPosition = useRef(0);
   const shouldRestoreFocus = useRef(false);
+  const hasMounted = useRef(false);
 
   const closeMenu = useCallback((restoreFocus = false) => {
     shouldRestoreFocus.current = restoreFocus;
@@ -46,6 +47,20 @@ export function Header() {
 
   useEffect(() => {
     closeMenu(false);
+
+    // The menu locks the body at its current offset while it is open. On a
+    // route change, restore the destination at its beginning instead of that
+    // saved offset. Deferring one frame lets the menu cleanup finish first.
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, [pathname, closeMenu]);
 
   useEffect(() => {
