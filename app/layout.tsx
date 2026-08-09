@@ -39,7 +39,7 @@ export default function RootLayout({
           <main id="main">{children}</main>
           <Footer />
         </SmoothScroll>
-
+        <Analytics />
       </body>
     </html>
   );
