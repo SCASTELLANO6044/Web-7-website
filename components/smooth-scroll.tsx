@@ -14,7 +14,7 @@ export default function SmoothScroll({
 }) {
     useLayoutEffect(() => {
         const smoother = ScrollSmoother.create({
-            smooth: 1.2,
+            smooth: 2.5,
             effects: true,
             smoothTouch: 0.1,
         });

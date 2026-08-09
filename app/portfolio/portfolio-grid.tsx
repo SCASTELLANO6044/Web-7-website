@@ -47,8 +47,8 @@ export function PortfolioGrid() {
                                 {project.category}
                             </span>
                         </div>
-                        <div className="flex items-start justify-between pt-4">
-                            <div>
+                        <div className="flex items-start justify-between gap-4 pt-4">
+                            <div className="min-w-0">
                                 <h2 className="display text-4xl">{project.title}</h2>
                                 <p className="mt-1 max-w-md text-xs leading-5 text-white/55">
                                     {project.description}

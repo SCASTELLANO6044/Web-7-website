@@ -8,10 +8,10 @@ export function ProjectsOverview() {
     return (
         <section className="px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-[1540px]">
-          <Reveal className="mb-12 flex items-end justify-between">
-            <div>
+          <Reveal className="mb-12 flex items-end justify-between gap-6">
+            <div className="min-w-0">
               <p className="eyebrow">Nuestros trabajos</p>
-              <h2 className="display mt-3 text-5xl md:text-7xl">
+              <h2 className="display mt-3 text-[clamp(2.5rem,11vw,4.5rem)] md:text-7xl">
                 Creado para dar vida a tus ideas y
                 <br />
                 hacer que tu negocio crezca.
@@ -50,8 +50,8 @@ export function ProjectsOverview() {
                       {project.category}
                     </span>
                   </div>
-                  <div className="flex items-start justify-between pt-4">
-                    <div>
+                  <div className="flex items-start justify-between gap-4 pt-4">
+                    <div className="min-w-0">
                       <h3 className="display text-3xl">{project.title}</h3>
                       <p className="mt-1 text-xs text-white/55">
                         {project.description}

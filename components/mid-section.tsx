@@ -23,7 +23,7 @@ export function MidSection({
             <p className="eyebrow text-[#090909]">{text1}</p>
           </Reveal>
           <Reveal className="md:col-span-8">
-            <h2 className="display text-5xl leading-[.9] sm:text-6xl md:text-8xl">
+            <h2 className="display text-[clamp(2.5rem,11vw,5rem)] leading-[.9] sm:text-6xl md:text-8xl">
               {text2}
             </h2>
             <div className="mt-12 grid gap-4 border-t border-black/20 pt-5 sm:grid-cols-3">

@@ -19,7 +19,7 @@ export function MidSectionGrid() {
                     <span aria-hidden="true">Build system</span>
                 </div>
 
-                <div className="grid grid-cols-2 overflow-hidden border-l border-t border-white/20 [grid-auto-rows:calc((100vw-2.5rem)/2)] md:grid-cols-12 md:[grid-auto-rows:clamp(4.75rem,8.05vw,8rem)]">
+                <div className="grid grid-cols-2 overflow-hidden border-l border-t border-white/20 [grid-auto-rows:minmax(10.5rem,auto)] md:grid-cols-12 md:[grid-auto-rows:clamp(4.75rem,8.05vw,8rem)]">
                     <div
                         data-grid-cell
                         className="relative col-span-2 row-span-2 flex flex-col justify-between overflow-hidden border-b border-r border-white/20 bg-[#11100f] p-5 md:col-span-5 md:row-span-4 md:p-8"
@@ -27,7 +27,7 @@ export function MidSectionGrid() {
                         <span data-grid-rule className="absolute left-0 top-0 h-px w-full bg-[#ff0000]" />
                         <p className="eyebrow">Trabajo digital, construido por completo</p>
                         <div className="overflow-hidden">
-                            <h2 data-grid-text className="display mt-8 max-w-md text-[15vw] leading-[0.78] md:mt-0 md:text-[5.4vw]">
+                            <h2 data-grid-text className="display mt-8 max-w-md text-[clamp(3rem,15vw,8rem)] leading-[0.78] md:mt-0 md:text-[clamp(3.5rem,5.4vw,7rem)]">
                                 Ideas que se juntan con la tecnología.
                             </h2>
                         </div>
