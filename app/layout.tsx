@@ -4,6 +4,7 @@ import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
 import { LoadingScreen } from "@/components/motion";
 import SmoothScroll from "@/components/smooth-scroll";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: { default: "Web7 — Website Dev Studio", template: "%s — Web7" },
