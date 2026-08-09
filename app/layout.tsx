@@ -5,6 +5,7 @@ import { Footer } from "@/components/site-footer";
 import { LoadingScreen } from "@/components/motion";
 import SmoothScroll from "@/components/smooth-scroll";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: { default: "Web7 — Website Dev Studio", template: "%s — Web7" },
@@ -40,6 +41,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
