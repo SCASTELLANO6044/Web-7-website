@@ -37,7 +37,7 @@ export function MidSection({
                 href="/about"
                 className="group flex items-start justify-between text-xs uppercase tracking-wider"
               >
-                Conoce Web7{" "}
+                Tu web lista en 7 días{" "}
                 <ArrowUpRight
                   size={16}
                   className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"

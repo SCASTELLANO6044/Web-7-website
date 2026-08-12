@@ -265,7 +265,7 @@ export function Header() {
                   <div>
                     <p className="site-menu__eyebrow">Web7 Studio</p>
                     <p className="site-menu__statement">
-                      Creamos sitios web con claridad, personalidad y una base técnica pensada para durar.
+                      Creamos sitios web con claridad y personalidad.
                     </p>
                   </div>
                   <div className="site-menu__contact-block">

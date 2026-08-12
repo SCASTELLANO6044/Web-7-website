@@ -80,25 +80,11 @@ export function MidSectionGridAlternative({
             className="col-span-2 flex items-center border-b border-r border-white/15 bg-white/[0.03] p-5 md:col-span-3 md:row-span-3 md:p-6"
           >
             <p className="scribble max-w-[13rem] text-xl leading-tight text-[#ff0000] md:text-2xl">
-              Habla directamente con quienes hacen el trabajo.
+              Tu web lista en una semana.
             </p>
           </div>
 
-          <ul className="col-span-2 grid grid-cols-2 md:col-span-7 md:row-span-4 md:grid-cols-2">
-            {reasons.map((reason, index) => (
-              <li
-                key={reason}
-                data-grid-cell
-                className="relative flex min-h-[9rem] flex-col justify-between overflow-hidden border-b border-r border-white/15 bg-[#191817] p-4 md:min-h-0 md:p-6"
-              >
-                <span className="text-xs text-[#ff0000]">0{index + 1}</span>
-                <div>
-                  <Check size={17} className="mb-4 text-[#ff0000]" aria-hidden="true" />
-                  <p className="max-w-[12rem] text-sm leading-5 text-white md:text-base md:leading-6">{reason}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          
 
           <div
             data-grid-cell

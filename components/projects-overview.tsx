@@ -10,7 +10,6 @@ export function ProjectsOverview() {
         <div className="mx-auto max-w-[1540px]">
           <Reveal className="mb-12 flex items-end justify-between gap-6">
             <div className="min-w-0">
-              <p className="eyebrow">Nuestros trabajos</p>
               <h2 className="display mt-3 text-[clamp(2.5rem,11vw,4.5rem)] md:text-7xl">
                 Creado para dar vida a tus ideas y
                 <br />

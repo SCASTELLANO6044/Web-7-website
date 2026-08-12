@@ -24,8 +24,6 @@ export default function Home() {
         text3="Desde la idea inicial hasta el lanzamiento, unimos diseño y desarrollo en un único proceso pensado al detalle."
         text4="Para líderes, startups en crecimiento y equipos consolidados."
       />
-
-      <HorizontalTextLoop text1="DISEÑADO CON INTENCIÓN" text2="CONSTRUIDO CON PROPÓSITO  " />
       
       <ProjectsOverview />
       
@@ -38,8 +36,6 @@ export default function Home() {
         client="Good Meals"
         project="Website project"
       />
-
-      <MidSectionSlogan />
     </>
   );
 }
