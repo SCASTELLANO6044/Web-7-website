@@ -12,8 +12,7 @@ export default function Services() {
                     text1="Nuestras hablidades / Tu presencia online, tratada de la manera correcta"
                     text2="Diseñado para funcionar." 
                     text3="Construido para durar."
-                    text4="Nosotros ponemos la estrategia, la creatividad, y los conocimientos técnicos para que 
-                    tu sitio web cumpla con un estándar único desde su primera idea hasta su próxima iteración." 
+                    text4="" 
                 />
                 
                 <div className="mt-20 border-t border-white/15">
