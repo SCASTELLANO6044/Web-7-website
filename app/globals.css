@@ -3,7 +3,7 @@
 :root {
     --ink: #020202;
     --paper: #f3efe8;
-    --red: #ff0000;
+    --red: #7a010c;
     --muted: #9d9a96;
     --line: rgba(243, 239, 232, .18);
 }
@@ -87,16 +87,6 @@ input,
 textarea,
 select {
     max-width: 100%;
-}
-
-.grain::before {
-    content: "";
-    pointer-events: none;
-    z-index: 50;
-    position: fixed;
-    inset: 0;
-    opacity: .045;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
 }
 
 .outline-text {

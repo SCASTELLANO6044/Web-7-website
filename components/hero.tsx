@@ -51,10 +51,6 @@ export function HeroSection() {
                     </Reveal>
                 </div>
                 <div className="flex items-end justify-between">
-                    <p className="scribble max-w-[190px] text-xl leading-tight text-[#ff0000]">
-                        Creado en las siete islas. Pensado para llegar a cualquier lugar.
-                    </p>
-                    <ArrowDownRight className="size-8 text-[#ff0000]" />
                 </div>
             </div>
         </section>
