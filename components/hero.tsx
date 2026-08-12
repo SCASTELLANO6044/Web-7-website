@@ -24,7 +24,7 @@ export function HeroSection() {
             <div className="hero-video-overlay" aria-hidden="true" />
             <div className="relative z-10 mx-auto flex w-full max-w-[1540px] flex-col justify-between">
                 <div className="flex justify-between text-[10px] uppercase tracking-[.15em] text-white/55">
-                    <span>Estudio digital / 28.00° N</span>
+                    <span>Estudio digital / 28.00Â° N</span>
                     <span>Canary Islands</span>
                 </div>
                 <div className="py-14 md:py-20">
