@@ -29,7 +29,7 @@ export function HeroSection() {
                 </div>
                 <div className="py-14 md:py-20">
                     <Reveal>
-                        <p className="eyebrow mb-6">
+                        <p className="eyebrow mb-6 text-white" style={{ color: 'white' }}>
                             Estudio de desarrollo web / Mirando al futuro
                         </p>
                         <h1 className="display max-w-6xl text-[clamp(3.15rem,16.4vw,10.25rem)] leading-[.78] md:text-[clamp(4rem,10.7vw,10.25rem)]">

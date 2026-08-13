@@ -13,7 +13,7 @@ export function HeroAlternative({
 }: HeroAlternativeProps){
     return (
         <>
-            <p className="eyebrow">
+            <p className="eyebrow" style={{ color: 'red' }}>
                 {text1}
             </p>
             <h1 className="display mt-4 max-w-6xl text-[clamp(3rem,14vw,6rem)] leading-[.8] md:text-[clamp(4rem,10vw,8rem)]">

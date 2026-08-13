@@ -4,7 +4,9 @@ export default function Contact() {
     return (
         <section className="px-5 pb-28 pt-36 md:px-8 md:pt-48">
             <div className="mx-auto max-w-[1540px]">
-                <p className="eyebrow">Empieza tu proyecto / el primer paso hacia algo grande</p>
+                <p className="eyebrow" style={{ color: 'red' }}>
+                    Empieza tu proyecto / el primer paso hacia algo grande
+                </p>
                 <h1 className="display mt-4 max-w-5xl text-[clamp(3rem,14vw,6rem)] leading-[.8] md:text-[clamp(4rem,10vw,8rem)]">
                     Cuéntanos
                     <br />

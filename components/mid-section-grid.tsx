@@ -25,7 +25,7 @@ export function MidSectionGrid() {
                         className="relative col-span-2 row-span-2 flex flex-col justify-between overflow-hidden border-b border-r border-white/20 bg-[#11100f] p-5 md:col-span-5 md:row-span-4 md:p-8"
                     >
                         <span data-grid-rule className="absolute left-0 top-0 h-px w-full bg-[#ff0000]" />
-                        <p className="eyebrow">Trabajo digital, construido por completo</p>
+                        <p className="eyebrow" style={{ color: 'red' }}>Trabajo digital, construido por completo</p>
                         <div className="overflow-hidden">
                             <h2 data-grid-text className="display mt-8 max-w-md text-[clamp(3rem,15vw,8rem)] leading-[0.78] md:mt-0 md:text-[clamp(3.5rem,5.4vw,7rem)]">
                                 Ideas que se juntan con la tecnología.
