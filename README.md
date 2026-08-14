@@ -61,3 +61,14 @@ A sample file is available at [.env.example](.env.example).
 ## Contact Form
 
 The contact form endpoint lives in [app/api/contact/route.ts](app/api/contact/route.ts). It validates submissions and sends them through Resend when a valid API key is configured.
+
+## Deploying the contact form on Vercel
+
+Vercel automatically deploys the contact API with this Next.js application; no extra server or Vercel configuration file is required. Before the first production deployment:
+
+1. In Resend, add and verify the domain you purchased for this website. Add the DNS records Resend gives you at the domain's DNS provider and wait until its status is **Verified**.
+2. Create a Resend API key with **Sending access**. Copy it once; Resend will not show it again.
+3. In **Vercel → Project → Settings → Environment Variables**, add `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` for the **Production** environment. Use the verified-domain sender for `CONTACT_FROM_EMAIL`, for example `Web7 <contact@yourdomain.com>`.
+4. Redeploy the production site after saving the variables. Then submit a real test message and use Reply in the received email to confirm it goes to the visitor's address.
+
+`RESEND_API_KEY` is deliberately server-only and must never be named with the `NEXT_PUBLIC_` prefix or added to Git. If delivery fails after deployment, check the Vercel function logs for the `/api/contact` request and the Resend activity log for the provider response.
