@@ -1,6 +1,7 @@
 "use client";
 import { FormEvent, useState } from "react";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import SpecularButton from "@/components/specular-button";
 const initial = {
 name: "",
 email: "",
@@ -49,12 +50,19 @@ if (state === "sent")
         <p className="mt-4 max-w-xs text-sm leading-6 text-white/60">
             Tu mensaje está en camino. Nos pondremos en contacto pronto.
         </p>
-        <button
+        <SpecularButton
             onClick={() => setState("idle")}
+            size="custom"
+            radius={0}
+            tintOpacity={0}
+            textColor="#ff0000"
+            lineColor="#ff0000"
+            baseColor="#420007"
+            style={{ border: "none" }}
             className="mt-7 text-xs uppercase tracking-wider text-[#ff0000]"
         >
             Enviar otro mensaje
-        </button>
+        </SpecularButton>
         </div>
     </div>
     );
@@ -122,13 +130,22 @@ return (
         {error}
         </p>
     )}
-    <button
+    <SpecularButton
         disabled={state === "sending"}
+        type="submit"
+        size="custom"
+        radius={999}
+        tint="#ff0000"
+        tintOpacity={1}
+        textColor="#090909"
+        lineColor="#ffffff"
+        baseColor="#6b0000"
+        style={{ backgroundColor: "#ff0000", border: "none" }}
         className="inline-flex items-center gap-3 rounded-full bg-[#ff0000] px-6 py-4 text-xs uppercase tracking-[.12em] text-[#090909] transition-transform hover:scale-95 disabled:opacity-60"
     >
         {state === "sending" ? "Enviando..." : "Enviar consulta"}
         <ArrowUpRight size={16} />
-    </button>
+    </SpecularButton>
     </form>
 );
 }

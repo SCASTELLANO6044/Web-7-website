@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import SpecularButton from "@/components/specular-button";
 
 type NavigationItem = {
   href: string;
@@ -184,10 +185,17 @@ export function Header() {
               <span>Empieza ya</span>
               <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.7} />
             </Link>
-            <button
+            <SpecularButton
               ref={triggerRef}
               type="button"
               className="site-header__menu-button"
+              size="custom"
+              radius={11}
+              tint="#ffffff"
+              tintOpacity={0.06}
+              textColor="#f3efe8"
+              lineColor="#ffffff"
+              baseColor="#333333"
               onClick={() => (open ? closeMenu(true) : setOpen(true))}
               aria-label={open ? "Close navigation" : "Open navigation"}
               aria-expanded={open}
@@ -198,7 +206,7 @@ export function Header() {
                 <i />
                 <i />
               </span>
-            </button>
+            </SpecularButton>
           </div>
         </nav>
       </div>
