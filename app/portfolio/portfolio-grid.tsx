@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/projects";
+import SpecularButton from "@/components/specular-button";
 
 const categories = [
     "Todos",
@@ -17,13 +18,24 @@ export function PortfolioGrid() {
         <>
             <div className="mb-12 flex flex-wrap gap-2">
                 {categories.map((category) => (
-                    <button
+                    <SpecularButton
                         key={category}
                         onClick={() => setActive(category)}
+                        size="custom"
+                        radius={999}
+                        tint={active === category ? "#ff0000" : "#ffffff"}
+                        tintOpacity={active === category ? 1 : 0}
+                        textColor={active === category ? "#090909" : "#f5f5f5"}
+                        lineColor="#ffffff"
+                        baseColor={active === category ? "#6b0000" : "#303030"}
+                        style={{
+                            backgroundColor: active === category ? "#ff0000" : "transparent",
+                            border: `1px solid ${active === category ? "#ff0000" : "rgba(255, 255, 255, 0.2)"}`,
+                        }}
                         className={`rounded-full border px-4 py-2 text-[10px] uppercase tracking-[.1em] transition-colors ${active === category ? "border-[#ff0000] bg-[#ff0000] text-[#090909]" : "border-white/20 hover:border-white/60"}`}
                     >
                         {category}
-                    </button>
+                    </SpecularButton>
                 ))}
             </div>
             <div className="grid gap-x-5 gap-y-12 md:grid-cols-2">
