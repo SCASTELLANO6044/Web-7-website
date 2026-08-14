@@ -378,7 +378,7 @@ const RippleDistortion = ({
     highlightColor = "#ffffff",
     trigger = "hover",
     clickStrength = 2,
-    quality = "low",
+    quality = "medium",
     enabled = true,
     className = "",
     style,
