@@ -1,0 +1,46 @@
+.figure {
+  position: relative;
+  perspective: 1000px;
+}
+
+.inner {
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.caption {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  top: 14px;
+  left: 14px;
+  display: none;
+  width: max-content;
+  padding: 0.45rem 0.65rem;
+  color: #090909;
+  background: #f3efe8;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: translateZ(40px);
+}
+
+.figure:focus-within .inner {
+  outline: 2px solid #ff0000;
+  outline-offset: 5px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .caption {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner {
+    will-change: auto;
+  }
+}
