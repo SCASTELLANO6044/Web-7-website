@@ -5,7 +5,7 @@ import { HeroAlternative } from "@/components/hero-alternative";
 export const metadata = { title: "Capabilities" };
 export default function Services() {
     return (
-        <section className="px-5 pb-28 pt-36 md:px-8 md:pt-48">
+        <section className="px-5 pb-0 pt-36 md:px-8 md:pt-48">
             <div className="mx-auto max-w-[1540px]">
 
                 <HeroAlternative 

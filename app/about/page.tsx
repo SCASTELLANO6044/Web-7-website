@@ -6,7 +6,7 @@ export const metadata = { title: "El estudio" };
 export default function About() {
     return (
         <>
-            <section className="px-5 pb-20 pt-36 md:px-8 md:pt-48">
+            <section className="px-5 pb-0 pt-36 md:px-8 md:pt-48">
                 <div className="mx-auto max-w-[1540px]">
 
                     <HeroAlternative
