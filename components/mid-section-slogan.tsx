@@ -15,7 +15,7 @@ export function MidSectionSlogan({
 }: MidSectionSloganProps){
     return(
         <section className="px-5 pb-24 md:px-8 md:pb-16">
-        <div className="mx-auto max-w-[1540px] overflow-hidden bg-[#ff0000] px-6 py-16 text-[#090909] md:px-14 md:py-24">
+        <div className="mx-auto max-w-[1540px] overflow-hidden bg-[var(--alternative_red)] px-6 py-16 text-[#090909] md:px-14 md:py-24">
           <Reveal>
             <p className="eyebrowblack">
               {text1}
