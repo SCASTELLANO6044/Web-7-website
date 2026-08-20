@@ -1,0 +1,89 @@
+.printer {
+  width: min(100%, 25rem);
+  margin: 0 auto;
+  color: var(--paper);
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.machine {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 1rem 1.3rem;
+  overflow: hidden;
+  background: linear-gradient(145deg, #262626, #0e0e0e 64%);
+  border: 1px solid rgba(243, 239, 232, .22);
+  border-radius: 1rem 1rem .5rem .5rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 .75rem 2rem rgba(0, 0, 0, .28);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  color: rgba(243, 239, 232, .52);
+  font-size: .625rem;
+  letter-spacing: .12em;
+}
+
+.topRow > span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.printing { color: #f3efe8; }
+.printing svg { animation: receipt-spin .9s linear infinite; }
+.complete { color: #f25f5f; }
+
+.screen {
+  margin-top: 1.25rem;
+  padding: .8rem .9rem;
+  color: #b8d798;
+  font-size: .75rem;
+  letter-spacing: .06em;
+  background: #10180d;
+  border: 1px solid rgba(184, 215, 152, .25);
+  box-shadow: inset 0 0 1.25rem rgba(184, 215, 152, .08);
+}
+
+.slot {
+  height: .38rem;
+  margin: 1rem .45rem 0;
+  background: #050505;
+  border: 1px solid rgba(243, 239, 232, .12);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .8);
+}
+
+.output {
+  height: 23rem;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+.receipt {
+  min-height: 23rem;
+  padding: 2rem 1.5rem 2.5rem;
+  color: #171717;
+  background: var(--paper);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7px), 97.5% 100%, 95% calc(100% - 7px), 92.5% 100%, 90% calc(100% - 7px), 87.5% 100%, 85% calc(100% - 7px), 82.5% 100%, 80% calc(100% - 7px), 77.5% 100%, 75% calc(100% - 7px), 72.5% 100%, 70% calc(100% - 7px), 67.5% 100%, 65% calc(100% - 7px), 62.5% 100%, 60% calc(100% - 7px), 57.5% 100%, 55% calc(100% - 7px), 52.5% 100%, 50% calc(100% - 7px), 47.5% 100%, 45% calc(100% - 7px), 42.5% 100%, 40% calc(100% - 7px), 37.5% 100%, 35% calc(100% - 7px), 32.5% 100%, 30% calc(100% - 7px), 27.5% 100%, 25% calc(100% - 7px), 22.5% 100%, 20% calc(100% - 7px), 17.5% 100%, 15% calc(100% - 7px), 12.5% 100%, 10% calc(100% - 7px), 7.5% 100%, 5% calc(100% - 7px), 2.5% 100%, 0 calc(100% - 7px));
+  box-shadow: 0 .9rem 1.25rem rgba(0, 0, 0, .22);
+}
+
+.brand, .title, .message, .stamp { margin: 0; }
+.brand { font-family: "TAN Moonlight", "Iowan Old Style", serif; font-size: 2.4rem; line-height: .8; letter-spacing: -.12em; }
+.title { margin-top: .75rem; font-size: .64rem; font-weight: 700; letter-spacing: .12em; }
+.rule { margin: 1.25rem 0; border-top: 1px dashed rgba(23, 23, 23, .48); }
+.details { display: grid; gap: .8rem; margin: 0; font-size: .68rem; line-height: 1.4; }
+.details div { display: grid; grid-template-columns: 5.75rem minmax(0, 1fr); gap: .75rem; }
+.details dt { color: rgba(23, 23, 23, .55); }
+.details dd { margin: 0; overflow-wrap: anywhere; text-align: right; }
+.message { font-size: .72rem; line-height: 1.65; }
+.stamp { width: max-content; max-width: 100%; margin-top: 1.4rem; padding: .32rem .45rem; color: #7a010c; font-size: .59rem; font-weight: 700; letter-spacing: .1em; border: 1px solid currentColor; transform: rotate(-2deg); }
+
+@keyframes receipt-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .printing svg { animation: none; }
+}

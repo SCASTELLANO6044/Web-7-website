@@ -1,7 +1,8 @@
 "use client";
-import { FormEvent, useState } from "react";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { FormEvent, useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import SpecularButton from "@/components/specular-button";
+import { ReceiptPrinter } from "@/components/receipt-printer";
 const initial = {
 name: "",
 email: "",
@@ -12,12 +13,23 @@ website: "",
 };
 export function ContactForm() {
     const [data, setData] = useState(initial);
-    const [state, setState] = useState<"idle" | "sending" | "sent" | "error">(
+    const [state, setState] = useState<"idle" | "sending" | "printing" | "sent" | "error">(
     "idle",
 );
+    const [submitted, setSubmitted] = useState(initial);
     const [error, setError] = useState("");
     const update = (key: keyof typeof data, value: string) =>
     setData((prev) => ({ ...prev, [key]: value }));
+
+    useEffect(() => {
+      if (state !== "printing") return;
+
+      const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? 0
+        : 1450;
+      const timer = window.setTimeout(() => setState("sent"), duration);
+      return () => window.clearTimeout(timer);
+    }, [state]);
 async function submit(e: FormEvent) {
     e.preventDefault();
     setState("sending");
@@ -30,7 +42,8 @@ async function submit(e: FormEvent) {
     });
     const body = await res.json();
     if (!res.ok) throw new Error(body.error);
-    setState("sent");
+    setSubmitted(data);
+    setState("printing");
     setData(initial);
     } catch (err) {
     setError(
@@ -41,33 +54,29 @@ async function submit(e: FormEvent) {
     setState("error");
     }
 }
-if (state === "sent")
+if (state === "printing" || state === "sent")
     return (
-    <div className="grid min-h-[480px] place-items-center border border-white/20 p-8 text-center">
-        <div>
-        <CheckCircle2 className="mx-auto size-10 text-[#ff0000]" />
-        <h2 className="display mt-5 text-5xl">¡Gracias!</h2>
-        <p className="mt-4 max-w-xs text-sm leading-6 text-white/60">
-            Tu mensaje está en camino. Nos pondremos en contacto pronto.
-        </p>
-        <SpecularButton
+    <div className="border-t border-white/20 pt-6">
+        <ReceiptPrinter
+            budget={submitted.budget}
+            company={submitted.company}
+            name={submitted.name}
+            stage={state === "sent" ? "complete" : "printing"}
+        />
+        <div className="mt-6 text-center">
+          <p className="text-sm leading-6 text-white/60">Tu mensaje está en camino. Nos pondremos en contacto pronto.</p>
+          <button
+            className="mt-5 min-h-11 text-xs uppercase tracking-wider text-[#ff0000] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff0000]"
             onClick={() => setState("idle")}
-            size="custom"
-            radius={0}
-            tintOpacity={0}
-            textColor="#ff0000"
-            lineColor="#ff0000"
-            baseColor="#420007"
-            style={{ border: "none" }}
-            className="mt-7 text-xs uppercase tracking-wider text-[#ff0000]"
-        >
+            type="button"
+          >
             Enviar otro mensaje
-        </SpecularButton>
+          </button>
         </div>
     </div>
     );
 return (
-    <form onSubmit={submit} className="border-t border-white/20 pt-6">
+    <form aria-busy={state === "sending"} onSubmit={submit} className="border-t border-white/20 pt-6">
     <div className="grid gap-x-6 md:grid-cols-2">
         <Field label="Nombre" required>
         <input
