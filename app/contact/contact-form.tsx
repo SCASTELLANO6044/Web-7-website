@@ -108,11 +108,11 @@ export function ContactForm() {
                         onChange={(e) => update("budget", e.target.value)}
                     >
                         <option value="">Selecciona uno</option>
-                        <option>€2k – €5k</option>
-                        <option>€5k – €10k</option>
-                        <option>€10k – €25k</option>
-                        <option>€25k+</option>
-                        <option>Let&apos;s discuss</option>
+                        <option>€0 – €500 </option>
+                        <option>€500 – €1000</option>
+                        <option>€1000 – €3000</option>
+                        <option>€3000+</option>
+                        <option> Acordemos un precio </option>
                     </select>
                 </Field>
             </div>
