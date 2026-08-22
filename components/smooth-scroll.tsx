@@ -13,10 +13,16 @@ export default function SmoothScroll({
     children: ReactNode;
 }) {
     useLayoutEffect(() => {
+        // Native touch scrolling is already compositor-driven. ScrollSmoother
+        // intercepts it and makes the entire page animate on every gesture,
+        // which is noticeably less fluid on phones and tablets.
+        if (window.matchMedia("(pointer: coarse), (max-width: 767px)").matches) {
+            return;
+        }
+
         const smoother = ScrollSmoother.create({
             smooth: 2.5,
             effects: true,
-            smoothTouch: 0.1,
         });
 
         return () => {

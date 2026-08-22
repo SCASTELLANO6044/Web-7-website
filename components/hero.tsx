@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/motion";
 import { ArrowUpRight } from "lucide-react";
@@ -11,6 +11,68 @@ import RippleDistortion from "@/components/RippleDistortion/RippleDistortion";
 gsap.registerPlugin(ScrollTrigger);
 
 const HERO_VIDEO_SRC = "/visuals/hero-video.mp4";
+const HERO_POSTER_SRC = "/visuals/hero-poster.jpg";
+
+function subscribeToPhoneViewport(onStoreChange: () => void) {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+    mediaQuery.addEventListener("change", onStoreChange);
+
+    return () => mediaQuery.removeEventListener("change", onStoreChange);
+}
+
+function isPhoneViewport() {
+    return window.matchMedia("(max-width: 767px)").matches;
+}
+
+function HeroMedia() {
+    // Start with the lightweight native video during SSR. On phones it remains
+    // there, avoiding the continuous WebGL compositing that causes dropped frames.
+    const isPhone = useSyncExternalStore(
+        subscribeToPhoneViewport,
+        isPhoneViewport,
+        () => true
+    );
+
+    if (isPhone) {
+        return (
+            <video
+                className="hero-video"
+                src={HERO_VIDEO_SRC}
+                poster={HERO_POSTER_SRC}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+            />
+        );
+    }
+
+    return (
+        <RippleDistortion
+            src={HERO_VIDEO_SRC}
+            brushSize={110}
+            strength={0.2}
+            swirl={2}
+            rings={2}
+            spread={5}
+            fade={6}
+            spacing={8}
+            dispersion={0.3}
+            glint={0.1}
+            tint="#ffffff"
+            tintAmount={0}
+            grayscale={false}
+            highlightColor="#7a010c"
+            trigger="hover"
+            clickStrength={2}
+            quality="medium"
+            enabled
+        />
+    );
+}
 
 export function HeroSection() {
     const heroRef = useRef<HTMLElement | null>(null);
@@ -29,22 +91,12 @@ export function HeroSection() {
 
             const mm = gsap.matchMedia();
 
-            mm.add(
-                {
-                    desktop: "(min-width: 768px)",
-                    mobile: "(max-width: 767px)",
-                },
-                (context) => {
-                    const { desktop } = context.conditions as {
-                        desktop: boolean;
-                        mobile: boolean;
-                    };
-
-                    const titleIntroY = desktop ? 200 : 120;
-                    const titleScrollY = desktop ? -600 : -350;
-                    const titleScrollScale = desktop ? 0.6 : 0.7;
-                    const contentY = desktop ? -400 : -220;
-                    const contentScale = desktop ? 0.6 : 0.75;
+            mm.add("(min-width: 768px)", () => {
+                    const titleIntroY = 200;
+                    const titleScrollY = -600;
+                    const titleScrollScale = 0.6;
+                    const contentY = -400;
+                    const contentScale = 0.6;
 
                     // Intro del título
                     gsap.fromTo(
@@ -86,13 +138,12 @@ export function HeroSection() {
                         ease: "none",
                         scrollTrigger: {
                             trigger: hero,
-                            start: desktop ? "5% top" : "10% top",
+                            start: "5% top",
                             end: "100% top",
                             scrub: 1,
                         },
                     });
-                }
-            );
+            });
         }, heroRef);
 
         return () => ctx.revert();
@@ -104,26 +155,7 @@ export function HeroSection() {
             className="hero relative isolate flex min-h-dvh overflow-hidden bg-[#050404] px-5 pb-8 pt-32 md:px-8"
         >
             <div className="absolute inset-0 z-[1]">
-                <RippleDistortion
-                    src={HERO_VIDEO_SRC}
-                    brushSize={110}
-                    strength={0.2}
-                    swirl={2}
-                    rings={2}
-                    spread={5}
-                    fade={6}
-                    spacing={8}
-                    dispersion={0.3}
-                    glint={0.1}
-                    tint="#ffffff"
-                    tintAmount={0}
-                    grayscale={false}
-                    highlightColor="#7a010c"
-                    trigger="hover"
-                    clickStrength={2}
-                    quality="medium"
-                    enabled
-                />
+                <HeroMedia />
             </div>
 
             <div

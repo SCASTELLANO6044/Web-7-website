@@ -116,53 +116,6 @@ export function useEditorialGridMotion(
           );
       });
 
-      media.add("(max-width: 767px)", () => {
-        cells.forEach((cell) => {
-          const cellMasks = Array.from(
-            cell.querySelectorAll<HTMLElement>("[data-grid-mask]"),
-          );
-          const cellImages = Array.from(
-            cell.querySelectorAll<HTMLElement>("[data-grid-image]"),
-          );
-          const timeline = gsap.timeline({
-            defaults: { ease: "power3.out" },
-            scrollTrigger: {
-              trigger: cell,
-              // Each card finishes its reveal only when its own centre aligns
-              // with the viewport centre, including on long mobile grids.
-              start: "top 82%",
-              end: "center center",
-              scrub: 0.65,
-              invalidateOnRefresh: true,
-            },
-          });
-
-          timeline.fromTo(
-            cell,
-            { autoAlpha: 0, y: 38, scale: 0.95 },
-            { autoAlpha: 1, y: 0, scale: 1, duration: 1 },
-            0,
-          );
-
-          if (cellMasks.length) {
-            timeline.fromTo(
-              cellMasks,
-              { clipPath: "inset(12% 12% 12% 12%)" },
-              { clipPath: "inset(0% 0% 0% 0%)", duration: 1 },
-              0,
-            );
-          }
-
-          if (cellImages.length) {
-            timeline.fromTo(
-              cellImages,
-              { scale: 1.1 },
-              { scale: 1, duration: 1 },
-              0,
-            );
-          }
-        });
-      });
     }, section);
 
     return () => {
