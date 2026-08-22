@@ -175,19 +175,19 @@ export function HeroSection() {
                 {/* Título principal */}
                 <div
                     ref={titleScrollRef}
-                    className="pointer-events-none absolute inset-x-0 top-[25%] flex justify-center px-2 md:px-0"
+                    className="hero__title-wrap pointer-events-none absolute inset-x-0 top-[25%] flex justify-center px-2 md:px-0"
                 >
                     <div ref={titleIntroRef}>
                         <Reveal>
                             <div className="text-center">
                                 <p
-                                    className="eyebrow mb-6 text-white"
+                                    className="hero__eyebrow eyebrow mb-6 text-white"
                                     style={{ color: "white" }}
                                 >
                                     Estudio de desarrollo web / Mirando al futuro
                                 </p>
 
-                                <h1 className="display max-w-6xl text-[clamp(3.15rem,16.4vw,10.25rem)] leading-[.78] md:text-[clamp(4rem,10.7vw,10.25rem)]">
+                                <h1 className="hero__title display max-w-6xl text-[clamp(3.15rem,16.4vw,10.25rem)] leading-[.78] md:text-[clamp(4rem,10.7vw,10.25rem)]">
                                     Experiencias digitales
                                     <br />
                                     <span className="outline-text">
@@ -202,13 +202,13 @@ export function HeroSection() {
                 {/* Texto + CTA */}
                 <div
                     ref={contentRef}
-                    className="absolute bottom-[8%] left-5 right-5 z-10 max-w-none md:bottom-[10%] md:left-auto md:right-0 md:max-w-md"
+                    className="hero__content absolute bottom-[8%] left-5 right-5 z-10 max-w-none md:bottom-[10%] md:left-auto md:right-0 md:max-w-md"
                 >
                     <Reveal
                         delay={2.2}
                         className="ml-auto"
                     >
-                        <p className="text-sm leading-7 text-white/70">
+                        <p className="hero__description text-sm leading-7 text-white/70">
                             Creamos sitios web para empresas que quieren
                             destacar, transmitir confianza y crecer.
                         </p>

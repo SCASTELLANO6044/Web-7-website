@@ -116,6 +116,45 @@ select {
         linear-gradient(90deg, rgba(2, 2, 2, .24), transparent 52%, rgba(2, 2, 2, .12));
 }
 
+/* Use the smallest mobile viewport so the hero also fits with iOS browser
+   controls visible, rather than sizing against the unobscured device screen. */
+@media (max-width: 767px) {
+    .hero {
+        min-height: 100svh;
+        padding-bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + .75rem));
+    }
+
+    .hero__title-wrap {
+        top: max(10.75rem, 23svh);
+    }
+
+    .hero__eyebrow {
+        margin-bottom: .8rem;
+        font-size: .58rem;
+        letter-spacing: .13em;
+    }
+
+    .hero__title {
+        font-size: clamp(2.45rem, 13.4vw, 3.45rem);
+        line-height: .82;
+    }
+
+    .hero__content {
+        bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + .75rem));
+    }
+
+    .hero__description {
+        font-size: .8125rem;
+        line-height: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) and (max-height: 740px) {
+    .hero__title {
+        font-size: clamp(2.25rem, 12.2vw, 3rem);
+    }
+}
+
 /* Shared navigation: a shallow glass top bar with a composed editorial overlay. */
 .site-header {
     --nav-surface: rgba(9, 9, 9, .58);
