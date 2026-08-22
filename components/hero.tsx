@@ -24,6 +24,48 @@ function hasCoarsePointer() {
     return window.matchMedia("(pointer: coarse), (max-width: 767px)").matches;
 }
 
+function useStableMobileHeroHeight() {
+    useLayoutEffect(() => {
+        const root = document.documentElement;
+        const mobileQuery = window.matchMedia("(max-width: 767px)");
+        let lockedWidth = window.innerWidth;
+
+        const setHeight = () => {
+            if (!mobileQuery.matches) {
+                root.style.removeProperty("--mobile-hero-height");
+                return;
+            }
+
+            root.style.setProperty("--mobile-hero-height", `${window.innerHeight}px`);
+        };
+
+        // Mobile browser bars change only the viewport height. Keep the hero
+        // fixed for those changes; update it when the device actually rotates
+        // or the window changes width.
+        const onResize = () => {
+            if (Math.abs(window.innerWidth - lockedWidth) < 48) return;
+
+            lockedWidth = window.innerWidth;
+            setHeight();
+        };
+
+        const onBreakpointChange = () => {
+            lockedWidth = window.innerWidth;
+            setHeight();
+        };
+
+        setHeight();
+        window.addEventListener("resize", onResize, { passive: true });
+        mobileQuery.addEventListener("change", onBreakpointChange);
+
+        return () => {
+            window.removeEventListener("resize", onResize);
+            mobileQuery.removeEventListener("change", onBreakpointChange);
+            root.style.removeProperty("--mobile-hero-height");
+        };
+    }, []);
+}
+
 function HeroMedia() {
     // A low-resolution WebGL layer keeps the hero responsive on touch devices
     // while still allowing a finger tap to create the same ripple as a cursor.
@@ -58,6 +100,8 @@ function HeroMedia() {
 }
 
 export function HeroSection() {
+    useStableMobileHeroHeight();
+
     const heroRef = useRef<HTMLElement | null>(null);
     const titleScrollRef = useRef<HTMLDivElement | null>(null);
     const titleIntroRef = useRef<HTMLDivElement | null>(null);
@@ -153,7 +197,7 @@ export function HeroSection() {
     return (
         <section
             ref={heroRef}
-            className="hero relative isolate flex min-h-dvh overflow-hidden bg-[#050404] px-5 pb-8 pt-32 md:px-8"
+            className="hero relative isolate flex overflow-hidden bg-[#050404] px-5 pb-8 pt-32 md:min-h-dvh md:px-8"
         >
             <div className="absolute inset-0 z-[1]">
                 <HeroMedia />

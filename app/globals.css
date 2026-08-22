@@ -7,6 +7,7 @@
     --muted: #9d9a96;
     --line: rgba(243, 239, 232, .18);
     --alternative_red: #c70707;
+    --mobile-hero-height: 100svh;
 }
 
 * {
@@ -120,7 +121,7 @@ select {
    controls visible, rather than sizing against the unobscured device screen. */
 @media (max-width: 767px) {
     .hero {
-        min-height: 100svh;
+        min-height: var(--mobile-hero-height);
         padding-bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + .75rem));
     }
 
