@@ -23,7 +23,7 @@ const QUALITY_SCALE = {
 const START_SCALE = 1.5;
 const LIFE_CONSTANT = Math.log(500);
 
-type Trigger = "hover" | "click";
+type Trigger = "hover" | "click" | "both";
 type Quality = "low" | "medium" | "high";
 
 interface RippleDistortionProps {
@@ -910,7 +910,8 @@ const RippleDistortion = ({
             if (
                 !cfg.enabled ||
                 reduceMotion ||
-                cfg.trigger === "click"
+                cfg.trigger === "click" ||
+                event.pointerType === "touch"
             ) {
                 return;
             }
@@ -967,7 +968,7 @@ const RippleDistortion = ({
             if (
                 !cfg.enabled ||
                 reduceMotion ||
-                cfg.trigger === "hover"
+                (cfg.trigger === "hover" && event.pointerType !== "touch")
             ) {
                 return;
             }

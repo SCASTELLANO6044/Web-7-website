@@ -116,6 +116,66 @@ export function useEditorialGridMotion(
           );
       });
 
+      // Phones use a shorter, vertical reveal. The desktop composition travels
+      // too far horizontally for a narrow viewport, but leaving it disabled
+      // made the grids appear static on touch devices.
+      media.add("(max-width: 767px)", () => {
+        const staggerFrom = variant === "primary" ? "start" : "end";
+
+        const timeline = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          scrollTrigger: {
+            trigger: section,
+            start: "top 88%",
+            end: "top 48%",
+            scrub: 0.45,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        timeline
+          .fromTo(
+            rules,
+            { scaleX: 0, transformOrigin: variant === "primary" ? "left" : "right" },
+            { scaleX: 1, duration: 0.38, stagger: 0.03 },
+            0,
+          )
+          .fromTo(
+            cells,
+            { autoAlpha: 0, y: 24 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.55,
+              stagger: { each: 0.028, from: staggerFrom },
+            },
+            0.04,
+          )
+          .fromTo(
+            masks,
+            { clipPath: "inset(18% 0% 18% 0%)" },
+            {
+              clipPath: "inset(0% 0% 0% 0%)",
+              duration: 0.7,
+              stagger: { each: 0.05, from: staggerFrom },
+              ease: "power4.out",
+            },
+            0.08,
+          )
+          .fromTo(
+            imageLayers,
+            { scale: 1.1 },
+            { scale: 1, duration: 0.7, stagger: 0.05 },
+            0.08,
+          )
+          .fromTo(
+            textLines,
+            { autoAlpha: 0, yPercent: 70 },
+            { autoAlpha: 1, yPercent: 0, duration: 0.42 },
+            0.18,
+          );
+      });
+
     }, section);
 
     return () => {

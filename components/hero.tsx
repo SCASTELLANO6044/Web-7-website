@@ -11,49 +11,32 @@ import RippleDistortion from "@/components/RippleDistortion/RippleDistortion";
 gsap.registerPlugin(ScrollTrigger);
 
 const HERO_VIDEO_SRC = "/visuals/hero-video.mp4";
-const HERO_POSTER_SRC = "/visuals/hero-poster.jpg";
 
-function subscribeToPhoneViewport(onStoreChange: () => void) {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
+function subscribeToCoarsePointer(onStoreChange: () => void) {
+    const mediaQuery = window.matchMedia("(pointer: coarse), (max-width: 767px)");
 
     mediaQuery.addEventListener("change", onStoreChange);
 
     return () => mediaQuery.removeEventListener("change", onStoreChange);
 }
 
-function isPhoneViewport() {
-    return window.matchMedia("(max-width: 767px)").matches;
+function hasCoarsePointer() {
+    return window.matchMedia("(pointer: coarse), (max-width: 767px)").matches;
 }
 
 function HeroMedia() {
-    // Start with the lightweight native video during SSR. On phones it remains
-    // there, avoiding the continuous WebGL compositing that causes dropped frames.
-    const isPhone = useSyncExternalStore(
-        subscribeToPhoneViewport,
-        isPhoneViewport,
-        () => true
+    // A low-resolution WebGL layer keeps the hero responsive on touch devices
+    // while still allowing a finger tap to create the same ripple as a cursor.
+    const isTouchDevice = useSyncExternalStore(
+        subscribeToCoarsePointer,
+        hasCoarsePointer,
+        () => false
     );
-
-    if (isPhone) {
-        return (
-            <video
-                className="hero-video"
-                src={HERO_VIDEO_SRC}
-                poster={HERO_POSTER_SRC}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                aria-hidden="true"
-            />
-        );
-    }
 
     return (
         <RippleDistortion
             src={HERO_VIDEO_SRC}
-            brushSize={110}
+            brushSize={isTouchDevice ? 92 : 110}
             strength={0.2}
             swirl={2}
             rings={2}
@@ -66,9 +49,9 @@ function HeroMedia() {
             tintAmount={0}
             grayscale={false}
             highlightColor="#7a010c"
-            trigger="hover"
+            trigger={isTouchDevice ? "both" : "hover"}
             clickStrength={2}
-            quality="medium"
+            quality={isTouchDevice ? "low" : "medium"}
             enabled
         />
     );
@@ -143,6 +126,24 @@ export function HeroSection() {
                             scrub: 1,
                         },
                     });
+            });
+
+            // Start after the loading screen has cleared. A shorter delay puts
+            // this entire sequence behind the fixed loader on phones, making
+            // the headline appear to be static when the page becomes visible.
+            mm.add("(max-width: 767px)", () => {
+                gsap.fromTo(
+                    titleIntro,
+                    { opacity: 0, y: 96, scale: 0.9 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.05,
+                        delay: 1.55,
+                        ease: "power3.out",
+                    },
+                );
             });
         }, heroRef);
 
