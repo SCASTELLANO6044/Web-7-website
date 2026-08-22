@@ -27,51 +27,72 @@ export function HeroSection() {
 
             if (!titleIntro || !titleScroll || !hero || !content) return;
 
-            // Intro del título
-            gsap.fromTo(
-                titleIntro,
+            const mm = gsap.matchMedia();
+
+            mm.add(
                 {
-                    opacity: 0,
-                    y: 200,
-                    scale: 0.6,
+                    desktop: "(min-width: 768px)",
+                    mobile: "(max-width: 767px)",
                 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 1.2,
-                    delay: 1.3,
-                    ease: "power3.out",
+                (context) => {
+                    const { desktop } = context.conditions as {
+                        desktop: boolean;
+                        mobile: boolean;
+                    };
+
+                    const titleIntroY = desktop ? 200 : 120;
+                    const titleScrollY = desktop ? -600 : -350;
+                    const titleScrollScale = desktop ? 0.6 : 0.7;
+                    const contentY = desktop ? -400 : -220;
+                    const contentScale = desktop ? 0.6 : 0.75;
+
+                    // Intro del título
+                    gsap.fromTo(
+                        titleIntro,
+                        {
+                            opacity: 0,
+                            y: titleIntroY,
+                            scale: 0.6,
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            duration: 1.2,
+                            delay: 1.3,
+                            ease: "power3.out",
+                        }
+                    );
+
+                    // Salida del título al hacer scroll
+                    gsap.to(titleScroll, {
+                        y: titleScrollY,
+                        scale: titleScrollScale,
+                        opacity: 0,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: hero,
+                            start: "top top",
+                            end: "bottom top",
+                            scrub: 1,
+                        },
+                    });
+
+                    // Salida del contenido al hacer scroll
+                    gsap.to(content, {
+                        y: contentY,
+                        scale: contentScale,
+                        opacity: 0,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: hero,
+                            start: desktop ? "5% top" : "10% top",
+                            end: "100% top",
+                            scrub: 1,
+                        },
+                    });
                 }
             );
-
-            // Salida del título al hacer scroll
-            gsap.to(titleScroll, {
-                y: -600,
-                scale: 0.6,
-                opacity: 0,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: hero,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1,
-                },
-            });
-
-            // Salida del contenido al hacer scroll
-            gsap.to(content, {
-                y: -400,
-                scale: 0.6,
-                opacity: 0,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: hero,
-                    start: "5% top",
-                    end: "100% top",
-                    scrub: 1,
-                },
-            });
         }, heroRef);
 
         return () => ctx.revert();
@@ -111,14 +132,18 @@ export function HeroSection() {
             />
 
             <div className="relative z-10 mx-auto flex w-full max-w-[1540px] flex-col justify-between">
-                <div className="flex justify-between text-[10px] uppercase tracking-[.15em] text-white/55">
+                {/* Información superior */}
+                <div className="flex justify-between gap-4 text-[10px] uppercase tracking-[.15em] text-white/55">
                     <span>Estudio digital / 28.00° N</span>
-                    <span>Canary Islands</span>
+                    <span className="text-right">
+                        Canary Islands
+                    </span>
                 </div>
 
+                {/* Título principal */}
                 <div
                     ref={titleScrollRef}
-                    className="pointer-events-none absolute inset-x-0 top-[25%] flex justify-center"
+                    className="pointer-events-none absolute inset-x-0 top-[25%] flex justify-center px-2 md:px-0"
                 >
                     <div ref={titleIntroRef}>
                         <Reveal>
@@ -142,9 +167,10 @@ export function HeroSection() {
                     </div>
                 </div>
 
+                {/* Texto + CTA */}
                 <div
                     ref={contentRef}
-                    className="absolute bottom-[10%] right-[0%] z-10 max-w-md"
+                    className="absolute bottom-[8%] left-5 right-5 z-10 max-w-none md:bottom-[10%] md:left-auto md:right-0 md:max-w-md"
                 >
                     <Reveal
                         delay={2.2}
