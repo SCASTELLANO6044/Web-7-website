@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
-import { projects } from "@/lib/projects";
+import { getProjects, projects } from "@/lib/projects";
+import { getLocale, localizePath } from "@/lib/locale";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
     return projects.map(({ slug }) => ({ slug }));
@@ -15,7 +17,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const project = projects.find((p) => p.slug === slug);
-    return { title: project?.title ?? "Proyecto" };
+    const t = await getTranslations("Portfolio");
+    return { title: project?.title ?? t("metadata") };
 }
 export default async function ProjectPage({
     params,
@@ -23,7 +26,9 @@ export default async function ProjectPage({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    const project = projects.find((p) => p.slug === slug);
+    const locale = await getLocale();
+    const t = await getTranslations("Portfolio");
+    const project = getProjects(locale).find((p) => p.slug === slug);
     if (!project) notFound();
     return (
         <>
@@ -46,9 +51,9 @@ export default async function ProjectPage({
                             rel="noopener noreferrer"
                             className="mt-8 inline-flex min-h-11 items-center gap-2 border border-[#ff0000] px-4 py-3 text-xs uppercase tracking-[.12em] text-[#ff0000] transition-colors hover:bg-[#ff0000] hover:text-[#090909] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff0000]"
                         >
-                            Visitar sitio web
+                            {t("visit")}
                             <ExternalLink aria-hidden="true" size={15} />
-                            <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                            <span className="sr-only"> ({t("newTab")})</span>
                         </a>
                     )}
                 </div>
@@ -68,12 +73,12 @@ export default async function ProjectPage({
             <section className="px-5 py-24 md:px-8 md:py-36">
                 <div className="mx-auto grid max-w-[1540px] gap-12 md:grid-cols-12">
                     <div className="md:col-span-3">
-                        <p className="eyebrow">Detalles del proyecto</p>
+                        <p className="eyebrow">{t("details")}</p>
                     </div>
                     <div className="grid gap-12 md:col-span-8 md:grid-cols-2">
                         <div>
                             <p className="text-xs uppercase tracking-[.12em] text-[#ff0000]">
-                                Servicios
+                                {t("services")}
                             </p>
                             <ul className="mt-4 space-y-2 text-sm text-white/70">
                                 {project.services.map((x) => (
@@ -83,7 +88,7 @@ export default async function ProjectPage({
                         </div>
                         <div>
                             <p className="text-xs uppercase tracking-[.12em] text-[#ff0000]">
-                                Tecnologías
+                                {t("technologies")}
                             </p>
                             <ul className="mt-4 space-y-2 text-sm text-white/70">
                                 {project.technologies.map((x) => (
@@ -95,19 +100,19 @@ export default async function ProjectPage({
                 </div>
                 <div className="mx-auto mt-24 grid max-w-[1540px] gap-12 border-t border-white/15 pt-10 md:grid-cols-3">
                     <div>
-                        <p className="eyebrow">El reto</p>
+                        <p className="eyebrow">{t("challenge")}</p>
                         <p className="mt-5 text-sm leading-7 text-white/70">
                             {project.challenge}
                         </p>
                     </div>
                     <div>
-                        <p className="eyebrow">La solución</p>
+                        <p className="eyebrow">{t("solution")}</p>
                         <p className="mt-5 text-sm leading-7 text-white/70">
                             {project.solution}
                         </p>
                     </div>
                     <div>
-                        <p className="eyebrow">El resultado</p>
+                        <p className="eyebrow">{t("result")}</p>
                         <ul className="mt-5 space-y-3 text-sm text-white/70">
                             {project.results.map((x) => (
                                 <li key={x}>— {x}</li>
@@ -116,10 +121,10 @@ export default async function ProjectPage({
                     </div>
                 </div>
                 <Link
-                    href="/contact"
+                    href={localizePath("/contact", locale)}
                     className="mt-20 inline-flex items-center gap-2 text-xs uppercase tracking-[.12em] text-[#ff0000]"
                 >
-                    Hablemos de tu proyecto <ArrowUpRight size={15} />
+                    {t("talk")} <ArrowUpRight size={15} />
                 </Link>
             </section>
         </>

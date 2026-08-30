@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 import goodMealsHero from "@/assets/portfolio/goodmeals/goodmeals-hero.png";
+import type { Locale } from "@/lib/locale";
 
 export type Project = {
   slug: string;
@@ -182,3 +183,62 @@ export const services = [
     "Integración de marca, estrategias de conversión y una visión global para convertir una web en una herramienta de negocio.",
   ],
 ] as const;
+
+const englishProjects: Record<string, Partial<Project>> = {
+  "good-meals": {
+    category: "Food & hospitality",
+    description: "A digital home for a fresh way to eat well.",
+    services: ["Web design", "Development", "Brand integration"],
+    challenge: "Turn a food concept into a clear, engaging digital experience.",
+    solution: "We combined a distinctive visual design with a simple content structure that keeps the product and call to action front and centre.",
+    results: ["A distinctive digital presence", "Mobile-optimised experience", "A clearer conversion path"],
+  },
+  "altamar-residences": {
+    category: "Real estate", description: "Coastal properties presented with elegance and confidence.", year: "Concept",
+    services: ["Strategy", "UI/UX", "Frontend"], challenge: "Make a premium property feel approachable without hiding the information buyers need.",
+    solution: "An editorial real-estate system that combines thoughtful imagery, elegant typography and layers of practical information.",
+    results: ["Premium positioning", "Intuitive exploration", "A structure ready to generate leads"],
+  },
+  "siete-studio": {
+    category: "Architecture", description: "An architecture studio with a more considered digital presence.", year: "Concept",
+    services: ["Art direction", "Web design", "Development"], challenge: "Show the precision of the architectural work while retaining the studio’s minimal essence.",
+    solution: "A portfolio built around visual rhythm, scale and space, giving each project room to lead.",
+    results: ["Editorial clarity", "Faster presentation", "Search-ready pages"],
+  },
+  "aera-health": {
+    category: "Health", description: "A reassuring healthcare experience designed to build trust.", year: "Concept",
+    services: ["UX research", "Product design", "Development"], challenge: "Make a complex healthcare process clear, safe and easy to follow.",
+    solution: "A calm visual system with accessible interactions and direct routes to help.",
+    results: ["Accessible design", "Greater clarity", "A trust-based experience"],
+  },
+  "form-athletics": {
+    category: "Fitness", description: "High-performance energy for a movement-focused community.", year: "Concept",
+    services: ["Brand integration", "Ecommerce UX", "Development"], challenge: "Maintain an athletic brand’s energy without losing clarity during purchase.",
+    solution: "A dynamic shop with a clear product hierarchy and content that conveys speed.",
+    results: ["Stronger identity", "Conversion-focused UX", "Fast mobile loading"],
+  },
+  "nido-saas": {
+    category: "SaaS", description: "A financial platform designed to make the complex simple.", year: "Concept",
+    services: ["Product strategy", "UI system", "Frontend"], challenge: "Explain a technical platform clearly to founders and finance teams.",
+    solution: "We turned the product into a clear narrative and created a design system ready to grow.",
+    results: ["Clearer value proposition", "Scalable system", "Enterprise-ready UX"],
+  },
+};
+
+const englishServices = [
+  ["01", "Websites with personality", "Custom web design", "Strategic, high-impact websites that reflect your identity and guide visitors towards action."],
+  ["02", "Built to last", "Frontend and backend development", "Solid, maintainable builds—from the visual experience to the systems that power it."],
+  ["03", "Every screen, carefully considered", "Responsive UI/UX", "Flexible interfaces that work naturally on mobile, tablet and desktop."],
+  ["04", "Designed to be found", "SEO and performance", "A technical foundation built for search engines and a fast experience for your visitors."],
+  ["05", "A partner after launch", "Maintenance and consulting", "Ongoing improvements, technical support and advice to help your digital presence grow."],
+  ["06", "More than a website", "Digital solutions for businesses", "Brand integration, conversion strategy and a broader view that turns a website into a business tool."],
+] as const;
+
+export function getProjects(locale: Locale) {
+  if (locale === "es") return projects;
+  return projects.map((project) => ({ ...project, ...englishProjects[project.slug] }));
+}
+
+export function getServices(locale: Locale) {
+  return locale === "en" ? englishServices : services;
+}

@@ -6,35 +6,31 @@ import { MidSectionGrid } from "@/components/mid-section-grid";
 import { MidSectionGridAlternative } from "@/components/mid-section-grid-alternative";
 import { MidSectionReviewFromClient } from "@/components/mid-section-review-from-client";
 import { MidSectionSlogan } from "@/components/mid-section-slogan";
+import { getTranslations } from "next-intl/server";
 
-const reasons = [
-  "Strategy before decoration",
-  "Senior-level craft",
-  "Built for speed and search",
-  "A clear, collaborative process",
-];
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations("Home");
   return (
     <>
       <HeroSection />
       
       < MidSection 
-        text1="Nuestros proyectos" 
-        text2="Webs con claridad y carácter para permanecer en tu memoria."
-        text3="Desde la idea inicial hasta el lanzamiento, unimos diseño y desarrollo en un único proceso pensado al detalle."
-        text4="Para líderes, startups en crecimiento y equipos consolidados."
+        text1={t("projects")}
+        text2={t("introTitle")}
+        text3={t("introA")}
+        text4={t("introB")}
       />
       
       <ProjectsOverview />
       
       <MidSectionGrid />
 
-      <MidSectionGridAlternative reasons={reasons} />
+      <MidSectionGridAlternative />
 
       <MidSectionReviewFromClient 
-        review="“Entendieron perfectamente la idea que queríamos crear.”"
+        review={t("review")}
         client="Good Meals"
-        project="Website project"
+        project={t("reviewProject")}
       />
     </>
   );

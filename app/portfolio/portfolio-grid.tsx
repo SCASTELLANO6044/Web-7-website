@@ -3,17 +3,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import SpecularButton from "@/components/specular-button";
+import { useLocale, useTranslations } from "next-intl";
+import type { Locale } from "@/lib/locale";
 
-const categories = [
-    "Todos",
-    ...Array.from(new Set(projects.map((p) => p.category))),
-];
 export function PortfolioGrid() {
-    const [active, setActive] = useState("Todos");
+    const locale = useLocale();
+    const t = useTranslations("Portfolio");
+    const projects = getProjects(locale as Locale);
+    const all = t("all");
+    const categories = [all, ...Array.from(new Set(projects.map((p) => p.category)))];
+    const [active, setActive] = useState(all);
     const shown =
-        active === "Todos" ? projects : projects.filter((p) => p.category === active);
+        active === all ? projects : projects.filter((p) => p.category === active);
     return (
         <>
             <div className="mb-12 flex flex-wrap gap-2">
@@ -42,7 +45,7 @@ export function PortfolioGrid() {
                 {shown.map((project, index) => (
                     <Link
                         className={`group block ${index % 3 === 0 ? "md:col-span-2" : ""}`}
-                        href={`/portfolio/${project.slug}`}
+                        href={locale === "en" ? `/en/portfolio/${project.slug}` : `/portfolio/${project.slug}`}
                         key={project.slug}
                     >
                         <div

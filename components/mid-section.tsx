@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Reveal } from "@/components/motion";
 import { ArrowUpRight } from "lucide-react";
+import { getLocale, localizePath } from "@/lib/locale";
+import { getTranslations } from "next-intl/server";
 
 
 interface MidSectionProps {
@@ -10,12 +12,14 @@ interface MidSectionProps {
     text4?: string;
 }
 
-export function MidSection({
+export async function MidSection({
     text1 = "Qué hacemos",
     text2 = "Creamos sitios web con la claridad necesaria para convertir y la personalidad suficiente para dejar huella.",
     text3 = "Desde la idea inicial hasta el lanzamiento, unimos diseño y desarrollo en un único proceso pensado al detalle.",
-    text4 = "Para negocios locales, startups en crecimiento y equipos consolidados que buscan un trabajo de calidad."
+    text4 = "Para negocios locales, startups en crecimiento y equipos consolidados que buscan un trabajo de calidad.",
 }: MidSectionProps) {
+    const locale = await getLocale();
+    const t = await getTranslations("Home");
     return (
         <section className="bg-[#f3efe8] px-5 py-24 text-[#090909] md:px-8 md:py-36">
         <div className="mx-auto grid max-w-[1540px] gap-16 md:grid-cols-12">
@@ -34,10 +38,10 @@ export function MidSection({
                 {text4}
               </p>
               <Link
-                href="/about"
+                href={localizePath("/about", locale)}
                 className="group flex items-start justify-between text-xs uppercase tracking-wider"
               >
-                Tu web lista en 7 días{" "}
+                {t("sevenDays")}{" "}
                 <ArrowUpRight
                   size={16}
                   className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"

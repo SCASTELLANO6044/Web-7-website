@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { ArrowDownRight, Check } from "lucide-react";
 import { useEditorialGridMotion } from "@/components/editorial-grid-motion";
+import { useTranslations } from "next-intl";
 
 interface Reasons {
   reasons?: string[];
@@ -17,6 +18,7 @@ export function MidSectionGridAlternative({
     "Un proceso claro y colaborativo",
   ],
 }: Reasons) {
+  const t = useTranslations("Collaboration");
   const sectionRef = useRef<HTMLElement>(null);
   useEditorialGridMotion(sectionRef, "alternative");
 
@@ -24,7 +26,7 @@ export function MidSectionGridAlternative({
     <section ref={sectionRef} className="overflow-hidden bg-[#191817] px-5 py-24 md:px-8 md:py-36">
       <div className="mx-auto max-w-[1540px]">
         <div className="mb-5 flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-white/45">
-          <span>¿Por qué Web7? / Nuestra forma de trabajar</span>
+          <span>{t("eyebrow")}</span>
           <span aria-hidden="true">02</span>
         </div>
 
@@ -34,15 +36,14 @@ export function MidSectionGridAlternative({
             className="relative col-span-2 row-span-3 flex flex-col justify-between overflow-hidden border-b border-r border-white/15 bg-[#f3efe8] p-5 text-[#090909] md:col-span-5 md:row-span-5 md:p-8"
           >
             <span data-grid-rule className="absolute left-0 top-0 h-px w-full bg-[#ff0000]" />
-            <p className="eyebrow text-[#ff0000]">La ventaja de trabajar juntos</p>
+            <p className="eyebrow text-[#ff0000]">{t("lead")}</p>
             <div className="overflow-hidden">
               <h2 data-grid-text className="display mt-8 text-[clamp(3rem,16vw,8rem)] leading-[0.76] md:mt-0 md:text-[clamp(3.5rem,6.1vw,7.5rem)]">
-                Sin complicaciones.
-                Sin intermediarios.
+                {t("title")}
               </h2>
             </div>
             <p className="mt-7 max-w-sm text-sm leading-7 text-[#090909]/70">
-              Un buen proyecto digital nace del equilibrio entre tus objetivos y las necesidades de tu audiencia. Combinamos creatividad, estrategia y desarrollo para crear experiencias que generan resultados.
+              {t("description")}
             </p>
           </div>
 
@@ -62,7 +63,7 @@ export function MidSectionGridAlternative({
               <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/55" />
             </div>
             <div className="absolute bottom-4 left-4 right-4 z-10 flex items-end justify-between text-[10px] uppercase tracking-[0.14em] text-white/75 md:bottom-6 md:left-6 md:right-6">
-              <span>Claridad sin renunciar a nada</span>
+              <span>{t("image")}</span>
               <ArrowDownRight size={16} aria-hidden="true" />
             </div>
           </div>
@@ -80,7 +81,7 @@ export function MidSectionGridAlternative({
             className="col-span-2 flex items-center border-b border-r border-white/15 bg-white/[0.03] p-5 md:col-span-3 md:row-span-3 md:p-6"
           >
             <p className="scribble max-w-[13rem] text-xl leading-tight text-[#ff0000] md:text-2xl">
-              Tu web lista en una semana.
+              {t("note")}
             </p>
           </div>
 
@@ -90,7 +91,7 @@ export function MidSectionGridAlternative({
             data-grid-cell
             className="col-span-2 flex items-end justify-between border-b border-r border-white/15 bg-[#ff0000] p-5 text-[#090909] md:col-span-5 md:row-span-2 md:p-6"
           >
-            <p className="display max-w-sm text-4xl leading-[0.8] md:text-5xl">Los mejores proyectos empiezan con una conversación.</p>
+            <p className="display max-w-sm text-4xl leading-[0.8] md:text-5xl">{t("cta")}</p>
             <span className="ml-5 text-[10px] font-semibold uppercase tracking-[0.14em]">Web7 / 2026</span>
           </div>
         </div>

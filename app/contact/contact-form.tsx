@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import SpecularButton from "@/components/specular-button";
 import { ReceiptPrinter } from "@/components/receipt-printer";
+import { useLocale, useTranslations } from "next-intl";
 const initial = {
     name: "",
     email: "",
@@ -12,6 +13,8 @@ const initial = {
     website: "",
 };
 export function ContactForm() {
+    const t = useTranslations("Form");
+    const locale = useLocale();
     const [data, setData] = useState(initial);
     const [state, setState] = useState<"idle" | "sending" | "printing" | "sent" | "error">(
         "idle",
@@ -38,7 +41,7 @@ export function ContactForm() {
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+                body: JSON.stringify({ ...data, locale }),
             });
             const body = await res.json();
             if (!res.ok) throw new Error(body.error);
@@ -49,7 +52,7 @@ export function ContactForm() {
             setError(
                 err instanceof Error
                     ? err.message
-                    : "Ha ocurrido un error. Por favor, escríbenos directamente por correo electrónico.",
+                    : t("fallback"),
             );
             setState("error");
         }
@@ -64,13 +67,13 @@ export function ContactForm() {
                     stage={state === "sent" ? "complete" : "printing"}
                 />
                 <div className="mt-6 text-center">
-                    <p className="text-sm leading-6 text-white/60">Tu mensaje está en camino. Nos pondremos en contacto pronto.</p>
+                    <p className="text-sm leading-6 text-white/60">{t("sent")}</p>
                     <button
                         className="mt-5 min-h-11 text-xs uppercase tracking-wider text-[#ff0000] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff0000]"
                         onClick={() => setState("idle")}
                         type="button"
                     >
-                        Enviar otro mensaje
+                        {t("another")}
                     </button>
                 </div>
             </div>
@@ -78,7 +81,7 @@ export function ContactForm() {
     return (
         <form aria-busy={state === "sending"} onSubmit={submit} className="border-t border-white/20 pt-6">
             <div className="grid gap-x-6 md:grid-cols-2">
-                <Field label="Nombre" required>
+                <Field label={t("name")} required>
                     <input
                         value={data.name}
                         onChange={(e) => update("name", e.target.value)}
@@ -95,28 +98,28 @@ export function ContactForm() {
                         autoComplete="email"
                     />
                 </Field>
-                <Field label="Empresa / Organization">
+                <Field label={t("company")}>
                     <input
                         value={data.company}
                         onChange={(e) => update("company", e.target.value)}
                         autoComplete="organization"
                     />
                 </Field>
-                <Field label="Presupuesto">
+                <Field label={t("budget")}>
                     <select
                         value={data.budget}
                         onChange={(e) => update("budget", e.target.value)}
                     >
-                        <option value="">Selecciona uno</option>
+                        <option value="">{t("choose")}</option>
                         <option>€0 – €500 </option>
                         <option>€500 – €1000</option>
                         <option>€1000 – €3000</option>
                         <option>€3000+</option>
-                        <option> Acordemos un precio </option>
+                        <option>{t("price")}</option>
                     </select>
                 </Field>
             </div>
-            <Field label="Cuéntanos tu idea" required>
+            <Field label={t("message")} required>
                 <textarea
                     value={data.message}
                     onChange={(e) => update("message", e.target.value)}
@@ -125,7 +128,7 @@ export function ContactForm() {
                 />
             </Field>
             <div className="absolute -left-[10000px]" aria-hidden="true">
-                <label htmlFor="website">Sitio web</label>
+                <label htmlFor="website">{t("website")}</label>
                 <input
                     id="website"
                     tabIndex={-1}
@@ -152,7 +155,7 @@ export function ContactForm() {
                 style={{ backgroundColor: "#ff0000", border: "none" }}
                 className="inline-flex items-center gap-3 rounded-full bg-[#ff0000] px-6 py-4 text-xs uppercase tracking-[.12em] text-[#090909] transition-transform hover:scale-95 disabled:opacity-60"
             >
-                {state === "sending" ? "Enviando..." : "Enviar consulta"}
+                {state === "sending" ? t("sending") : t("submit")}
                 <ArrowUpRight size={16} />
             </SpecularButton>
         </form>
