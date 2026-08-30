@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RippleDistortion from "@/components/RippleDistortion/RippleDistortion";
+import { useLocale, useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,6 +101,9 @@ function HeroMedia() {
 }
 
 export function HeroSection() {
+    const locale = useLocale();
+    const t = useTranslations("Hero");
+    const localize = (href: string) => (locale === "en" ? `/en${href}` : href);
     useStableMobileHeroHeight();
 
     const heroRef = useRef<HTMLElement | null>(null);
@@ -211,7 +215,7 @@ export function HeroSection() {
             <div className="relative z-10 mx-auto flex w-full max-w-[1540px] flex-col justify-between">
                 {/* Información superior */}
                 <div className="flex justify-between gap-4 text-[10px] uppercase tracking-[.15em] text-white/55">
-                    <span>Estudio digital / 28.00° N</span>
+                    <span>{t("top")}</span>
                     <span className="text-right">
                         Canary Islands
                     </span>
@@ -229,14 +233,14 @@ export function HeroSection() {
                                     className="hero__eyebrow eyebrow mb-6 text-white"
                                     style={{ color: "white" }}
                                 >
-                                    Estudio de desarrollo web / Mirando al futuro
+                                    {t("eyebrow")}
                                 </p>
 
                                 <h1 className="hero__title display max-w-6xl text-[clamp(3.15rem,16.4vw,10.25rem)] leading-[.78] md:text-[clamp(4rem,10.7vw,10.25rem)]">
-                                    Experiencias digitales
+                                    {t("title")}
                                     <br />
                                     <span className="outline-text">
-                                        que dejan huella.
+                                        {t("outline")}
                                     </span>
                                 </h1>
                             </div>
@@ -254,15 +258,14 @@ export function HeroSection() {
                         className="ml-auto"
                     >
                         <p className="hero__description text-sm leading-7 text-white/70">
-                            Creamos sitios web para empresas que quieren
-                            destacar, transmitir confianza y crecer.
+                            {t("description")}
                         </p>
 
                         <Link
-                            href="/contact"
+                            href={localize("/contact")}
                             className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/35 bg-black/10 px-5 py-3 text-xs uppercase tracking-[.11em] transition-colors duration-300 hover:border-[#ff0000] hover:bg-[#ff0000] hover:text-[#090909] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f3efe8]"
                         >
-                            Empieza tu proyecto
+                            {t("cta")}
                             <ArrowUpRight size={15} />
                         </Link>
                     </Reveal>

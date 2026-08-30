@@ -3,6 +3,7 @@
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import styles from "./receipt-printer.module.css";
+import { useTranslations } from "next-intl";
 
 type ReceiptPrinterProps = {
   company?: string;
@@ -31,20 +32,21 @@ const printTimes = [0, 0.09, 0.14, 0.23, 0.28, 0.38, 0.43, 0.55, 0.6, 0.73, 0.78
 export function ReceiptPrinter({ company, name, budget, stage }: ReceiptPrinterProps) {
   const reduceMotion = useReducedMotion();
   const isComplete = stage === "complete";
+  const t = useTranslations("Receipt");
 
   return (
-    <section aria-label="Estado de tu solicitud" className={styles.printer}>
+    <section aria-label={t("aria")} className={styles.printer}>
       <div className={styles.machine}>
         <div className={styles.topRow}>
           <span>WEB7 / REQUEST</span>
           <span className={isComplete ? styles.complete : styles.printing}>
             {isComplete ? <CheckCircle2 aria-hidden="true" size={15} /> : <LoaderCircle aria-hidden="true" size={15} />}
-            {isComplete ? "LISTO" : "IMPRIMIENDO"}
+            {isComplete ? t("done") : t("printing")}
           </span>
         </div>
 
         <div className={styles.screen} role="status" aria-live="polite">
-          {isComplete ? "Solicitud recibida" : "Preparando tu proyecto…"}
+          {isComplete ? t("received") : t("preparing")}
         </div>
         <div aria-hidden="true" className={styles.slot} />
       </div>
@@ -61,16 +63,16 @@ export function ReceiptPrinter({ company, name, budget, stage }: ReceiptPrinterP
           }}
         >
           <p className={styles.brand}>WEB7</p>
-          <p className={styles.title}>RECIBO DE SOLICITUD</p>
+          <p className={styles.title}>{t("title")}</p>
           <div className={styles.rule} />
           <dl className={styles.details}>
-            <div><dt>CLIENTE</dt><dd>{name}</dd></div>
-            {company ? <div><dt>EMPRESA</dt><dd>{company}</dd></div> : null}
-            <div><dt>PROYECTO</dt><dd>Nuevo sitio web</dd></div>
-            {budget ? <div><dt>INVERSIÓN</dt><dd>{budget}</dd></div> : null}
+            <div><dt>{t("client")}</dt><dd>{name}</dd></div>
+            {company ? <div><dt>{t("company")}</dt><dd>{company}</dd></div> : null}
+            <div><dt>{t("project")}</dt><dd>{t("projectValue")}</dd></div>
+            {budget ? <div><dt>{t("budget")}</dt><dd>{budget}</dd></div> : null}
           </dl>
           <div className={styles.rule} />
-          <p className={styles.message}>Hemos recibido tu idea. Te responderemos en 1–2 días laborables.</p>
+          <p className={styles.message}>{t("message")}</p>
           <p className={styles.stamp}>REQUEST RECEIVED</p>
         </motion.article>
       </div>

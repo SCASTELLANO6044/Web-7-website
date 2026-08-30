@@ -1,17 +1,22 @@
 import { PortfolioGrid } from "./portfolio-grid";
 import { HeroAlternative } from "@/components/hero-alternative";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = { title: "Proyectos" };
-export default function Portfolio() {
+export async function generateMetadata() {
+    const t = await getTranslations("Portfolio");
+    return { title: t("metadata") };
+}
+export default async function Portfolio() {
+    const t = await getTranslations("Portfolio");
     return (
         <section className="px-5 pb-0 pt-36 md:px-8 md:pt-48">
             <div className="mx-auto max-w-[1540px]">
                 
                 <HeroAlternative 
-                    text1="Proyectos destacados / 01—06" 
-                    text2="Grandes ideas,"
-                    text3="hechas realidad."
-                    text4="Una selección de proyectos reales y conceptos creativos. Todos comparten un mismo objetivo: ayudar a las empresas a destacar y crecer en el entorno digital."
+                    text1={t("eyebrow")}
+                    text2={t("title")}
+                    text3={t("outline")}
+                    text4={t("description")}
                 />
                 
                 <div className="mt-20">

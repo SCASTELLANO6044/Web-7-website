@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { createTranslator } from "next-intl";
+import en from "@/messages/en.json";
+import es from "@/messages/es.json";
 
 export const runtime = "nodejs";
 
@@ -14,6 +17,7 @@ function isValidEmail(email: string) {
 }
 
 export async function POST(request: Request) {
+  let t = createTranslator({ locale: "es", messages: es, namespace: "Api" });
   try {
     const body = (await request.json()) as Record<string, unknown>;
     const name = value(body, "name");
@@ -22,6 +26,8 @@ export async function POST(request: Request) {
     const budget = value(body, "budget");
     const message = value(body, "message");
     const website = value(body, "website");
+    const locale = value(body, "locale") === "en" ? "en" : "es";
+    t = createTranslator({ locale, messages: locale === "en" ? en : es, namespace: "Api" });
 
     // A hidden honeypot for simple automated submissions. Pretend success so bots
     // cannot distinguish it from a delivered form.
@@ -29,13 +35,13 @@ export async function POST(request: Request) {
 
     if (!name || !isValidEmail(email) || !message)
       return NextResponse.json(
-        { error: "Por favor, completa tu nombre, correo electrónico y mensaje." },
+        { error: t("required") },
         { status: 400 },
       );
 
     if ([name, email, company, budget, message].some((field) => field.length > MAX_FIELD_LENGTH))
       return NextResponse.json(
-        { error: "Uno de los campos es demasiado largo." },
+        { error: t("tooLong") },
         { status: 400 },
       );
 
@@ -45,8 +51,7 @@ export async function POST(request: Request) {
     if (!apiKey || !to || !from)
       return NextResponse.json(
         {
-          error:
-            "El formulario de contacto aún no está configurado. Por favor, escríbenos directamente a web7canarias@gmail.com.",
+          error: t("notConfigured"),
         },
         { status: 503 },
       );
@@ -76,8 +81,7 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json(
       {
-        error:
-          "No pudimos enviar el mensaje en este momento. Por favor, envíanos un correo electrónico a web7canarias@gmail.com directamente.",
+        error: t("failed"),
       },
       { status: 500 },
     );

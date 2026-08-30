@@ -5,26 +5,20 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import SpecularButton from "@/components/specular-button";
 
 type NavigationItem = {
   href: string;
-  label: string;
+  key: "portfolio" | "services" | "about" | "contact";
   index: string;
-  detail: string;
 };
 
 const navigationItems: NavigationItem[] = [
-  { href: "/portfolio", label: "Proyectos", index: "01", detail: "Proyectos seleccionados" },
-  { href: "/services", label: "Servicios", index: "02", detail: "Nuestra Estrategia" },
-  { href: "/about", label: "About", index: "03", detail: "El estudio Web7" },
-  { href: "/contact", label: "Contacto", index: "04", detail: "Inicia un proyecto" },
-];
-
-const socialLinks = [
-  { href: "mailto:web7canarias@gmail.com", label: "Escríbenos" },
-  { href: "tel:+34620463759", label: "Llama a Jose" },
-  { href: "tel:+34627187274", label: "Llama a Sergio" },
+  { href: "/portfolio", key: "portfolio", index: "01" },
+  { href: "/services", key: "services", index: "02" },
+  { href: "/about", key: "about", index: "03" },
+  { href: "/contact", key: "contact", index: "04" },
 ];
 
 const focusableSelector =
@@ -32,6 +26,15 @@ const focusableSelector =
 
 export function Header() {
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations("Header");
+  const localize = (href: string) => (locale === "en" ? `/en${href}` : href);
+  const routePath = (href: string) => localize(href);
+  const socialLinks = [
+    { href: "mailto:web7canarias@gmail.com", label: t("email") },
+    { href: "tel:+34620463759", label: t("callJose") },
+    { href: "tel:+34627187274", label: t("callSergio") },
+  ];
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -154,7 +157,13 @@ export function Header() {
     };
   }, [open, closeMenu]);
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => pathname === routePath(href);
+  const switchLocale = () => {
+    document.cookie = `web7_locale=${locale === "en" ? "es" : "en"}; path=/; max-age=31536000; samesite=lax`;
+  };
+  const languageHref = locale === "en"
+    ? (pathname.replace(/^\/en/, "") || "/")
+    : pathname === "/" ? "/en" : `/en${pathname}`;
   const overlayTransition = reduceMotion
     ? { duration: 0.01 }
     : { duration: 0.48, ease: [0.16, 1, 0.3, 1] as const };
@@ -163,7 +172,7 @@ export function Header() {
     <header className="site-header" data-scrolled={scrolled || open}>
       <div className="site-header__frame">
         <nav className="site-header__bar" aria-label="Primary navigation">
-          <Link href="/" className="site-header__brand" aria-label="Web7 home">
+          <Link href={localize("/")} className="site-header__brand" aria-label="Web7 home">
             WEB7
           </Link>
 
@@ -171,19 +180,27 @@ export function Header() {
             {navigationItems.slice(0, 3).map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={localize(item.href)}
                 aria-current={isActive(item.href) ? "page" : undefined}
                 className="site-header__quick-link"
               >
-                {item.label}
+                {t(`nav.${item.key}.label`)}
               </Link>
             ))}
           </div>
 
           <div className="site-header__controls">
-            <Link href="/contact" className="site-header__contact-link">
-              <span>Empieza ya</span>
+            <Link href={localize("/contact")} className="site-header__contact-link">
+              <span>{t("start")}</span>
               <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.7} />
+            </Link>
+            <Link
+              href={languageHref}
+              onClick={switchLocale}
+              className="text-[10px] uppercase tracking-[.12em] text-white/75 transition-colors hover:text-[#ff0000]"
+              aria-label={t("switch")}
+            >
+              {locale === "en" ? "ES" : "EN"}
             </Link>
             <SpecularButton
               ref={triggerRef}
@@ -197,11 +214,11 @@ export function Header() {
               lineColor="#ffffff"
               baseColor="#333333"
               onClick={() => (open ? closeMenu(true) : setOpen(true))}
-              aria-label={open ? "Close navigation" : "Open navigation"}
+              aria-label={open ? t("close") : t("open")}
               aria-expanded={open}
               aria-controls="site-navigation-overlay"
             >
-              <span className="site-header__menu-label">{open ? "Close" : "Menu"}</span>
+              <span className="site-header__menu-label">{open ? t("closeLabel") : t("menu")}</span>
               <span className="site-header__menu-glyph" aria-hidden="true">
                 <i />
                 <i />
@@ -226,7 +243,7 @@ export function Header() {
             <div className="site-menu__grid" aria-hidden="true" />
             <div className="site-menu__content">
               <div className="site-menu__topline">
-                <span>Navegación</span>
+                <span>{t("navigation")}</span>
                 <span>Web7 / 28.00° N</span>
               </div>
 
@@ -246,17 +263,17 @@ export function Header() {
                       }
                     >
                       <Link
-                        href={item.href}
+                        href={localize(item.href)}
                         className="site-menu__item"
                         onClick={() => closeMenu(false)}
                         aria-current={isActive(item.href) ? "page" : undefined}
                         data-menu-autofocus={index === 0 ? true : undefined}
                       >
                         <span className="site-menu__item-index">{item.index}</span>
-                        <span className="site-menu__item-label" data-label={item.label}>
-                          {item.label}
+                        <span className="site-menu__item-label" data-label={t(`nav.${item.key}.label`)}>
+                          {t(`nav.${item.key}.label`)}
                         </span>
-                        <span className="site-menu__item-detail">{item.detail}</span>
+                        <span className="site-menu__item-detail">{t(`nav.${item.key}.detail`)}</span>
                         <ArrowUpRight className="site-menu__item-arrow" aria-hidden="true" strokeWidth={1.3} />
                       </Link>
                     </motion.div>
@@ -273,11 +290,11 @@ export function Header() {
                   <div>
                     <p className="site-menu__eyebrow">Web7 Studio</p>
                     <p className="site-menu__statement">
-                      Creamos sitios web con claridad y personalidad.
+                      {t("statement")}
                     </p>
                   </div>
                   <div className="site-menu__contact-block">
-                    <p className="site-menu__eyebrow">Contacto</p>
+                    <p className="site-menu__eyebrow">{t("contact")}</p>
                     <a href="mailto:web7canarias@gmail.com">web7canarias@gmail.com</a>
                     <p>Canary Islands, Spain</p>
                   </div>
@@ -291,7 +308,7 @@ export function Header() {
                 exit={{ opacity: 0 }}
                 transition={reduceMotion ? { duration: 0.01 } : { duration: 0.36, delay: 0.51 }}
               >
-                <span>Diseñado y desarrollado en Canarias</span>
+                <span>{t("built")}</span>
                 <div className="site-menu__socials">
                   {socialLinks.map((link) => (
                     <a key={link.href} href={link.href}>
@@ -299,8 +316,8 @@ export function Header() {
                     </a>
                   ))}
                 </div>
-                <Link href="/contact" className="site-menu__enquiry" onClick={() => closeMenu(false)}>
-                  Cuéntanos tu proyecto <ArrowUpRight aria-hidden="true" size={15} />
+                <Link href={localize("/contact")} className="site-menu__enquiry" onClick={() => closeMenu(false)}>
+                  {t("enquiry")} <ArrowUpRight aria-hidden="true" size={15} />
                 </Link>
               </motion.div>
             </div>

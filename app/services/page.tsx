@@ -1,17 +1,25 @@
-import { services } from "@/lib/projects";
+import { getServices } from "@/lib/projects";
 import { MidSectionSlogan } from "@/components/mid-section-slogan";
 import { HeroAlternative } from "@/components/hero-alternative";
+import { getLocale } from "@/lib/locale";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = { title: "Capabilities" };
-export default function Services() {
+export async function generateMetadata() {
+    const t = await getTranslations("Services");
+    return { title: t("metadata") };
+}
+export default async function Services() {
+    const locale = await getLocale();
+    const t = await getTranslations("Services");
+    const services = getServices(locale);
     return (
         <section className="px-5 pb-0 pt-36 md:px-8 md:pt-48">
             <div className="mx-auto max-w-[1540px]">
 
                 <HeroAlternative 
-                    text1="Nuestras hablidades / Tu presencia online, tratada de la manera correcta"
-                    text2="Diseñado para funcionar." 
-                    text3="Construido para durar."
+                    text1={t("eyebrow")}
+                    text2={t("title")}
+                    text3={t("outline")}
                     text4="" 
                 />
                 
@@ -32,7 +40,7 @@ export default function Services() {
                                 {body}
                             </p>
                             <span className="text-xs uppercase tracking-[.12em] text-white/45 md:col-span-2">
-                                From brief to launch
+                                {t("from")}
                             </span>
                         </article>
                     ))}
@@ -40,9 +48,9 @@ export default function Services() {
 
                 <div className="pt-20 md:pt-32">
                     <MidSectionSlogan 
-                        text1="¿No sabes lo qué necestitas?"
-                        text2="Empieza con una conversación."
-                        text3="Obtén una consulta gratuita"
+                        text1={t("sloganEyebrow")}
+                        text2={t("sloganTitle")}
+                        text3={t("sloganCta")}
                     />
                 </div>
             </div>

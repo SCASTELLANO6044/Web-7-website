@@ -4,10 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { services } from "@/lib/projects";
 import { useEditorialGridMotion } from "@/components/editorial-grid-motion";
+import { useLocale, useTranslations } from "next-intl";
+import { getServices } from "@/lib/projects";
+import type { Locale } from "@/lib/locale";
 
 export function MidSectionGrid() {
+    const locale = useLocale();
+    const t = useTranslations("Grid");
+    const services = getServices(locale as Locale);
     const sectionRef = useRef<HTMLElement>(null);
     useEditorialGridMotion(sectionRef, "primary");
 
@@ -15,7 +20,7 @@ export function MidSectionGrid() {
         <section ref={sectionRef} className="overflow-hidden bg-[#080706] px-5 py-24 md:px-8 md:py-36">
             <div className="mx-auto max-w-[1540px]">
                 <div className="mb-5 flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-white/45">
-                    <span>Áreas de especialización / 01—06</span>
+                    <span>{t("eyebrow")}</span>
                     <span aria-hidden="true">Build system</span>
                 </div>
 
@@ -25,14 +30,14 @@ export function MidSectionGrid() {
                         className="relative col-span-2 row-span-2 flex flex-col justify-between overflow-hidden border-b border-r border-white/20 bg-[#11100f] p-5 md:col-span-5 md:row-span-4 md:p-8"
                     >
                         <span data-grid-rule className="absolute left-0 top-0 h-px w-full bg-[#ff0000]" />
-                        <p className="eyebrow" style={{ color: 'red' }}>Trabajo digital, construido por completo</p>
+                        <p className="eyebrow" style={{ color: 'red' }}>{t("build")}</p>
                         <div className="overflow-hidden">
                             <h2 data-grid-text className="display mt-8 max-w-md text-[clamp(3rem,15vw,8rem)] leading-[0.78] md:mt-0 md:text-[clamp(3.5rem,5.4vw,7rem)]">
-                                Ideas que se juntan con la tecnología.
+                                {t("title")}
                             </h2>
                         </div>
                         <p className="mt-7 max-w-sm text-sm leading-7 text-white/62">
-                            La disciplina detrás de un sitio web que atrae la atención y la mantiene.
+                            {t("description")}
                         </p>
                     </div>
 
@@ -52,7 +57,7 @@ export function MidSectionGrid() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                         </div>
                         <span className="absolute bottom-4 left-4 z-10 text-[10px] uppercase tracking-[0.16em] text-white/70 md:bottom-6 md:left-6">
-                            Un sistema, cada detalle
+                            {t("image")}
                         </span>
                     </div>
 
@@ -69,7 +74,7 @@ export function MidSectionGrid() {
                         className="col-span-2 flex items-center border-b border-r border-white/20 bg-[#0c0b0a] p-5 md:col-span-3 md:row-span-2 md:p-6"
                     >
                         <p className="scribble max-w-[13rem] text-xl leading-tight text-[#ff0000] md:text-2xl">
-                            Una visión clara, hasta el más pequeño detalle.
+                            {t("note")}
                         </p>
                     </div>
 
@@ -92,13 +97,13 @@ export function MidSectionGrid() {
                         className="col-span-2 flex items-end justify-between border-b border-r border-white/20 bg-[#f3efe8] p-5 text-[#090909] md:col-span-3 md:row-span-3 md:p-6"
                     >
                         <div>
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.14em]">From strategy to launch</p>
-                            <p className="display mt-4 text-4xl leading-[0.8] md:text-5xl">Ready to make it count?</p>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.14em]">{t("from")}</p>
+                            <p className="display mt-4 text-4xl leading-[0.8] md:text-5xl">{t("cta")}</p>
                         </div>
                         <Link
-                            href="/services"
+                            href={locale === "en" ? "/en/services" : "/services"}
                             className="ml-4 inline-grid size-11 shrink-0 place-items-center rounded-full border border-[#090909]/25 transition-colors hover:bg-[#ff0000] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#090909]"
-                            aria-label="Explore capabilities"
+                            aria-label={t("explore")}
                         >
                             <ArrowUpRight size={18} aria-hidden="true" />
                         </Link>

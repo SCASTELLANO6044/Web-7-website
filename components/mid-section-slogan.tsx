@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/motion";
+import { getLocale, localizePath } from "@/lib/locale";
 
 interface MidSectionSloganProps {
     text1?: string;
@@ -8,11 +9,12 @@ interface MidSectionSloganProps {
     text3?: string;
 }
 
-export function MidSectionSlogan({ 
+export async function MidSectionSlogan({ 
     text1 = "Tu próximo proyecto empieza aquí", 
     text2 = "Hagámoslo inolvidable", 
-    text3 = "Hablemos de tu proyecto"
+    text3 = "Hablemos de tu proyecto",
 }: MidSectionSloganProps){
+    const locale = await getLocale();
     return(
         <section className="px-5 pb-24 md:px-8 md:pb-16">
         <div className="mx-auto max-w-[1540px] overflow-hidden bg-[var(--alternative_red)] px-6 py-16 text-[#090909] md:px-14 md:py-24">
@@ -24,7 +26,7 @@ export function MidSectionSlogan({
                 {text2}
             </h2>
             <Link
-              href="/contact"
+              href={localizePath("/contact", locale)}
               className="mt-10 inline-flex items-center gap-3 rounded-full bg-[#090909] px-6 py-4 text-xs uppercase tracking-[.13em] text-[#f3efe8] transition-transform hover:scale-95"
               style={{ color: "#ffffff" }}
             >
