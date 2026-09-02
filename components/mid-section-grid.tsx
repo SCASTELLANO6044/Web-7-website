@@ -101,7 +101,7 @@ export function MidSectionGrid() {
                             <p className="display mt-4 text-4xl leading-[0.8] md:text-5xl">{t("cta")}</p>
                         </div>
                         <Link
-                            href={locale === "en" ? "/en/services" : "/services"}
+                            href={locale === "es" ? "/services" : `/${locale}/services`}
                             className="ml-4 inline-grid size-11 shrink-0 place-items-center rounded-full border border-[#090909]/25 transition-colors hover:bg-[#ff0000] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#090909]"
                             aria-label={t("explore")}
                         >

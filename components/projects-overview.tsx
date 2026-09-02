@@ -11,7 +11,7 @@ export function ProjectsOverview() {
     const locale = useLocale();
     const t = useTranslations("Home");
     const projects = getProjects(locale as Locale);
-    const localize = (href: string) => (locale === "en" ? `/en${href}` : href);
+    const localize = (href: string) => (locale === "es" ? href : `/${locale}${href}`);
     return (
         <section className="px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-[1540px]">

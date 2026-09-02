@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 export function Footer() {
     const locale = useLocale();
     const t = useTranslations("Footer");
-    const localize = (href: string) => (locale === "en" ? `/en${href}` : href);
+    const localize = (href: string) => (locale === "es" ? href : `/${locale}${href}`);
     return (
         <footer className="bg-[#f3efe8] px-5 pb-6 pt-20 text-[#090909] md:px-8 md:pt-28">
             <div className="mx-auto max-w-[1540px]">

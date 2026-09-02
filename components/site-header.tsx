@@ -28,7 +28,7 @@ export function Header() {
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("Header");
-  const localize = (href: string) => (locale === "en" ? `/en${href}` : href);
+  const localize = (href: string) => (locale === "es" ? href : `/${locale}${href}`);
   const routePath = (href: string) => localize(href);
   const socialLinks = [
     { href: "mailto:web7canarias@gmail.com", label: t("email") },
@@ -158,12 +158,12 @@ export function Header() {
   }, [open, closeMenu]);
 
   const isActive = (href: string) => pathname === routePath(href);
+  const nextLocale = locale === "es" ? "en" : locale === "en" ? "cs" : "es";
   const switchLocale = () => {
-    document.cookie = `web7_locale=${locale === "en" ? "es" : "en"}; path=/; max-age=31536000; samesite=lax`;
+    document.cookie = `web7_locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
   };
-  const languageHref = locale === "en"
-    ? (pathname.replace(/^\/en/, "") || "/")
-    : pathname === "/" ? "/en" : `/en${pathname}`;
+  const basePath = pathname.replace(/^\/(en|cs)(?=\/|$)/, "") || "/";
+  const languageHref = nextLocale === "es" ? basePath : `/${nextLocale}${basePath}`;
   const overlayTransition = reduceMotion
     ? { duration: 0.01 }
     : { duration: 0.48, ease: [0.16, 1, 0.3, 1] as const };
@@ -194,14 +194,14 @@ export function Header() {
               <span>{t("start")}</span>
               <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.7} />
             </Link>
-            <Link
+            <a
               href={languageHref}
               onClick={switchLocale}
               className="text-[10px] uppercase tracking-[.12em] text-white/75 transition-colors hover:text-[#ff0000]"
               aria-label={t("switch")}
             >
-              {locale === "en" ? "ES" : "EN"}
-            </Link>
+              {locale.toUpperCase()}
+            </a>
             <SpecularButton
               ref={triggerRef}
               type="button"

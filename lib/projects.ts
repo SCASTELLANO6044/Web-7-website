@@ -234,11 +234,31 @@ const englishServices = [
   ["06", "More than a website", "Digital solutions for businesses", "Brand integration, conversion strategy and a broader view that turns a website into a business tool."],
 ] as const;
 
+const czechProjects: Record<string, Partial<Project>> = {
+  "good-meals": { category: "Gastronomie a pohostinství", description: "Digitální domov pro nový způsob, jak se dobře stravovat.", services: ["Webový design", "Vývoj", "Integrace značky"], challenge: "Proměnit gastronomický koncept v jasný a poutavý digitální zážitek.", solution: "Spojili jsme osobitý vizuální design s jednoduchou strukturou obsahu, která staví produkt a výzvu k akci do popředí.", results: ["Osobitá digitální prezentace", "Zážitek optimalizovaný pro mobil", "Jasnější cesta ke konverzi"] },
+  "altamar-residences": { category: "Nemovitosti", description: "Pobřežní nemovitosti prezentované s elegancí a důvěrou.", year: "Koncept", services: ["Strategie", "UI/UX", "Frontend"], challenge: "Zpřístupnit prémiovou nemovitost, aniž bychom skryli informace, které kupující potřebují.", solution: "Redakční realitní systém kombinující promyšlené snímky, elegantní typografii a praktické informace.", results: ["Prémiové postavení", "Intuitivní procházení", "Struktura připravená získávat poptávky"] },
+  "siete-studio": { category: "Architektura", description: "Architektonické studio s promyšlenější digitální prezentací.", year: "Koncept", services: ["Umělecké vedení", "Webový design", "Vývoj"], challenge: "Ukázat preciznost architektury a současně zachovat minimalistickou podstatu studia.", solution: "Portfolio postavené na vizuálním rytmu, měřítku a prostoru, které nechává vyniknout každý projekt.", results: ["Redakční jasnost", "Rychlejší prezentace", "Stránky připravené pro vyhledávání"] },
+  "aera-health": { category: "Zdraví", description: "Přívětivý digitální zdravotnický zážitek navržený pro budování důvěry.", year: "Koncept", services: ["UX výzkum", "Produktový design", "Vývoj"], challenge: "Učinit složitý zdravotnický proces jasným, bezpečným a snadno sledovatelným.", solution: "Klidný vizuální systém s přístupnými interakcemi a přímými cestami k pomoci.", results: ["Přístupný design", "Větší jasnost", "Zážitek založený na důvěře"] },
+  "form-athletics": { category: "Fitness", description: "Výkonná energie pro komunitu zaměřenou na pohyb.", year: "Koncept", services: ["Integrace značky", "E-commerce UX", "Vývoj"], challenge: "Udržet energii sportovní značky, aniž by se při nákupu ztratila jasnost.", solution: "Dynamický obchod s jasnou hierarchií produktů a obsahem, který vyjadřuje rychlost.", results: ["Silnější identita", "UX zaměřené na konverze", "Rychlé načítání na mobilu"] },
+  "nido-saas": { category: "SaaS", description: "Finanční platforma navržená tak, aby složité věci zjednodušila.", year: "Koncept", services: ["Produktová strategie", "UI systém", "Frontend"], challenge: "Jasně vysvětlit technickou platformu zakladatelům a finančním týmům.", solution: "Proměnili jsme produkt v srozumitelný příběh a vytvořili designový systém připravený růst.", results: ["Jasnější hodnotová nabídka", "Škálovatelný systém", "UX připravené pro firmy"] },
+};
+
+const czechServices = [
+  ["01", "Weby s osobitostí", "Webový design na míru", "Strategické weby s velkým dopadem, které odrážejí vaši identitu a vedou návštěvníky k akci."],
+  ["02", "Vytvořeno, aby vydrželo", "Frontendový a backendový vývoj", "Solidní a udržitelná řešení – od vizuálního zážitku po systémy, které ho pohánějí."],
+  ["03", "Každá obrazovka promyšlená", "Responzivní UI/UX", "Flexibilní rozhraní pro mobil, tablet i desktop."],
+  ["04", "Navrženo, aby bylo nalezeno", "SEO a výkon", "Technický základ pro vyhledávače a rychlý zážitek pro návštěvníky."],
+  ["05", "Partner i po spuštění", "Údržba a konzultace", "Průběžná vylepšení, technická podpora a rady pro růst digitální prezentace."],
+  ["06", "Více než web", "Digitální řešení pro firmy", "Integrace značky, konverzní strategie a širší pohled na web jako obchodní nástroj."],
+] as const;
+
 export function getProjects(locale: Locale) {
   if (locale === "es") return projects;
-  return projects.map((project) => ({ ...project, ...englishProjects[project.slug] }));
+  const translations = locale === "cs" ? czechProjects : englishProjects;
+  return projects.map((project) => ({ ...project, ...translations[project.slug] }));
 }
 
 export function getServices(locale: Locale) {
-  return locale === "en" ? englishServices : services;
+  if (locale === "es") return services;
+  return locale === "cs" ? czechServices : englishServices;
 }

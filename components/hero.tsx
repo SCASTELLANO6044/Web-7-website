@@ -103,7 +103,7 @@ function HeroMedia() {
 export function HeroSection() {
     const locale = useLocale();
     const t = useTranslations("Hero");
-    const localize = (href: string) => (locale === "en" ? `/en${href}` : href);
+    const localize = (href: string) => (locale === "es" ? href : `/${locale}${href}`);
     useStableMobileHeroHeight();
 
     const heroRef = useRef<HTMLElement | null>(null);

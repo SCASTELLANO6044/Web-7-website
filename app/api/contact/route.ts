@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createTranslator } from "next-intl";
 import en from "@/messages/en.json";
 import es from "@/messages/es.json";
+import cs from "@/messages/cs.json";
 
 export const runtime = "nodejs";
 
@@ -26,8 +27,10 @@ export async function POST(request: Request) {
     const budget = value(body, "budget");
     const message = value(body, "message");
     const website = value(body, "website");
-    const locale = value(body, "locale") === "en" ? "en" : "es";
-    t = createTranslator({ locale, messages: locale === "en" ? en : es, namespace: "Api" });
+    const requestedLocale = value(body, "locale");
+    const locale = requestedLocale === "en" || requestedLocale === "cs" ? requestedLocale : "es";
+    const messages = locale === "en" ? en : locale === "cs" ? cs : es;
+    t = createTranslator({ locale, messages, namespace: "Api" });
 
     // A hidden honeypot for simple automated submissions. Pretend success so bots
     // cannot distinguish it from a delivered form.

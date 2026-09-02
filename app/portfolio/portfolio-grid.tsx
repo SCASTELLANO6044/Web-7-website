@@ -45,7 +45,7 @@ export function PortfolioGrid() {
                 {shown.map((project, index) => (
                     <Link
                         className={`group block ${index % 3 === 0 ? "md:col-span-2" : ""}`}
-                        href={locale === "en" ? `/en/portfolio/${project.slug}` : `/portfolio/${project.slug}`}
+                        href={locale === "es" ? `/portfolio/${project.slug}` : `/${locale}/portfolio/${project.slug}`}
                         key={project.slug}
                     >
                         <div
