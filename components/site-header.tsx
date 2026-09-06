@@ -158,11 +158,11 @@ export function Header() {
   }, [open, closeMenu]);
 
   const isActive = (href: string) => pathname === routePath(href);
-  const nextLocale = locale === "es" ? "en" : locale === "en" ? "cs" : "es";
+  const nextLocale = locale === "es" ? "en" : locale === "en" ? "cs" : locale === "cs" ? "fr" : "es";
   const switchLocale = () => {
     document.cookie = `web7_locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
   };
-  const basePath = pathname.replace(/^\/(en|cs)(?=\/|$)/, "") || "/";
+  const basePath = pathname.replace(/^\/(en|cs|fr)(?=\/|$)/, "") || "/";
   const languageHref = nextLocale === "es" ? basePath : `/${nextLocale}${basePath}`;
   const overlayTransition = reduceMotion
     ? { duration: 0.01 }

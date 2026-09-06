@@ -1,11 +1,9 @@
-import { HorizontalTextLoop } from "@/components/horizontal-text-loop";
 import { MidSection } from "@/components/mid-section";
 import { ProjectsOverview } from "@/components/projects-overview";
 import { HeroSection } from "@/components/hero";
 import { MidSectionGrid } from "@/components/mid-section-grid";
 import { MidSectionGridAlternative } from "@/components/mid-section-grid-alternative";
 import { MidSectionReviewFromClient } from "@/components/mid-section-review-from-client";
-import { MidSectionSlogan } from "@/components/mid-section-slogan";
 import { getTranslations } from "next-intl/server";
 
 export default async function Home() {

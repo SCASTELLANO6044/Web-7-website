@@ -3,7 +3,9 @@ import { headers } from "next/headers";
 
 export default getRequestConfig(async () => {
   const requestedLocale = (await headers()).get("x-web7-locale");
-  const locale = requestedLocale === "en" || requestedLocale === "cs" ? requestedLocale : "es";
+  const locale = requestedLocale === "en" || requestedLocale === "cs" || requestedLocale === "fr"
+    ? requestedLocale
+    : "es";
 
   return {
     locale,

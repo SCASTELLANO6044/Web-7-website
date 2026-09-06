@@ -234,6 +234,54 @@ const englishServices = [
   ["06", "More than a website", "Digital solutions for businesses", "Brand integration, conversion strategy and a broader view that turns a website into a business tool."],
 ] as const;
 
+const frenchProjects: Record<string, Partial<Project>> = {
+  "good-meals": {
+    category: "Alimentation et hôtellerie", description: "Un foyer digital pour une nouvelle façon de bien manger.",
+    services: ["Conception web", "Développement", "Intégration de marque"], challenge: "Transformer un concept gastronomique en une expérience digitale claire et attrayante.",
+    solution: "Nous avons associé un design visuel singulier à une structure de contenu simple qui met le produit et l’appel à l’action au premier plan.",
+    results: ["Une présence digitale distinctive", "Une expérience optimisée pour mobile", "Un parcours de conversion plus clair"],
+  },
+  "altamar-residences": {
+    category: "Immobilier", description: "Des propriétés côtières présentées avec élégance et confiance.", year: "Concept",
+    services: ["Stratégie", "UI/UX", "Frontend"], challenge: "Rendre un bien immobilier haut de gamme accessible sans cacher les informations dont les acheteurs ont besoin.",
+    solution: "Un système immobilier éditorial qui associe des images soignées, une typographie élégante et des informations pratiques.",
+    results: ["Positionnement haut de gamme", "Exploration intuitive", "Une structure prête à générer des prospects"],
+  },
+  "siete-studio": {
+    category: "Architecture", description: "Un studio d’architecture doté d’une présence digitale plus réfléchie.", year: "Concept",
+    services: ["Direction artistique", "Conception web", "Développement"], challenge: "Montrer la précision du travail architectural tout en préservant l’essence minimaliste du studio.",
+    solution: "Un portfolio construit autour du rythme visuel, de l’échelle et de l’espace, laissant chaque projet prendre sa place.",
+    results: ["Clarté éditoriale", "Présentation plus rapide", "Pages prêtes pour le référencement"],
+  },
+  "aera-health": {
+    category: "Santé", description: "Une expérience de santé numérique rassurante, conçue pour inspirer confiance.", year: "Concept",
+    services: ["Recherche UX", "Design produit", "Développement"], challenge: "Rendre un parcours de santé complexe clair, sûr et facile à suivre.",
+    solution: "Un système visuel apaisé, avec des interactions accessibles et des accès directs à l’aide.",
+    results: ["Design accessible", "Plus de clarté", "Une expérience fondée sur la confiance"],
+  },
+  "form-athletics": {
+    category: "Fitness", description: "Une énergie haute performance pour une communauté tournée vers le mouvement.", year: "Concept",
+    services: ["Intégration de marque", "UX e-commerce", "Développement"], challenge: "Préserver l’énergie d’une marque sportive sans perdre en clarté au moment de l’achat.",
+    solution: "Une boutique dynamique avec une hiérarchie produit claire et un contenu qui transmet la vitesse.",
+    results: ["Identité renforcée", "UX orientée conversion", "Chargement rapide sur mobile"],
+  },
+  "nido-saas": {
+    category: "SaaS", description: "Une plateforme financière conçue pour rendre le complexe simple.", year: "Concept",
+    services: ["Stratégie produit", "Système UI", "Frontend"], challenge: "Expliquer clairement une plateforme technique à des fondateurs et des équipes financières.",
+    solution: "Nous avons transformé le produit en un récit clair et créé un système de design prêt à évoluer.",
+    results: ["Proposition de valeur plus claire", "Système évolutif", "UX prête pour les entreprises"],
+  },
+};
+
+const frenchServices = [
+  ["01", "Des sites avec de la personnalité", "Conception web sur mesure", "Des sites stratégiques et à fort impact, qui reflètent votre identité et guident vos visiteurs vers l’action."],
+  ["02", "Conçu pour durer", "Développement frontend et backend", "Des réalisations solides et maintenables, de l’expérience visuelle aux systèmes qui la rendent possible."],
+  ["03", "Chaque écran, pensé avec soin", "UI/UX responsive", "Des interfaces flexibles qui fonctionnent naturellement sur mobile, tablette et ordinateur."],
+  ["04", "Conçu pour être trouvé", "SEO et performance", "Une base technique optimisée pour les moteurs de recherche et une expérience rapide pour vos visiteurs."],
+  ["05", "Un partenaire après le lancement", "Maintenance et conseil", "Des améliorations continues, du support technique et des conseils pour développer votre présence digitale."],
+  ["06", "Bien plus qu’un site web", "Solutions digitales pour les entreprises", "Intégration de marque, stratégie de conversion et vision d’ensemble pour faire d’un site un véritable outil commercial."],
+] as const;
+
 const czechProjects: Record<string, Partial<Project>> = {
   "good-meals": { category: "Gastronomie a pohostinství", description: "Digitální domov pro nový způsob, jak se dobře stravovat.", services: ["Webový design", "Vývoj", "Integrace značky"], challenge: "Proměnit gastronomický koncept v jasný a poutavý digitální zážitek.", solution: "Spojili jsme osobitý vizuální design s jednoduchou strukturou obsahu, která staví produkt a výzvu k akci do popředí.", results: ["Osobitá digitální prezentace", "Zážitek optimalizovaný pro mobil", "Jasnější cesta ke konverzi"] },
   "altamar-residences": { category: "Nemovitosti", description: "Pobřežní nemovitosti prezentované s elegancí a důvěrou.", year: "Koncept", services: ["Strategie", "UI/UX", "Frontend"], challenge: "Zpřístupnit prémiovou nemovitost, aniž bychom skryli informace, které kupující potřebují.", solution: "Redakční realitní systém kombinující promyšlené snímky, elegantní typografii a praktické informace.", results: ["Prémiové postavení", "Intuitivní procházení", "Struktura připravená získávat poptávky"] },
@@ -254,11 +302,11 @@ const czechServices = [
 
 export function getProjects(locale: Locale) {
   if (locale === "es") return projects;
-  const translations = locale === "cs" ? czechProjects : englishProjects;
+  const translations = locale === "cs" ? czechProjects : locale === "fr" ? frenchProjects : englishProjects;
   return projects.map((project) => ({ ...project, ...translations[project.slug] }));
 }
 
 export function getServices(locale: Locale) {
   if (locale === "es") return services;
-  return locale === "cs" ? czechServices : englishServices;
+  return locale === "cs" ? czechServices : locale === "fr" ? frenchServices : englishServices;
 }

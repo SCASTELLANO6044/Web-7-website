@@ -3,6 +3,7 @@ import { createTranslator } from "next-intl";
 import en from "@/messages/en.json";
 import es from "@/messages/es.json";
 import cs from "@/messages/cs.json";
+import fr from "@/messages/fr.json";
 
 export const runtime = "nodejs";
 
@@ -28,8 +29,10 @@ export async function POST(request: Request) {
     const message = value(body, "message");
     const website = value(body, "website");
     const requestedLocale = value(body, "locale");
-    const locale = requestedLocale === "en" || requestedLocale === "cs" ? requestedLocale : "es";
-    const messages = locale === "en" ? en : locale === "cs" ? cs : es;
+    const locale = requestedLocale === "en" || requestedLocale === "cs" || requestedLocale === "fr"
+      ? requestedLocale
+      : "es";
+    const messages = locale === "en" ? en : locale === "cs" ? cs : locale === "fr" ? fr : es;
     t = createTranslator({ locale, messages, namespace: "Api" });
 
     // A hidden honeypot for simple automated submissions. Pretend success so bots
