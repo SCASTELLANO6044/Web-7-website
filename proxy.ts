@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const LOCALE_COOKIE = "web7_locale";
-const LOCALIZED_LOCALES = ["en", "cs"] as const;
+const LOCALIZED_LOCALES = ["en", "cs", "fr"] as const;
 
 function preferredLocale(request: NextRequest) {
   const preference = request.cookies.get(LOCALE_COOKIE)?.value;
-  if (preference === "es" || preference === "en" || preference === "cs") return preference;
+  if (preference === "es" || preference === "en" || preference === "cs" || preference === "fr") return preference;
 
   const language = request.headers.get("accept-language")?.toLowerCase() ?? "";
   if (language.startsWith("es") || language.includes(",es")) return "es";
   if (language.startsWith("cs") || language.includes(",cs")) return "cs";
+  if (language.startsWith("fr") || language.includes(",fr")) return "fr";
   return "en";
 }
 
