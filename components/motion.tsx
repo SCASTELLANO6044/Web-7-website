@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 export function Reveal({
@@ -29,10 +29,12 @@ export function Reveal({
 
 export function LoadingScreen() {
   const element = useRef<HTMLDivElement>(null);
+  const [complete, setComplete] = useState(false);
   useEffect(() => {
     const el = element.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el?.remove();
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setComplete(true);
       return;
     }
     const ctx = gsap.context(() =>
@@ -49,11 +51,13 @@ export function LoadingScreen() {
           duration: 0.7,
           delay: 0.15,
           ease: "power3.inOut",
-          onComplete: () => el.remove(),
+          onComplete: () => setComplete(true),
         }),
+      el,
     );
     return () => ctx.revert();
   }, []);
+  if (complete) return null;
   return (
     <div
       ref={element}

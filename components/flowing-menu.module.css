@@ -1,0 +1,149 @@
+.menu {
+  width: 100%;
+  overflow: hidden;
+  color: var(--menu-text);
+  background: var(--menu-background);
+  border-top: 1px solid var(--menu-border);
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--menu-border);
+}
+
+.link {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) 1.5rem;
+  align-items: center;
+  gap: clamp(.75rem, 2vw, 2rem);
+  min-height: 156px;
+  padding: 1.75rem clamp(.25rem, 1.5vw, 1.5rem);
+  color: var(--menu-text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.item:has(.link:focus-visible)::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 5px;
+  border: 2px solid var(--menu-marquee-text);
+  box-shadow: 0 0 0 2px var(--menu-marquee-background);
+  pointer-events: none;
+}
+
+.number {
+  align-self: start;
+  padding-top: .5rem;
+  font-size: .75rem;
+  opacity: .65;
+}
+
+.copy {
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.description {
+  max-width: 72ch;
+  margin: .85rem 0 0;
+  font-size: .875rem;
+  line-height: 1.65;
+  opacity: .7;
+}
+
+.arrow {
+  width: 100%;
+}
+
+.marquee {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--menu-marquee-background);
+  color: var(--menu-marquee-text);
+  pointer-events: none;
+  transform: translateY(101%);
+}
+
+.reveal,
+.inner {
+  height: 100%;
+}
+
+.inner,
+.part {
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.part {
+  flex-shrink: 0;
+}
+
+.part span {
+  padding: 0 1.5rem;
+  font-size: clamp(1.5rem, 3.5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.image {
+  width: clamp(140px, 17vw, 240px);
+  height: 92px;
+  margin: 0 1rem;
+  border-radius: 100px;
+  background-color: var(--menu-marquee-text);
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 600px) {
+  .link {
+    grid-template-columns: 1.25rem minmax(0, 1fr) 1.25rem;
+    min-height: 168px;
+    padding-block: 1.5rem;
+  }
+
+  .description {
+    font-size: .8125rem;
+  }
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .link:active,
+  .link:focus-visible {
+    color: var(--menu-marquee-text);
+    background: var(--menu-marquee-background);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    display: none;
+  }
+
+  .link:hover {
+    color: var(--menu-marquee-text);
+    background: var(--menu-marquee-background);
+  }
+}
