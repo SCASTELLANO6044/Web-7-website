@@ -25,7 +25,7 @@ export default async function RootLayout({
   const locale = await getLocale();
   const t = await getTranslations("Layout");
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <body>
         <a
           href="#main"
