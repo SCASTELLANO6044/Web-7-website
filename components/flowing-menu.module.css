@@ -108,6 +108,8 @@
 }
 
 .image {
+  position: relative;
+  overflow: hidden;
   width: clamp(140px, 17vw, 240px);
   height: 92px;
   margin: 0 1rem;

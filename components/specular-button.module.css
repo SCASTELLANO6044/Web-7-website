@@ -33,5 +33,12 @@
 .size-lg { padding: 18px 40px; font-size: 1.15rem; }
 
 .fx { position: absolute; z-index: 1; inset: -20px; pointer-events: none; }
+.fx::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border-radius: var(--sb-radius);
+  border: 1px solid color-mix(in srgb, var(--sb-base-color, #525252) 45%, transparent);
+}
 .fx canvas { display: block; width: 100%; height: 100%; }
 .label { position: relative; z-index: 2; display: inline-flex; align-items: inherit; justify-content: inherit; gap: inherit; }

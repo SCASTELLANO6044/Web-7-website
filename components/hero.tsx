@@ -1,17 +1,19 @@
 "use client";
 
-import { useLayoutEffect, useRef, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { Reveal } from "@/components/motion";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import RippleDistortion from "@/components/RippleDistortion/RippleDistortion";
+import { useDeferredVisual } from "@/components/use-deferred-visual";
 import { useLocale, useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HERO_VIDEO_SRC = "/visuals/hero-video.mp4";
+const RippleDistortion = dynamic(() => import("@/components/RippleDistortion/RippleDistortion"), { ssr: false });
 
 function subscribeToCoarsePointer(onStoreChange: () => void) {
     const mediaQuery = window.matchMedia("(pointer: coarse), (max-width: 767px)");
@@ -68,6 +70,7 @@ function useStableMobileHeroHeight() {
 }
 
 function HeroMedia() {
+    const ready = useDeferredVisual();
     // A low-resolution WebGL layer keeps the hero responsive on touch devices
     // while still allowing a finger tap to create the same ripple as a cursor.
     const isTouchDevice = useSyncExternalStore(
@@ -77,7 +80,16 @@ function HeroMedia() {
     );
 
     return (
-        <RippleDistortion
+        <>
+        <Image
+            src="/visuals/hero-poster.jpg"
+            alt=""
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover"
+        />
+        {ready && <RippleDistortion
             src={HERO_VIDEO_SRC}
             brushSize={isTouchDevice ? 92 : 110}
             strength={0.2}
@@ -96,7 +108,8 @@ function HeroMedia() {
             clickStrength={2}
             quality={isTouchDevice ? "low" : "medium"}
             enabled
-        />
+        />}
+        </>
     );
 }
 
@@ -104,48 +117,29 @@ export function HeroSection() {
     const locale = useLocale();
     const t = useTranslations("Hero");
     const localize = (href: string) => (locale === "es" ? href : `/${locale}${href}`);
+
     useStableMobileHeroHeight();
 
     const heroRef = useRef<HTMLElement | null>(null);
     const titleScrollRef = useRef<HTMLDivElement | null>(null);
-    const titleIntroRef = useRef<HTMLDivElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const ctx = gsap.context(() => {
-            const titleIntro = titleIntroRef.current;
             const titleScroll = titleScrollRef.current;
             const hero = heroRef.current;
             const content = contentRef.current;
 
-            if (!titleIntro || !titleScroll || !hero || !content) return;
+            if (!titleScroll || !hero || !content) return;
 
             const mm = gsap.matchMedia();
 
             mm.add("(min-width: 768px)", () => {
-                    const titleIntroY = 200;
                     const titleScrollY = -600;
                     const titleScrollScale = 0.6;
                     const contentY = -400;
                     const contentScale = 0.6;
-
-                    // Intro del título
-                    gsap.fromTo(
-                        titleIntro,
-                        {
-                            opacity: 0,
-                            y: titleIntroY,
-                            scale: 0.6,
-                        },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            scale: 1,
-                            duration: 1.2,
-                            delay: 1.3,
-                            ease: "power3.out",
-                        }
-                    );
 
                     // Salida del título al hacer scroll
                     gsap.to(titleScroll, {
@@ -176,23 +170,6 @@ export function HeroSection() {
                     });
             });
 
-            // Start after the loading screen has cleared. A shorter delay puts
-            // this entire sequence behind the fixed loader on phones, making
-            // the headline appear to be static when the page becomes visible.
-            mm.add("(max-width: 767px)", () => {
-                gsap.fromTo(
-                    titleIntro,
-                    { opacity: 0, y: 96, scale: 0.9 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        duration: 1.05,
-                        delay: 1.55,
-                        ease: "power3.out",
-                    },
-                );
-            });
         }, heroRef);
 
         return () => ctx.revert();
@@ -203,7 +180,7 @@ export function HeroSection() {
             ref={heroRef}
             className="hero relative isolate flex overflow-hidden bg-[#050404] px-5 pb-8 pt-32 md:min-h-dvh md:px-8"
         >
-            <div className="absolute inset-0 z-[1]">
+            <div className="absolute inset-0 z-[1]" aria-hidden="true">
                 <HeroMedia />
             </div>
 
@@ -226,8 +203,7 @@ export function HeroSection() {
                     ref={titleScrollRef}
                     className="hero__title-wrap pointer-events-none absolute inset-x-0 top-[25%] flex justify-center px-2 md:px-0"
                 >
-                    <div ref={titleIntroRef}>
-                        <Reveal>
+                    <div>
                             <div className="text-center">
                                 <p
                                     className="hero__eyebrow eyebrow mb-6 text-white"
@@ -244,7 +220,6 @@ export function HeroSection() {
                                     </span>
                                 </h1>
                             </div>
-                        </Reveal>
                     </div>
                 </div>
 
@@ -253,10 +228,7 @@ export function HeroSection() {
                     ref={contentRef}
                     className="hero__content absolute bottom-[8%] left-5 right-5 z-10 max-w-none md:bottom-[10%] md:left-auto md:right-0 md:max-w-md"
                 >
-                    <Reveal
-                        delay={2.2}
-                        className="ml-auto"
-                    >
+                    <div className="ml-auto">
                         <p className="hero__description text-sm leading-7 text-white/70">
                             {t("description")}
                         </p>
@@ -268,7 +240,7 @@ export function HeroSection() {
                             {t("cta")}
                             <ArrowUpRight size={15} />
                         </Link>
-                    </Reveal>
+                    </div>
                 </div>
             </div>
         </section>

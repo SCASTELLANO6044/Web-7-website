@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
-import { LoadingScreen } from "@/components/motion";
 import SmoothScroll from "@/components/smooth-scroll";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -35,8 +34,6 @@ export default async function RootLayout({
         </a>
 
         <NextIntlClientProvider>
-          <LoadingScreen />
-
           <Header />
 
           <SmoothScroll>

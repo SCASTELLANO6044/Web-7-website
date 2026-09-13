@@ -1,8 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useRef } from "react";
 
 export function Reveal({
   children,
@@ -13,60 +11,34 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
-  return (
-    <motion.div
-      className={className}
-      initial={reduce ? false : { opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+  const ref = useRef<HTMLDivElement>(null);
 
-export function LoadingScreen() {
-  const element = useRef<HTMLDivElement>(null);
-  const [complete, setComplete] = useState(false);
   useEffect(() => {
-    const el = element.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setComplete(true);
-      return;
-    }
-    const ctx = gsap.context(() =>
-      gsap
-        .timeline()
-        .to(".loader-number", {
-          textContent: 7,
-          duration: 0.65,
-          snap: { textContent: 1 },
-          ease: "power2.out",
-        })
-        .to(el, {
-          yPercent: -100,
-          duration: 0.7,
-          delay: 0.15,
-          ease: "power3.inOut",
-          onComplete: () => setComplete(true),
-        }),
-      el,
+    const element = ref.current;
+    if (!element || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Server-rendered content and anything already in view paint immediately.
+    // Only enhance sections that the visitor has yet to scroll to.
+    if (element.getBoundingClientRect().top < window.innerHeight) return;
+
+    const animation = element.animate(
+      [{ opacity: 0, transform: "translateY(22px)" }, { opacity: 1, transform: "translateY(0)" }],
+      { duration: 700, delay: delay * 1000, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both" },
     );
-    return () => ctx.revert();
-  }, []);
-  if (complete) return null;
-  return (
-    <div
-      ref={element}
-      className="fixed inset-0 z-[100] grid place-items-center bg-[#f3efe8] text-[#090909]"
-    >
-      <div className="text-center">
-        <p className="eyebrow text-[#090909]">Web7 / Canary Islands</p>
-        <p className="loader-number display mt-2 text-[22vw] leading-none">0</p>
-      </div>
-    </div>
-  );
+    animation.pause();
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      animation.play();
+      observer.disconnect();
+    }, { threshold: 0.18 });
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      animation.cancel();
+    };
+  }, [delay]);
+
+  return <div ref={ref} className={className}>{children}</div>;
 }

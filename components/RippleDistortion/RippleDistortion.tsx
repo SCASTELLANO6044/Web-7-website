@@ -426,14 +426,19 @@ const RippleDistortion = ({
                 "(prefers-reduced-motion: reduce)"
             ).matches;
 
-        const renderer = new Renderer({
-            alpha: false,
-            antialias: false,
-            dpr: Math.min(
-                window.devicePixelRatio || 1,
-                2
-            ),
-        });
+        if (reduceMotion) return;
+
+        let renderer: Renderer;
+        try {
+            renderer = new Renderer({
+                alpha: false,
+                antialias: false,
+                dpr: Math.min(window.devicePixelRatio || 1, 2),
+            });
+        } catch {
+            // Keep the server-rendered poster when WebGL is unavailable.
+            return;
+        }
 
         const gl = renderer.gl;
 
@@ -449,6 +454,7 @@ const RippleDistortion = ({
         canvas.style.width = "100%";
         canvas.style.height = "100%";
         canvas.style.display = "block";
+        canvas.style.visibility = "hidden";
 
         mount.appendChild(canvas);
 
@@ -474,7 +480,7 @@ const RippleDistortion = ({
         video.crossOrigin = "anonymous";
         video.muted = true;
         video.loop = true;
-        video.autoplay = true;
+        video.autoplay = false;
         video.playsInline = true;
         video.preload = "auto";
 
@@ -492,9 +498,7 @@ const RippleDistortion = ({
 
             imageTexture.image = video;
 
-            video.play().catch(() => {
-                console.log("Autoplay bloqueado");
-            });
+            syncAnimation();
         });
 
         /*
@@ -1017,6 +1021,7 @@ const RippleDistortion = ({
 
         let raf = 0;
         let previousTime = 0;
+        let isVisible = false;
 
         const loop = (
             now: number
@@ -1026,6 +1031,8 @@ const RippleDistortion = ({
                 requestAnimationFrame(
                     loop
                 );
+
+            if (video.readyState < 2) return;
 
             const delta =
                 previousTime
@@ -1148,12 +1155,27 @@ const RippleDistortion = ({
             renderer.render({
                 scene: compositeMesh,
             });
+            canvas.style.visibility = "visible";
         };
 
-        raf =
-            requestAnimationFrame(
-                loop
-            );
+        const syncAnimation = () => {
+            if (disposed) return;
+            if (isVisible && !document.hidden && video.readyState >= 2) {
+                video.play().catch(() => { /* The first frame remains visible if autoplay is blocked. */ });
+                if (!raf) raf = requestAnimationFrame(loop);
+            } else {
+                cancelAnimationFrame(raf);
+                raf = 0;
+                previousTime = 0;
+                video.pause();
+            }
+        };
+        const intersectionObserver = new IntersectionObserver(([entry]) => {
+            isVisible = entry.isIntersecting;
+            syncAnimation();
+        });
+        intersectionObserver.observe(mount);
+        document.addEventListener("visibilitychange", syncAnimation);
 
         /*
          * ------------------------------------------------
@@ -1172,6 +1194,8 @@ const RippleDistortion = ({
             video.load();
 
             resizeObserver.disconnect();
+            intersectionObserver.disconnect();
+            document.removeEventListener("visibilitychange", syncAnimation);
 
             window.removeEventListener(
                 "pointermove",
