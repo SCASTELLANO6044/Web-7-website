@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, type RefObject } from "react";
+import { useEffect, type RefObject } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -10,16 +10,16 @@ export function useEditorialGridMotion(
   sectionRef: RefObject<HTMLElement | null>,
   variant: GridVariant,
 ) {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
-    gsap.registerPlugin(ScrollTrigger);
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
+    const initialize = () => {
+    gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
     const context = gsap.context(() => {
       const cells = gsap.utils.toArray<HTMLElement>("[data-grid-cell]", section);
@@ -181,6 +181,22 @@ export function useEditorialGridMotion(
     return () => {
       context.revert();
       media.revert();
+    };
+    };
+
+    // The grids are several screens down. Avoid measuring and animating every
+    // cell during hydration; prepare them shortly before they enter view.
+    let cleanup: (() => void) | undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      cleanup = initialize();
+      observer.disconnect();
+    }, { rootMargin: "300px" });
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+      cleanup?.();
     };
   }, [sectionRef, variant]);
 }

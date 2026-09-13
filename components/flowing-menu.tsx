@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import styles from "./flowing-menu.module.css";
@@ -65,6 +66,7 @@ function MenuItem({ link, text, image, number, description, speed }: FlowingMenu
   const hoveredRef = useRef(false);
   const visibleRef = useRef(false);
   const [repetitions, setRepetitions] = useState(4);
+  const [loadImages, setLoadImages] = useState(false);
 
   useEffect(() => {
     const item = itemRef.current;
@@ -121,6 +123,7 @@ function MenuItem({ link, text, image, number, description, speed }: FlowingMenu
     const wasActive = activeRef.current;
     activeRef.current = show;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (show) setLoadImages(true);
     animationRef.current?.paused(!show || !visibleRef.current);
     transitionRef.current?.kill();
     const timeline = gsap.timeline({ defaults: { duration: 0.5, ease: "expo.out" } });
@@ -170,7 +173,9 @@ function MenuItem({ link, text, image, number, description, speed }: FlowingMenu
             {Array.from({ length: repetitions }, (_, index) => (
               <div className={styles.part} key={index}>
                 <span>{text}</span>
-                <div className={styles.image} style={{ backgroundImage: `url("${image}")` }} />
+                <div className={styles.image}>
+                  {loadImages && <Image src={image} alt="" fill sizes="240px" className="object-cover" />}
+                </div>
               </div>
             ))}
           </div>
