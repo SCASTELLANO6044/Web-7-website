@@ -8,15 +8,16 @@ Lighthouse results below are separate lab measurements, not updated Vercel data.
 
 - Removed the full-page loading screen and delayed homepage headline/CTA reveals.
   Initial content is visible in server HTML, including with JavaScript disabled.
-- Preloaded the existing hero poster. Video/WebGL progressively replaces it
-  after page load and idle time, and only after a video frame is available.
+- Preloaded the existing hero poster. The hero video starts immediately after
+  hydration and replaces the poster once a video frame is available. It does
+  not wait for page load or idle time (see the startup fix below).
 - Restored the original 1280×720, 24 fps, 120-second H.264 video byte-for-byte
   (41,476,730 bytes) at the user's request. The canvas also uses its original
   pixel-density cap of 2; video quality reductions have been reverted.
 - Paused hero rendering/playback outside the viewport and in background tabs,
   while preserving rendering quality. Reduced-motion and data-saving users
   retain the poster; missing WebGL or blocked playback leaves a usable hero.
-- Split decorative WebGL modules out of initial bundles. Button shine starts
+- Split secondary decorative WebGL modules out of initial bundles. Button shine starts
   only near a mouse pointer; touch devices use the existing button styling
   with a CSS border. Desktop smooth-scroll plugins load only on eligible devices.
 - Initialize the below-the-fold grid animations near the viewport. Scroll
@@ -71,3 +72,20 @@ Local audits do not exercise Vercel's injected analytics scripts or its CDN.
 The implementation follows [web.dev's LCP guidance](https://web.dev/articles/optimize-lcp)
 on removing render delays and [Next's Image documentation](https://nextjs.org/docs/app/api-reference/components/image)
 on prioritizing the initial image and resizing secondary images.
+
+## Hero startup fix — 17 September 2026
+
+The original deferral made the hero appear frozen: its still poster remained
+visible until the page load event, two animation frames, an idle callback, and
+the dynamically imported ripple module had completed. The hero now opts out of
+that deferral and includes the ripple module in its initial bundle. Secondary
+effects still defer, and reduced-motion/data-saving preferences are preserved.
+The original video bytes and rendering resolution are unchanged.
+
+Production-build browser checks on desktop and mobile held the poster request
+open and prevented idle callbacks from running. In both cases the video still
+started playing, and its canvas became visible, before the page load event.
+Offscreen pause/resume, poster fallbacks, and changes to reduced-motion settings
+also passed without uncaught browser errors. Build and lint passed (lint retains
+the two warnings listed above). The earlier performance scores were not rerun
+for this startup fix; eager hero code is an intentional startup tradeoff.

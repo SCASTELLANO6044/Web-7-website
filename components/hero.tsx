@@ -3,17 +3,16 @@
 import { useEffect, useLayoutEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useDeferredVisual } from "@/components/use-deferred-visual";
+import RippleDistortion from "@/components/RippleDistortion/RippleDistortion";
 import { useLocale, useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HERO_VIDEO_SRC = "/visuals/hero-video.mp4";
-const RippleDistortion = dynamic(() => import("@/components/RippleDistortion/RippleDistortion"), { ssr: false });
 
 function subscribeToCoarsePointer(onStoreChange: () => void) {
     const mediaQuery = window.matchMedia("(pointer: coarse), (max-width: 767px)");
@@ -70,7 +69,7 @@ function useStableMobileHeroHeight() {
 }
 
 function HeroMedia() {
-    const ready = useDeferredVisual();
+    const ready = useDeferredVisual({ deferUntilIdle: false });
     // A low-resolution WebGL layer keeps the hero responsive on touch devices
     // while still allowing a finger tap to create the same ripple as a cursor.
     const isTouchDevice = useSyncExternalStore(
