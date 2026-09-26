@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 import goodMealsHero from "@/assets/portfolio/goodmeals/goodmeals-hero.png";
+import joseAcostaHero from "@/assets/portfolio/jose-acosta/jose-acosta-hero.png";
 import type { Locale } from "@/lib/locale";
 
 export type Project = {
@@ -40,24 +41,25 @@ export const projects: Project[] = [
     websiteUrl: "https://goodmeals.es",
   },
   {
-    slug: "altamar-residences",
-    title: "Altamar Residences",
-    category: "Inmobiliaria",
+    slug: "jose-acosta",
+    title: "José Acosta",
+    category: "Portfolio personal",
     description:
-      "Propiedades costeras presentadas con elegancia y confianza.",
-    image: "/reference/portfolio-2.jpg",
-    year: "Concepto",
-    services: ["Estrategia", "UI/UX", "Frontend"],
-    technologies: ["Next.js", "GSAP", "CMS-ready"],
+      "El portfolio de José Acosta, desarrollador de software y miembro de nuestro equipo.",
+    image: joseAcostaHero,
+    year: "En línea",
+    services: ["Diseño web", "Desarrollo", "Portfolio personal"],
+    technologies: ["Vercel"],
     challenge:
-      "Hacer que una propiedad premium se sienta cercana sin ocultar la información que los compradores necesitan.",
+      "Presentar el trabajo y la identidad de José en un espacio personal dedicado al código, el diseño y la interacción.",
     solution:
-      "Un sistema inmobiliario editorial que combina imágenes cuidadas, tipografía elegante y capas de información práctica.",
+      "Una presentación en blanco y negro con tipografía de gran formato, un fondo de formas abstractas y navegación hacia su trabajo, perfil y contacto.",
     results: [
-      "Posicionamiento premium",
-      "Exploración intuitiva",
-      "Estructura preparada para captar clientes",
+      "Portfolio personal publicado",
+      "Identidad visual propia",
+      "Acceso directo a sus perfiles profesionales",
     ],
+    websiteUrl: "https://joseacostportfolio-l0t2x1xng-jose15-a7aa.vercel.app/",
   },
   {
     slug: "siete-studio",
@@ -193,11 +195,11 @@ const englishProjects: Record<string, Partial<Project>> = {
     solution: "We combined a distinctive visual design with a simple content structure that keeps the product and call to action front and centre.",
     results: ["A distinctive digital presence", "Mobile-optimised experience", "A clearer conversion path"],
   },
-  "altamar-residences": {
-    category: "Real estate", description: "Coastal properties presented with elegance and confidence.", year: "Concept",
-    services: ["Strategy", "UI/UX", "Frontend"], challenge: "Make a premium property feel approachable without hiding the information buyers need.",
-    solution: "An editorial real-estate system that combines thoughtful imagery, elegant typography and layers of practical information.",
-    results: ["Premium positioning", "Intuitive exploration", "A structure ready to generate leads"],
+  "jose-acosta": {
+    category: "Personal portfolio", description: "The portfolio of José Acosta, software developer and member of our team.", year: "Live",
+    services: ["Web design", "Development", "Personal portfolio"], challenge: "Present José’s work and identity in a personal space dedicated to code, design and interaction.",
+    solution: "A monochrome presentation with oversized typography, an abstract background and navigation to his work, profile and contact information.",
+    results: ["Published personal portfolio", "Distinctive visual identity", "Direct access to his professional profiles"],
   },
   "siete-studio": {
     category: "Architecture", description: "An architecture studio with a more considered digital presence.", year: "Concept",
@@ -241,11 +243,11 @@ const frenchProjects: Record<string, Partial<Project>> = {
     solution: "Nous avons associé un design visuel singulier à une structure de contenu simple qui met le produit et l’appel à l’action au premier plan.",
     results: ["Une présence digitale distinctive", "Une expérience optimisée pour mobile", "Un parcours de conversion plus clair"],
   },
-  "altamar-residences": {
-    category: "Immobilier", description: "Des propriétés côtières présentées avec élégance et confiance.", year: "Concept",
-    services: ["Stratégie", "UI/UX", "Frontend"], challenge: "Rendre un bien immobilier haut de gamme accessible sans cacher les informations dont les acheteurs ont besoin.",
-    solution: "Un système immobilier éditorial qui associe des images soignées, une typographie élégante et des informations pratiques.",
-    results: ["Positionnement haut de gamme", "Exploration intuitive", "Une structure prête à générer des prospects"],
+  "jose-acosta": {
+    category: "Portfolio personnel", description: "Le portfolio de José Acosta, développeur logiciel et membre de notre équipe.", year: "En ligne",
+    services: ["Conception web", "Développement", "Portfolio personnel"], challenge: "Présenter le travail et l’identité de José dans un espace personnel consacré au code, au design et à l’interaction.",
+    solution: "Une présentation monochrome avec une typographie grand format, un fond abstrait et une navigation vers son travail, son profil et ses coordonnées.",
+    results: ["Portfolio personnel publié", "Identité visuelle singulière", "Accès direct à ses profils professionnels"],
   },
   "siete-studio": {
     category: "Architecture", description: "Un studio d’architecture doté d’une présence digitale plus réfléchie.", year: "Concept",
@@ -284,7 +286,7 @@ const frenchServices = [
 
 const czechProjects: Record<string, Partial<Project>> = {
   "good-meals": { category: "Gastronomie a pohostinství", description: "Digitální domov pro nový způsob, jak se dobře stravovat.", services: ["Webový design", "Vývoj", "Integrace značky"], challenge: "Proměnit gastronomický koncept v jasný a poutavý digitální zážitek.", solution: "Spojili jsme osobitý vizuální design s jednoduchou strukturou obsahu, která staví produkt a výzvu k akci do popředí.", results: ["Osobitá digitální prezentace", "Zážitek optimalizovaný pro mobil", "Jasnější cesta ke konverzi"] },
-  "altamar-residences": { category: "Nemovitosti", description: "Pobřežní nemovitosti prezentované s elegancí a důvěrou.", year: "Koncept", services: ["Strategie", "UI/UX", "Frontend"], challenge: "Zpřístupnit prémiovou nemovitost, aniž bychom skryli informace, které kupující potřebují.", solution: "Redakční realitní systém kombinující promyšlené snímky, elegantní typografii a praktické informace.", results: ["Prémiové postavení", "Intuitivní procházení", "Struktura připravená získávat poptávky"] },
+  "jose-acosta": { category: "Osobní portfolio", description: "Portfolio Josého Acosty, softwarového vývojáře a člena našeho týmu.", year: "Online", services: ["Webový design", "Vývoj", "Osobní portfolio"], challenge: "Představit Josého práci a osobnost v osobním prostoru věnovaném kódu, designu a interakci.", solution: "Černobílá prezentace s velkoformátovou typografií, abstraktním pozadím a navigací k jeho práci, profilu a kontaktu.", results: ["Zveřejněné osobní portfolio", "Osobitá vizuální identita", "Přímý přístup k profesním profilům"] },
   "siete-studio": { category: "Architektura", description: "Architektonické studio s promyšlenější digitální prezentací.", year: "Koncept", services: ["Umělecké vedení", "Webový design", "Vývoj"], challenge: "Ukázat preciznost architektury a současně zachovat minimalistickou podstatu studia.", solution: "Portfolio postavené na vizuálním rytmu, měřítku a prostoru, které nechává vyniknout každý projekt.", results: ["Redakční jasnost", "Rychlejší prezentace", "Stránky připravené pro vyhledávání"] },
   "aera-health": { category: "Zdraví", description: "Přívětivý digitální zdravotnický zážitek navržený pro budování důvěry.", year: "Koncept", services: ["UX výzkum", "Produktový design", "Vývoj"], challenge: "Učinit složitý zdravotnický proces jasným, bezpečným a snadno sledovatelným.", solution: "Klidný vizuální systém s přístupnými interakcemi a přímými cestami k pomoci.", results: ["Přístupný design", "Větší jasnost", "Zážitek založený na důvěře"] },
   "form-athletics": { category: "Fitness", description: "Výkonná energie pro komunitu zaměřenou na pohyb.", year: "Koncept", services: ["Integrace značky", "E-commerce UX", "Vývoj"], challenge: "Udržet energii sportovní značky, aniž by se při nákupu ztratila jasnost.", solution: "Dynamický obchod s jasnou hierarchií produktů a obsahem, který vyjadřuje rychlost.", results: ["Silnější identita", "UX zaměřené na konverze", "Rychlé načítání na mobilu"] },
