@@ -1,6 +1,7 @@
 import type { StaticImageData } from "next/image";
 import goodMealsHero from "@/assets/portfolio/goodmeals/goodmeals-hero.png";
 import joseAcostaHero from "@/assets/portfolio/jose-acosta/jose-acosta-hero.png";
+import facturasMujiHero from "@/assets/portfolio/facturas-muji/facturas.png";
 import type { Locale } from "@/lib/locale";
 
 export type Project = {
@@ -62,25 +63,25 @@ export const projects: Project[] = [
     websiteUrl: "https://joseacostportfolio-l0t2x1xng-jose15-a7aa.vercel.app/",
   },
   {
-    slug: "siete-studio",
-    title: "Siete Studio",
-    category: "Arquitectura",
+    slug: "facturas-muji",
+    title: "Facturas / muji",
+    category: "Herramientas de productividad",
     description:
-      "Un estudio de arquitectura con una presencia digital más profunda.",
-    image:
-      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1600&q=85",
-    year: "Concepto",
-    services: ["Dirección de arte", "Diseño web", "Desarrollo"],
-    technologies: ["Next.js", "Framer Motion", "SEO"],
+      "Una herramienta para organizar archivos con nombres coherentes y numeración secuencial.",
+    image: facturasMujiHero,
+    year: "En línea",
+    services: ["Diseño de producto", "UI/UX", "Desarrollo web"],
+    technologies: ["Vercel"],
     challenge:
-      "Mostrar la precisión del trabajo arquitectónico manteniendo la misma esencia minimalista del estudio.",
+      "Simplificar la tarea repetitiva de renombrar archivos y mantener una secuencia de nombres clara.",
     solution:
-      "Un portfolio basado en ritmo visual, escala y espacio para dar protagonismo a cada proyecto.",
+      "Una interfaz guiada para elegir una carpeta, definir el prefijo y la numeración, y revisar los nuevos nombres antes de aplicar los cambios.",
     results: [
-      "Claridad editorial",
-      "Presentación más rápida",
-      "Páginas optimizadas para búsqueda",
+      "Formato de nombres configurable",
+      "Numeración secuencial con ceros iniciales",
+      "Vista previa de los cambios",
     ],
+    websiteUrl: "https://facturas-muji.vercel.app/",
   },
   {
     slug: "aera-health",
@@ -201,11 +202,11 @@ const englishProjects: Record<string, Partial<Project>> = {
     solution: "A monochrome presentation with oversized typography, an abstract background and navigation to his work, profile and contact information.",
     results: ["Published personal portfolio", "Distinctive visual identity", "Direct access to his professional profiles"],
   },
-  "siete-studio": {
-    category: "Architecture", description: "An architecture studio with a more considered digital presence.", year: "Concept",
-    services: ["Art direction", "Web design", "Development"], challenge: "Show the precision of the architectural work while retaining the studio’s minimal essence.",
-    solution: "A portfolio built around visual rhythm, scale and space, giving each project room to lead.",
-    results: ["Editorial clarity", "Faster presentation", "Search-ready pages"],
+  "facturas-muji": {
+    category: "Productivity tools", description: "A tool for organising files with consistent names and sequential numbering.", year: "Live",
+    services: ["Product design", "UI/UX", "Web development"], challenge: "Simplify the repetitive task of renaming files and maintain a clear naming sequence.",
+    solution: "A guided interface for choosing a folder, setting the prefix and numbering, and reviewing the new filenames before applying changes.",
+    results: ["Configurable filename format", "Sequential numbering with leading zeros", "Preview of changes"],
   },
   "aera-health": {
     category: "Health", description: "A reassuring healthcare experience designed to build trust.", year: "Concept",
@@ -249,11 +250,11 @@ const frenchProjects: Record<string, Partial<Project>> = {
     solution: "Une présentation monochrome avec une typographie grand format, un fond abstrait et une navigation vers son travail, son profil et ses coordonnées.",
     results: ["Portfolio personnel publié", "Identité visuelle singulière", "Accès direct à ses profils professionnels"],
   },
-  "siete-studio": {
-    category: "Architecture", description: "Un studio d’architecture doté d’une présence digitale plus réfléchie.", year: "Concept",
-    services: ["Direction artistique", "Conception web", "Développement"], challenge: "Montrer la précision du travail architectural tout en préservant l’essence minimaliste du studio.",
-    solution: "Un portfolio construit autour du rythme visuel, de l’échelle et de l’espace, laissant chaque projet prendre sa place.",
-    results: ["Clarté éditoriale", "Présentation plus rapide", "Pages prêtes pour le référencement"],
+  "facturas-muji": {
+    category: "Outils de productivité", description: "Un outil pour organiser les fichiers avec des noms cohérents et une numérotation séquentielle.", year: "En ligne",
+    services: ["Design produit", "UI/UX", "Développement web"], challenge: "Simplifier la tâche répétitive de renommer les fichiers et conserver une séquence de noms claire.",
+    solution: "Une interface guidée pour choisir un dossier, définir le préfixe et la numérotation, puis vérifier les nouveaux noms avant d’appliquer les modifications.",
+    results: ["Format des noms configurable", "Numérotation séquentielle avec zéros initiaux", "Aperçu des modifications"],
   },
   "aera-health": {
     category: "Santé", description: "Une expérience de santé numérique rassurante, conçue pour inspirer confiance.", year: "Concept",
@@ -287,7 +288,7 @@ const frenchServices = [
 const czechProjects: Record<string, Partial<Project>> = {
   "good-meals": { category: "Gastronomie a pohostinství", description: "Digitální domov pro nový způsob, jak se dobře stravovat.", services: ["Webový design", "Vývoj", "Integrace značky"], challenge: "Proměnit gastronomický koncept v jasný a poutavý digitální zážitek.", solution: "Spojili jsme osobitý vizuální design s jednoduchou strukturou obsahu, která staví produkt a výzvu k akci do popředí.", results: ["Osobitá digitální prezentace", "Zážitek optimalizovaný pro mobil", "Jasnější cesta ke konverzi"] },
   "jose-acosta": { category: "Osobní portfolio", description: "Portfolio Josého Acosty, softwarového vývojáře a člena našeho týmu.", year: "Online", services: ["Webový design", "Vývoj", "Osobní portfolio"], challenge: "Představit Josého práci a osobnost v osobním prostoru věnovaném kódu, designu a interakci.", solution: "Černobílá prezentace s velkoformátovou typografií, abstraktním pozadím a navigací k jeho práci, profilu a kontaktu.", results: ["Zveřejněné osobní portfolio", "Osobitá vizuální identita", "Přímý přístup k profesním profilům"] },
-  "siete-studio": { category: "Architektura", description: "Architektonické studio s promyšlenější digitální prezentací.", year: "Koncept", services: ["Umělecké vedení", "Webový design", "Vývoj"], challenge: "Ukázat preciznost architektury a současně zachovat minimalistickou podstatu studia.", solution: "Portfolio postavené na vizuálním rytmu, měřítku a prostoru, které nechává vyniknout každý projekt.", results: ["Redakční jasnost", "Rychlejší prezentace", "Stránky připravené pro vyhledávání"] },
+  "facturas-muji": { category: "Nástroje pro produktivitu", description: "Nástroj pro organizaci souborů s jednotnými názvy a postupným číslováním.", year: "Online", services: ["Produktový design", "UI/UX", "Vývoj webu"], challenge: "Zjednodušit opakované přejmenovávání souborů a zachovat přehlednou posloupnost názvů.", solution: "Přehledné rozhraní pro výběr složky, nastavení předpony a číslování a kontrolu nových názvů před použitím změn.", results: ["Nastavitelný formát názvů", "Postupné číslování s úvodními nulami", "Náhled změn"] },
   "aera-health": { category: "Zdraví", description: "Přívětivý digitální zdravotnický zážitek navržený pro budování důvěry.", year: "Koncept", services: ["UX výzkum", "Produktový design", "Vývoj"], challenge: "Učinit složitý zdravotnický proces jasným, bezpečným a snadno sledovatelným.", solution: "Klidný vizuální systém s přístupnými interakcemi a přímými cestami k pomoci.", results: ["Přístupný design", "Větší jasnost", "Zážitek založený na důvěře"] },
   "form-athletics": { category: "Fitness", description: "Výkonná energie pro komunitu zaměřenou na pohyb.", year: "Koncept", services: ["Integrace značky", "E-commerce UX", "Vývoj"], challenge: "Udržet energii sportovní značky, aniž by se při nákupu ztratila jasnost.", solution: "Dynamický obchod s jasnou hierarchií produktů a obsahem, který vyjadřuje rychlost.", results: ["Silnější identita", "UX zaměřené na konverze", "Rychlé načítání na mobilu"] },
   "nido-saas": { category: "SaaS", description: "Finanční platforma navržená tak, aby složité věci zjednodušila.", year: "Koncept", services: ["Produktová strategie", "UI systém", "Frontend"], challenge: "Jasně vysvětlit technickou platformu zakladatelům a finančním týmům.", solution: "Proměnili jsme produkt v srozumitelný příběh a vytvořili designový systém připravený růst.", results: ["Jasnější hodnotová nabídka", "Škálovatelný systém", "UX připravené pro firmy"] },
