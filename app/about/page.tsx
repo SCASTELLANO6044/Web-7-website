@@ -1,3 +1,4 @@
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { HeroAlternative } from "@/components/hero-alternative";
@@ -5,8 +6,7 @@ import { getLocale, localizePath } from "@/lib/locale";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
-    const t = await getTranslations("About");
-    return { title: t("metadata") };
+    return translatedMetadata("about", "/about");
 }
 export default async function About() {
     const locale = await getLocale();

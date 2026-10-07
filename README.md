@@ -50,6 +50,11 @@ A sample file is available at [.env.example](.env.example).
 - `npm run build` — create a production build
 - `npm run start` — run the production build locally
 - `npm run lint` — run ESLint across the project
+- `npm run test:seo` — check the rendered SEO output against a running local server
+
+## Search visibility
+
+The site includes multilingual metadata, regional service pages, business structured data, a sitemap and crawler rules for `https://web7devs.com`. See [the SEO release guide](docs/seo.md) for validation, Search Console setup and follow-up work after deployment.
 
 ## Project Structure
 

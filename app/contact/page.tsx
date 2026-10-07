@@ -1,11 +1,12 @@
+import { translatedMetadata } from "@/lib/seo";
 import { ContactForm } from "./contact-form";
 import { getTranslations } from "next-intl/server";
 export async function generateMetadata() {
-    const t = await getTranslations("Contact");
-    return { title: t("metadata") };
+    return translatedMetadata("contact", "/contact");
 }
 export default async function Contact() {
     const t = await getTranslations("Contact");
+    const footer = await getTranslations("Footer");
     return (
         <section className="px-5 pb-28 pt-36 md:px-8 md:pt-48">
             <div className="mx-auto max-w-[1540px]">
@@ -56,7 +57,7 @@ export default async function Contact() {
                                 <p className="mb-1 uppercase tracking-[.12em] text-white/40">
                                     {t("location")}
                                 </p>
-                                <p>Canary Islands, Spain</p>
+                                <p>{footer("location")}</p>
                             </div>
                         </div>
                     </div>

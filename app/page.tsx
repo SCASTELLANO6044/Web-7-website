@@ -1,3 +1,10 @@
+import { translatedMetadata } from "@/lib/seo";
+import { RegionalLinks } from "@/components/regional-links";
+
+export async function generateMetadata() {
+  return translatedMetadata("home", "/");
+}
+
 import { MidSection } from "@/components/mid-section";
 import { ProjectsOverview } from "@/components/projects-overview";
 import { HeroSection } from "@/components/hero";
@@ -21,6 +28,8 @@ export default async function Home() {
       
       <ProjectsOverview />
       
+      <RegionalLinks />
+
       <MidSectionGrid />
 
       <MidSectionGridAlternative />

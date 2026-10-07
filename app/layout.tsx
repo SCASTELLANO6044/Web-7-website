@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site";
+import { BusinessStructuredData } from "@/components/structured-data";
 import "./globals.css";
 import { Header } from "@/components/site-header";
 import { Footer } from "@/components/site-footer";
@@ -12,9 +14,11 @@ import { getTranslations } from "next-intl/server";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata");
   return {
-    title: { default: "Web7 — Website Dev Studio", template: "%s — Web7" },
+    metadataBase: new URL(getSiteUrl()),
+    title: { default: "Web7", template: "%s | Web7" },
     description: t("description"),
-    keywords: ["web design Canary Islands", "website development", "Web7", "premium web design"],
+    robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
   };
 }
 
@@ -26,6 +30,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} data-scroll-behavior="smooth">
       <body>
+        <BusinessStructuredData />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-[#f3efe8] focus:p-3 focus:text-black"

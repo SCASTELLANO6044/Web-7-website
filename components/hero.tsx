@@ -193,7 +193,7 @@ export function HeroSection() {
                 <div className="flex justify-between gap-4 text-[10px] uppercase tracking-[.15em] text-white/55">
                     <span>{t("top")}</span>
                     <span className="text-right">
-                        Canary Islands
+                        Canarias · Praha
                     </span>
                 </div>
 
