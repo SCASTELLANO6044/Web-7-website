@@ -1,3 +1,5 @@
+import { RegionalLinks } from "@/components/regional-links";
+import { translatedMetadata } from "@/lib/seo";
 import { getServices } from "@/lib/projects";
 import { MidSectionSlogan } from "@/components/mid-section-slogan";
 import { HeroAlternative } from "@/components/hero-alternative";
@@ -16,12 +18,12 @@ const serviceImages = [
 ];
 
 export async function generateMetadata() {
-    const t = await getTranslations("Services");
-    return { title: t("metadata") };
+    return translatedMetadata("services", "/services");
 }
 export default async function Services() {
     const locale = await getLocale();
     const t = await getTranslations("Services");
+    const seo = await getTranslations("SEO");
     const services = getServices(locale);
     return (
         <section className="px-5 pb-0 pt-36 md:px-8 md:pt-48">
@@ -31,7 +33,7 @@ export default async function Services() {
                     text1={t("eyebrow")}
                     text2={t("title")}
                     text3={t("outline")}
-                    text4="" 
+                    text4={seo("services.description")}
                 />
                 
                 <div className="mt-20">
@@ -47,6 +49,8 @@ export default async function Services() {
                         }))}
                     />
                 </div>
+
+                <RegionalLinks />
 
                 <div className="pt-20 md:pt-32">
                     <MidSectionSlogan 

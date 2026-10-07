@@ -1,10 +1,10 @@
+import { translatedMetadata } from "@/lib/seo";
 import { PortfolioGrid } from "./portfolio-grid";
 import { HeroAlternative } from "@/components/hero-alternative";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
-    const t = await getTranslations("Portfolio");
-    return { title: t("metadata") };
+    return translatedMetadata("portfolio", "/portfolio");
 }
 export default async function Portfolio() {
     const t = await getTranslations("Portfolio");

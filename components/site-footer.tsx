@@ -4,6 +4,13 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
+const regionLabels: Record<string, [string, string, string]> = {
+    es: ["Diseño web en Canarias", "Diseño web en Praga", "Diseño web en España"],
+    en: ["Web design in the Canary Islands", "Web design in Prague", "Web design in Spain"],
+    cs: ["Tvorba webů na Kanárech", "Tvorba webů v Praze", "Tvorba webů ve Španělsku"],
+    fr: ["Création web aux Canaries", "Création web à Prague", "Création web en Espagne"],
+};
+
 export function Footer() {
     const locale = useLocale();
     const t = useTranslations("Footer");
@@ -71,6 +78,13 @@ export function Footer() {
                         <p>
                             {t("quality")}
                         </p>
+                        <div className="mt-5 space-y-2">
+                            {["canarias", "prague", "spain"].map((market, index) => (
+                                <Link key={market} className="block hover:underline" href={localize(`/web-design/${market}`)}>
+                                    {(regionLabels[locale] || regionLabels.es)[index]}
+                                </Link>
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-black/15 pt-4 text-[10px] uppercase tracking-[.1em]">

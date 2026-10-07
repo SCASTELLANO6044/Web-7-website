@@ -28,7 +28,7 @@ export function Header() {
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("Header");
-  const localize = (href: string) => (locale === "es" ? href : `/${locale}${href}`);
+  const localize = (href: string) => (locale === "es" ? href : `/${locale}${href === "/" ? "" : href}`);
   const routePath = (href: string) => localize(href);
   const socialLinks = [
     { href: "mailto:web7canarias@gmail.com", label: t("email") },
@@ -159,11 +159,8 @@ export function Header() {
 
   const isActive = (href: string) => pathname === routePath(href);
   const nextLocale = locale === "es" ? "en" : locale === "en" ? "cs" : locale === "cs" ? "fr" : "es";
-  const switchLocale = () => {
-    document.cookie = `web7_locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
-  };
   const basePath = pathname.replace(/^\/(en|cs|fr)(?=\/|$)/, "") || "/";
-  const languageHref = nextLocale === "es" ? basePath : `/${nextLocale}${basePath}`;
+  const languageHref = nextLocale === "es" ? basePath : `/${nextLocale}${basePath === "/" ? "" : basePath}`;
   const overlayTransition = reduceMotion
     ? { duration: 0.01 }
     : { duration: 0.48, ease: [0.16, 1, 0.3, 1] as const };
@@ -196,9 +193,10 @@ export function Header() {
             </Link>
             <a
               href={languageHref}
-              onClick={switchLocale}
               className="text-[10px] uppercase tracking-[.12em] text-white/75 transition-colors hover:text-[#ff0000]"
-              aria-label={t("switch")}
+              hrefLang={nextLocale}
+              lang={nextLocale}
+              aria-label={({ es: "Español", en: "English", cs: "Čeština", fr: "Français" })[nextLocale]}
             >
               {locale.toUpperCase()}
             </a>
@@ -296,7 +294,7 @@ export function Header() {
                   <div className="site-menu__contact-block">
                     <p className="site-menu__eyebrow">{t("contact")}</p>
                     <a href="mailto:web7canarias@gmail.com">web7canarias@gmail.com</a>
-                    <p>Canary Islands, Spain</p>
+                    <p>{t("built")}</p>
                   </div>
                 </motion.aside>
               </div>

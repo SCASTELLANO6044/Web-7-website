@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,9 +17,10 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
-    const project = projects.find((p) => p.slug === slug);
-    const t = await getTranslations("Portfolio");
-    return { title: project?.title ?? t("metadata") };
+    const locale = await getLocale();
+    const project = getProjects(locale).find((p) => p.slug === slug);
+    if (!project) notFound();
+    return pageMetadata({ path: `/portfolio/${slug}`, locale, title: project.title, description: project.description, image: typeof project.image === "string" ? project.image : project.image.src });
 }
 export default async function ProjectPage({
     params,
@@ -62,7 +64,7 @@ export default async function ProjectPage({
                 <div className="relative mx-auto aspect-[1.5/1] max-w-[1540px] overflow-hidden bg-white/5">
                     <Image
                         src={project.image}
-                        alt=""
+                        alt={`${project.title} — ${project.category}`}
                         fill
                         priority
                         className="object-cover"
