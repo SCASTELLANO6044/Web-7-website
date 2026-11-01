@@ -1,5 +1,10 @@
 # Performance verification — 13 September 2026
 
+> Historical report: the home hero now uses PlasmaWave (1 November 2026).
+> The unused video and ripple renderer have been removed. The former poster
+> remains in use by Services. Video-specific behavior and measurements below
+> describe the previous implementation.
+
 The supplied Vercel screenshot reports desktop P75 FCP of 2.09 s and LCP of
 3.82 s over seven days. These are production field measurements; the local
 Lighthouse results below are separate lab measurements, not updated Vercel data.

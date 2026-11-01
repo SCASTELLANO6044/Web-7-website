@@ -96,25 +96,22 @@ select {
     -webkit-text-stroke: 1px rgba(243, 239, 232, .58);
 }
 
-.hero-video {
-    position: absolute;
-    z-index: -2;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+.hero-plasma-background {
+    background: #000;
 }
 
-.hero-video-overlay {
+/* Leave the plasma's color and exposure intact; only soften the outer edges. */
+.hero-plasma-overlay {
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(180deg, rgba(2, 2, 2, .56) 0%, rgba(2, 2, 2, .08) 32%, rgba(2, 2, 2, .22) 66%, rgba(2, 2, 2, .66) 100%),
-        radial-gradient(circle at 78% 46%, transparent 0%, rgba(2, 2, 2, .1) 38%, rgba(2, 2, 2, .42) 100%),
-        linear-gradient(90deg, rgba(2, 2, 2, .24), transparent 52%, rgba(2, 2, 2, .12));
+    background: linear-gradient(180deg, rgba(0, 0, 0, .28), transparent 24%, transparent 70%, rgba(0, 0, 0, .4));
+}
+
+.hero__eyebrow,
+.hero__description {
+    text-shadow: 0 1px 5px #000, 0 0 18px #000;
 }
 
 /* Use the smallest mobile viewport so the hero also fits with iOS browser

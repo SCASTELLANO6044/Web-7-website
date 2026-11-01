@@ -1,0 +1,33 @@
+Generation: built-in image_gen tool
+Final image: web7-whatsapp-v1.png
+Source references: public/logo/web7Logo.png; public/visuals/hero-poster.jpg
+
+Use case: ads-marketing.
+Create one finished, impeccably typeset Spanish advertisement image for WEB7, a website design and development studio. Audience: ordinary Spanish-speaking people who might need a website for a business, project, or personal brand. Destination: sharing as an image in a WhatsApp group on phones.
+Canvas: portrait 4:5, aim for 1080 x 1350 pixels. Deliver the actual full-bleed flat poster, no photograph of a printed poster, no frame, no surrounding mockup.
+
+Input image roles:
+Image 1 is the existing WEB7 logo identity reference. Preserve its distinctive white elegant high-contrast serif WEB7 lettering. Use the wordmark discreetly at the top, without the large circular charcoal badge or black widescreen margins.
+Image 2 is the existing website's red and black organic background texture. Use it as restrained supporting artwork to connect the ad to the real website. It is a texture reference, not an edit target.
+
+Visual direction: a human art-directed editorial graphic, confident and elegant, visually simple, clean precise typography, a strong grid and deliberate whitespace. Near-black #020202 background, warm ivory #f3efe8 typography, and restrained oxblood #7a010c with a small vivid red detail. Large high-contrast old-style display serif headline echoing the WEB7 wordmark; small clean monospaced category line; readable neutral supporting and contact typography. Restrained fine rules. Almost flat printed graphic design with a very subtle tactile paper grain. No excessive decoration. The supplied red texture should be a cropped quiet artwork area within the middle-right of the poster, occupying about one quarter of the surface, never obscuring text. It must feel like the existing website brand, not sci-fi concept art.
+
+Hierarchy and composition:
+- Small existing WEB7 serif wordmark at top with generous breathing room.
+- Small but readable category line.
+- The primary headline is very large, left aligned, three balanced lines '¿Necesitas' / 'una web?' (two lines if better), taking visual precedence and readable in a chat preview. Keep Spanish opening and closing question marks.
+- The supporting sentence under the headline, in two or three short readable lines.
+- Bottom contact block separated by a fine rule. CTA first, phone number large and prominent, email a little smaller but still clear at phone display size.
+- Keep all text inside a generous 70px-equivalent safe margin. No text clipped or touching edges. No text below 28px-equivalent at target resolution; email at least 33px-equivalent; phone at least 46px-equivalent. Strong contrast. Contact area must be solid near-black with no textured interference.
+
+Include only the following exact text, each once. No other wording, no translations, no prices, no fabricated offers, no claims about delivery times:
+"WEB7"
+"DISEÑO Y DESARROLLO WEB"
+"¿Necesitas una web?"
+"Para tu negocio, tu proyecto o tu marca personal."
+"Cuéntanos tu idea."
+"+34 627 187 274"
+"web7canarias@gmail.com"
+
+All spelling and accents must be verbatim, especially DISEÑO, ¿Necesitas una web?, Cuéntanos, the complete email web7canarias@gmail.com, and all phone digits +34 627 187 274. Typeset the email on one line.
+Avoid synthetic people, generic technology icons, glowing 3D blobs, floating laptops, invented UI screenshots, futuristic holograms, fake seals, gradients on the lettering, lens flares, watermark, ornate decoration, emoji, QR codes, or an AI-image aesthetic. This should look like a thoughtfully crafted designer's social advertisement, using real brand references.

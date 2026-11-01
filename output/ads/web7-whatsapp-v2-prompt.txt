@@ -1,0 +1,23 @@
+Generation: built-in image_gen tool, edit
+Final image: web7-whatsapp-v2.png
+Edit target: output/ads/web7-whatsapp-v1.png
+
+Use case: precise-object-edit / text-localization.
+Edit the supplied WEB7 WhatsApp advertisement. Keep the same portrait canvas, black background, red organic artwork, warm ivory and red palette, original text wording, general composition, alignment, graphic rule, and visual hierarchy. This is a focused revision of the existing poster.
+
+Make exactly these two requested changes:
+1. Make the lettering noticeably thinner and more elegant. Replace the heavy serif weights in the headline "¿Necesitas una web?", supporting sentence, red "Cuéntanos tu idea.", and telephone number with a refined LIGHT / THIN high-contrast serif style. Reduce thick main stems substantially, by approximately 40–50%, while keeping the type large, solid, readable, and professionally typeset. Keep filled lettering, not outlined or translucent letters. The headline must visibly look lighter than the supplied version. Use correspondingly light typography in the small descriptor and email. Preserve the recognizability of the WEB7 wordmark. No bold weights.
+2. Add the exact website domain "web7devs.com" on its own line directly BELOW "web7canarias@gmail.com", left-aligned with the email. Domain should use the same light clean typeface as the email and a similar or slightly smaller readable size in warm ivory. Adjust ONLY the lower contact block's spacing and size slightly if needed to fit all contact information with comfortable breathing room and a safe bottom margin.
+
+All final text must read exactly as follows, each once:
+"WEB7"
+"DISEÑO Y DESARROLLO WEB"
+"¿Necesitas una web?"
+"Para tu negocio, tu proyecto o tu marca personal."
+"Cuéntanos tu idea."
+"+34 627 187 274"
+"web7canarias@gmail.com"
+"web7devs.com"
+
+Keep all original Spanish accents, punctuation, all phone digits, email spelling, and the new domain exact. Email and domain must each fit on a single line. Phone, email and website remain clear on a phone screen.
+Maintain the existing tasteful editorial graphic quality and website branding. Do not create a new advertisement concept. Do not add other words, icons, objects, mockups, watermarks, visual effects or decorations. Preserve the existing artwork and its placement as closely as possible. Return the finished flat image.
