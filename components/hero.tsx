@@ -2,17 +2,13 @@
 
 import { useEffect, useLayoutEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useDeferredVisual } from "@/components/use-deferred-visual";
-import RippleDistortion from "@/components/RippleDistortion/RippleDistortion";
+import PlasmaWave from "@/components/PlasmaWave/PlasmaWave";
 import { useLocale, useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const HERO_VIDEO_SRC = "/visuals/hero-video.mp4";
 
 function subscribeToCoarsePointer(onStoreChange: () => void) {
     const mediaQuery = window.matchMedia("(pointer: coarse), (max-width: 767px)");
@@ -69,9 +65,6 @@ function useStableMobileHeroHeight() {
 }
 
 function HeroMedia() {
-    const ready = useDeferredVisual({ deferUntilIdle: false });
-    // A low-resolution WebGL layer keeps the hero responsive on touch devices
-    // while still allowing a finger tap to create the same ripple as a cursor.
     const isTouchDevice = useSyncExternalStore(
         subscribeToCoarsePointer,
         hasCoarsePointer,
@@ -79,36 +72,21 @@ function HeroMedia() {
     );
 
     return (
-        <>
-        <Image
-            src="/visuals/hero-poster.jpg"
-            alt=""
-            fill
-            preload
-            sizes="100vw"
-            className="object-cover"
+        <PlasmaWave
+            colors={["#f10d0d", "#f10d0d"]}
+            speed={1}
+            bend1={1.05}
+            bend2={0.6}
+            thickness={0.3}
+            glow={0.55}
+            core={0.5}
+            mouseInteraction={true}
+            rotationDeg={190}
+            brightness={0.3}
+            grain={0}
+            quality={isTouchDevice ? 0.5 : 1}
+            dpr={isTouchDevice ? 1 : undefined}
         />
-        {ready && <RippleDistortion
-            src={HERO_VIDEO_SRC}
-            brushSize={isTouchDevice ? 92 : 110}
-            strength={0.2}
-            swirl={2}
-            rings={2}
-            spread={5}
-            fade={6}
-            spacing={8}
-            dispersion={0.3}
-            glint={0.1}
-            tint="#ffffff"
-            tintAmount={0}
-            grayscale={false}
-            highlightColor="#7a010c"
-            trigger={isTouchDevice ? "both" : "hover"}
-            clickStrength={2}
-            quality={isTouchDevice ? "low" : "medium"}
-            enabled
-        />}
-        </>
     );
 }
 
@@ -179,12 +157,12 @@ export function HeroSection() {
             ref={heroRef}
             className="hero relative isolate flex overflow-hidden bg-[#050404] px-5 pb-8 pt-32 md:min-h-dvh md:px-8"
         >
-            <div className="absolute inset-0 z-[1]" aria-hidden="true">
+            <div className="hero-plasma-background pointer-events-none absolute inset-0 z-0" aria-hidden="true">
                 <HeroMedia />
             </div>
 
             <div
-                className="hero-video-overlay"
+                className="hero-plasma-overlay"
                 aria-hidden="true"
             />
 
